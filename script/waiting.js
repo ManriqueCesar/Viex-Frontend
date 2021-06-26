@@ -53,7 +53,7 @@ $(document).ready(function () {
   var idExamen = Cookies.get('idExamen');
   setNombre();
   document.getElementById('imgUser').src = "../web/dist/js/labeled_images/" + userAp + "/1.jpg";
-  var ruta = 'https://api-pwcev.herokuapp.com';
+  var ruta = 'https://viex-app.herokuapp.com';
 
   // Initialize library and start tracking time
 
@@ -157,7 +157,7 @@ $(document).ready(function () {
 
 //Mandar respuestas
 $(document).on('click', '#btn-enviar', function (event) {
-  var ruta = 'https://api-pwcev.herokuapp.com';
+  var ruta = 'https://viex-app.herokuapp.com';
   // Retrieve time spent on current page
   var tiempo = TimeMe.getTimeOnCurrentPageInSeconds();
   var idExamen = Cookies.get('idExamen');

@@ -4,7 +4,7 @@ $(document).ready(function () {
   var idUser = Cookies.get('id');
   var usuario = Cookies.get('usuario');
   var fechaEnvio = moment().format('YYYY-MM-DD HH:mm');
-  ruta = 'https://api-pwcev.herokuapp.com';
+  ruta = 'https://viex-app.herokuapp.com';
   $('#tbl-examenes').DataTable({
     "colReorder": true,
     "responsive": true,
@@ -86,7 +86,7 @@ $(document).ready(function () {
         "text": '<img src="dist/img/icons/excel.png" alt="Descargar Excel" height = "30px" width="40px">',
         customize: function (xlsx) {
           var sheet = xlsx.xl.worksheets['sheet1.xml'];
-          $('c[r=A1] t', sheet).text('WebSecurity |' + ' Lista de Exámenes | ' + usuario);
+          $('c[r=A1] t', sheet).text('VIEX |' + ' Lista de Exámenes | ' + usuario);
         },
         exportOptions: {
           columns: [0, 1, 2, 3, 4, 5]
@@ -120,7 +120,7 @@ $(document).on('click', '#btn-listar', function (event) {
   console.log(data.idResultado);
 
 
-  ruta = 'https://api-pwcev.herokuapp.com';
+  ruta = 'https://viex-app.herokuapp.com';
   var x = 0;
   $('#tbl-listado').DataTable({
     "destroy": true,
@@ -219,7 +219,7 @@ $(document).on('click', '#btn-listar', function (event) {
 
 
 $(document).on('click', '#btn-marcar', function (event) {
-  var ruta = 'https://api-pwcev.herokuapp.com';
+  var ruta = 'https://viex-app.herokuapp.com';
   var currentRow = $(this).closest("tr");
   var data = $('#tbl-listado').DataTable().row(currentRow).data();
   var idResultado = data.idResultado;

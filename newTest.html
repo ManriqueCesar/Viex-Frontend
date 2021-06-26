@@ -67,7 +67,7 @@
               <a href="newTest.html" class="nav-link">Crear Examen</a>
             </li>
             <li>
-              <a href="" class="nav-link">Ver Exámenes</a>
+              <a href="list.html" class="nav-link">Ver Exámenes</a>
             </li>
             <li>
               <a href="listCourse.html" class="nav-link">Ver Cursos</a>
@@ -118,19 +118,20 @@
                 <p style="color:white;">
                   Mis Exámenes
                   <i class="right fas fa-angle-left"></i>
-                  <span class="badge badge-info right">2</span>
+                  <span class="badge badge-info right" id="cantExamenes"></span>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-
-                    <p style="color: white;">2 Exámenes pendientes</p>
+                    <span class="badge badge-warning right">9</span>
+                    <p style="color: white;"> Exámenes Restantes</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <p style="color: white;">7 Exámenes creados</p>
+                    <span class="badge badge-info right" id="examenesCreados"></span>
+                     <p style="color: white;"> Exámenes creados</p>
                   </a>
                 </li>
               </ul>
@@ -141,12 +142,14 @@
                 <p>
                   Mis Cursos
                   <i class="fas fa-angle-left right"></i>
+                  <span class="badge badge-info right" id="cantCursos"></span>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="#l" class="nav-link">
-                    <p>10 cursos creados</p>
+                  <a href="#" class="nav-link">
+                    <span class="badge badge-info right" id="cursosCreados"></span>
+                     <p style="color: white;"> Cursos creados</p>
                   </a>
                 </li>
               </ul>
@@ -260,7 +263,7 @@
                       </form>
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
-                          <button  class="btn btn-outline-danger" id="btn">Crear examen</button>
+                          <button  class="btn btn-outline-danger" id="btn-crearExamen">Crear examen</button>
                         </div>
                       </div>
                     </div>
@@ -706,7 +709,7 @@
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 1.0.0-pre
       </div>
-      <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 1 - PPP1</a>.</strong> All
+      <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 4 - TIS</a>.</strong> All
       rights reserved.
     </footer>
 
@@ -753,6 +756,7 @@
   <script src="bower_components/AdminLTE/dist/js/adminlte.min.js"></script>
   <script src="script/newTest.js"></script>
   <script src="script/cookies.js"></script>
+  <script src="script/permisos.js"></script>
 
   <style type="text/css">
     .block {

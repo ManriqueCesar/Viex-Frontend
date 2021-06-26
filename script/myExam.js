@@ -11,7 +11,7 @@ $(document).ready(function () {
   setNombre();
   document.getElementById('imgUser').src = "../web/dist/js/labeled_images/" + user + "/1.jpg";
 
-  ruta = 'https://api-pwcev.herokuapp.com';
+  ruta = 'https://viex-app.herokuapp.com';
   var x = 0;
 
   Cookies.set('temp', 1, {
@@ -139,7 +139,7 @@ $(document).on('click', '#btn-listar', function (event) {
   var currentRow = $(this).closest("tr");
   var data = $('#tbl-misExamenes').DataTable().row(currentRow).data();
   var idExamen = data.examen.idExamen;
-  var ruta = 'https://api-pwcev.herokuapp.com';
+  var ruta = 'https://viex-app.herokuapp.com';
   $.ajax({
     url: ruta + '/resultado/examen/' + idExamen + '/usuario/' + idUser,
     type: 'GET',

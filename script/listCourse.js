@@ -2,7 +2,7 @@
 $(document).ready(function () {
   setNombre();
   var idUser = Cookies.get('id');
-  ruta = 'https://api-pwcev.herokuapp.com';
+  ruta = 'https://viex-app.herokuapp.com';
   var x=0;
   $('#tbl-resultado').DataTable({
     "responsive": true,
@@ -88,7 +88,7 @@ $(document).on('click', '#btn-listar', function (event) {
 	var data = $('#tbl-resultado').DataTable().row(currentRow).data();
   var id = data.idCurso;
   console.log(id)
-  ruta = 'https://api-pwcev.herokuapp.com';
+  ruta = 'https://viex-app.herokuapp.com';
   var x=0;
   $('#tbl-listado').DataTable({
          "destroy": true,
@@ -138,7 +138,7 @@ $(document).on('click', '#btn-listar', function (event) {
 });
 
 $(document).on('click', '#btn-eliminar', function (event) {
-  ruta = 'https://api-pwcev.herokuapp.com';
+  ruta = 'https://viex-app.herokuapp.com';
   var currentRow = $(this).closest("tr");
   var data = $('#tbl-resultado').DataTable().row(currentRow).data();
   var id = data.idCurso;

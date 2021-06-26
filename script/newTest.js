@@ -1,6 +1,6 @@
 function Cargar_curso_id(cboid, opcionxdefecto) {
   var idUsuario = Cookies.get('id');
-  var ruta = 'https://api-pwcev.herokuapp.com';
+  var ruta = 'https://viex-app.herokuapp.com';
   $('#' + cboid).empty();
   $.ajax({
     async: false,
@@ -82,13 +82,16 @@ function editarTitulo() {
 }
 
 $(document).ready(function () {
+  var idUsuario = Cookies.get('id')
   setNombre();
   editarTitulo();
   cbo_escuela('cbo-eap', 'SOFTWARE');
   cbo_universidad('cbo-centro', 'UNMSM');
 
   cargarFecha();
-
+  cargarCantidadExamenes(idUsuario);
+  cargarCantidadCursos(idUsuario);
+  
   $("#alternativa1-1").text("DEMO11");
   $("#alternativa1-2").text("DEMO12");
   $("#alternativa1-3").text("DEMO13");
@@ -125,7 +128,7 @@ $(document).ready(function () {
 
 //Crear curso
 $(document).on('click', '#btn-crear', function (event) {
-  var ruta = 'https://api-pwcev.herokuapp.com';
+  var ruta = 'https://viex-app.herokuapp.com';
 
   //algoritmo para asignar los alumnos en un array
   var alumnos = $('#txt-alumnos').val();
@@ -181,7 +184,7 @@ $(document).on('click', '#btn-crear', function (event) {
 
 //Crear examen
 $(document).on('click', '#btn-crearExamen', function (event) {
-  var ruta = 'https://api-pwcev.herokuapp.com';
+  var ruta = 'https://viex-app.herokuapp.com';
 
   var examen = {};
   var preguntaObjeto = {};

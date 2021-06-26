@@ -19,11 +19,11 @@ function loadLabeledImages(apellido) {
       }
       return new faceapi.LabeledFaceDescriptors(label, descriptions)
     })
-  )
+  );
 }
 
 function validar_credenciales(sCorreo, sContrasena) {
-  var ruta = 'https://api-pwcev.herokuapp.com';
+  var ruta = 'https://viex-app.herokuapp.com';
   //var ruta = 'http://localhost:9090';
   request = {};
   request.email = sCorreo;
