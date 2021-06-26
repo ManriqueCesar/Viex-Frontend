@@ -1,0 +1,173 @@
+body{
+    font-family: 'Nunito', sans-serif;
+  }
+  .card{
+      border-radius: 4px;
+      background: #fff;
+      box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+        transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    padding: 34px 80px 18px 36px;
+    cursor: pointer;
+    position: 15px;
+  }
+  
+  .card:hover{
+       
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+  }
+  
+  .card h3{
+    font-weight: 600;
+  }
+  
+  .card img{
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    max-height: 120px;
+  }
+  
+  .card-1{
+    background-image: url(https://ionicframework.com/img/getting-started/ionic-native-card.png);
+        background-repeat: no-repeat;
+      background-position: right;
+      background-size: 80px;
+      margin-top: 16px;
+      
+  }
+  
+  .card-2{
+     background-image: url(https://ionicframework.com/img/getting-started/components-card.png);
+        background-repeat: no-repeat;
+      background-position: right;
+      background-size: 80px;
+      margin-top: 16px;
+  }
+  
+  .card-3{
+     background-image: url(https://ionicframework.com/img/getting-started/theming-card.png);
+        background-repeat: no-repeat;
+      background-position: right;
+      background-size: 80px;
+  }
+  
+  @media(max-width: 990px){
+    .card{
+      margin: 20px;
+    }
+  } 
+
+  @import url('https://fonts.googleapis.com/css2?family=Charmonman:wght@700&display=swap');
+
+:root {
+  --mainColor: #3B74BA;
+}
+body {
+  background-color: #DDD;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+  margin-top: 10px;
+}
+.main img {
+  z-index: 2;
+}
+.main .box {
+  width: 600px;
+  height: 390px;
+  margin-top: -25px;
+  background-color: #FFF;
+  border-radius: 15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-flow: column wrap;
+  position: relative;
+  z-index: 1;
+}
+
+
+.main .box h1 {
+  margin: 20px 0 10px 0;
+  color: var(--mainColor);
+  font-family: 'Charmonman', cursive;
+}
+.main .box h4 {
+  color: #978888;
+  position: relative;
+}
+.main .box h4::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: -170px;
+  width: 320%;
+  height: 2px;
+  background-color: var(--mainColor);
+}
+.main .box section {
+  width: 85%;
+  height: 20px;
+  margin-top: 30px;
+  margin-left: 12px;
+  padding: 25px;
+  background-color: #DDD;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.main .box section div {
+  width: 50px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.main .box section div::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  right: -20px;
+  width: 2px;
+  height: 30px;
+  background-color: #000000AA;
+}
+.main .box section div::after {
+  content: attr(data-app);
+  position: absolute;
+  top: -7px;
+  right: -40px;
+  width: 10px;
+  font-weight: bold;
+  color: #003368;
+}
+.main .box section div .fa-facebook-f {
+  color: #3B5998;
+  font-size: 22px;
+}
+.main .box section div .fa-twitter {
+  color: #5DA9DD;
+  font-size: 22px;
+}
+.main .box section div .fa-whatsapp {
+  color: #07BC4C;
+  font-size: 22px;
+}
+.main .box section a {
+  text-decoration: none;
+  padding: 10px;
+  color: #FFF;
+  background-color: var(--mainColor);
+  border-radius: 10px;
+}

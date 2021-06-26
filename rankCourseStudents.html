@@ -4,11 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VIEX | Lista de Cursos</title>
+  <title>WebSecurity | Lista de Cursos</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
   <!-- Theme style -->
   <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/adminlte.min.css">
   <!-- Select2 -->
@@ -20,7 +21,9 @@
   <link rel="stylesheet" href="bower_components/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet"
     href="bower_components/AdminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-</head>
+  <link rel="stylesheet" type="text/css" href="dist/css/rankCourseStyles.css" />
+  <link rel="stylesheet" type="text/css" href="dist/css/card.css" />
+  </head>
 
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
@@ -79,28 +82,29 @@
           </div>
         </div>
         <!-- Sidebar Menu -->
-        <nav class="mt-1">
+        <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                 with font-awesome or any other icon font library -->
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p style="color:white;">
+                <p>
                   Mis Exámenes
                   <i class="right fas fa-angle-left"></i>
-                  <span class="badge badge-info right" id="cantExamenes"></span>
+                  <span class="badge badge-info right">2</span>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <span class="badge badge-warning right">9</span>
-                    <p style="color: white;"> Exámenes Restantes</p>
+
+                    <p style="color: white;">2 Exámenes pendientes</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <span class="badge badge-info right" id="examenesCreados"></span>
-                     <p style="color: white;"> Exámenes creados</p>
+                    <p style="color: white;">7 Exámenes creados</p>
                   </a>
                 </li>
               </ul>
@@ -111,19 +115,17 @@
                 <p>
                   Mis Cursos
                   <i class="fas fa-angle-left right"></i>
-                  <span class="badge badge-info right" id="cantCursos"></span>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <span class="badge badge-info right" id="cursosCreados"></span>
-                     <p style="color: white;"> Cursos creados</p>
+                  <a href="#l" class="nav-link">
+                    <p>10 cursos creados</p>
                   </a>
                 </li>
+
               </ul>
             </li>
-
             </li>
           </ul>
         </nav>
@@ -138,13 +140,31 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Ver Cursos</h1>
+              <h1>Ranking</h1>
             </div>
+            
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Ver Cursos</li>
+                <li class="breadcrumb-item active">Ver Ranking</li>
               </ol>
+            </div>
+
+            <div class="container">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="card card-1">
+                    <h3>Cursos</h3>
+                    <a class="card-block stretched-link text-decoration-none" href="rankCourseSelection.html"></a>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card card-2">
+                    <h3>Universidad</h3>
+                    <a class="card-block stretched-link text-decoration-none" href="rankUniversitySelection.html"></a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div><!-- /.container-fluid -->
@@ -155,38 +175,46 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">Mis Cursos</h3>
+                  <h3>Seguridad Informática</h3>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body">
+                
 
                   <div class="table table-responsive">
-                    <table id="tbl-resultado" class="table table-bordered table-striped">
-                      <thead>
+                    <table id="socreboard" class="table ">
+                      <thead class='text-center'>
                         <tr>
-                          <th>PERIODO</th>
-                          <th>INSTITUCION</th>
-                          <th>ESCUELA</th>
-                          <th>CURSO</th>
-                          <th>ALUMNOS</th>
-                          <th>ACCION</th>
+                          <th rowspan="2">Puesto</th>
+                          <th rowspan="2">Alumno</th>
+                          <th rowspan="2">Universidad</th>
+                          <th rowspan="2">Nota</th>
                         </tr>
-                        <tr>
-                          <th>PERIODO</th>
-                          <th>INSTITUCION</th>
-                          <th>ESCUELA</th>
-                          <th>CURSO</th>
-                          <th>ALUMNOS</th>
-                          <th>ACCION</th>
-                        </tr>
+                        
                       </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>Juan Araujo</td>
+                          <td>UNMSM</td>
+                          <td>15</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>Renzo Condori</td>
+                          <td>UNMSM</td>
+                          <td>13</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>Juan Arce</td>
+                          <td>PUCP</td>
+                          <td>11</td>
+                      </tbody>
                     </table>
 
-                  </div>
+                  
                   <!-- /.card-body -->
-                </div>
+                
                 <!-- /.card -->
               </div>
             </div>
@@ -198,55 +226,13 @@
       <!-- /.content -->
     </div>
 
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" id="modal-alumnos" role="dialog"
-      aria-labelledby="myLargeModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header" style="text-align: center;">
-            <h5 class="modal-title" id="exampleModalLongTitle">Lista de alumnos</h5>
-          </div>
 
-          <section class="content">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-12">
-                  <div class="card">
-
-                    <!-- /.card-header -->
-                    <div class="card-body">
-
-                      <div class="table table-responsive">
-                        <table id="tbl-listado" class="table table-bordered table-striped">
-                          <thead>
-                            <tr>
-                              <th>NOMBRES</th>
-                              <th>CORREO</th>
-                            </tr>
-                          </thead>
-                        </table>
-                      </div>
-                      <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-                  </div>
-                </div>
-                <!-- /.row -->
-              </div>
-            </div>
-            <!-- /.container-fluid -->
-          </section>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 1.0.0-pre
       </div>
-      <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 4 - TIS</a>.</strong> All
+      <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 1 - PPP1</a>.</strong> All
       rights reserved.
     </footer>
 
@@ -288,7 +274,6 @@
   </script>
   <script src="script/listCourse.js"></script>
   <script src="script/cookies.js"></script>
-  <script src="script/permisos.js"></script>
 
 </body>
 
