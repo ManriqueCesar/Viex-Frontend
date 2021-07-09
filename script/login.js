@@ -72,6 +72,7 @@ function validar_credenciales(sCorreo, sContrasena) {
       Cookies.set('rol', data.roles[0].nombre, {
         expires: 200
       });
+
     } else if (data.roles[0].nombre == 'ROLE_PROF') {
       Cookies.set('rol', data.roles[0].nombre, {
         expires: 200
@@ -86,7 +87,7 @@ function validar_credenciales(sCorreo, sContrasena) {
         expires: 200
       });
 
-      window.location.href = 'newTest.html';
+      window.location.href = '../pages/docente/crearExamen.html';
     }
 
   }).fail(function (jqXHR, textStatus, errorThrown) {
@@ -113,7 +114,7 @@ function validar_credenciales(sCorreo, sContrasena) {
 }
 
 $(document).ready(function () {
-  $('#txt-email').val('mgomez@unmsm.edu.pe');
+  $('#txt-email').val('cchavez@unmsm.edu.pe');
   $('#txt-password').val('1234');
   const video = document.getElementById('video')
 
@@ -144,7 +145,7 @@ $(document).ready(function () {
         console.log("bienvenido " + apellido);
         setTimeout(function () {
           
-          document.location.href = "myExam.html";
+          document.location.href = "../pages/alumno/rendirExamen.html";
         }, 5000);
       }
     }, 500)

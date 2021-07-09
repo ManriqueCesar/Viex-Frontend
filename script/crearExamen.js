@@ -21,7 +21,7 @@ function Cargar_curso_id(cboid, opcionxdefecto) {
 }
 
 function cbo_escuela(cboid, opcionxdefecto) {
-  $.getJSON('json/eaps.json', function (data) {
+  $.getJSON('../../json/eaps.json', function (data) {
     for (var x = 0; x < data.length; x++) {
       $("#" + cboid).append('<option value="' + data[x].value + '">' + data[x].descripcion + '</option>');
     }
@@ -31,7 +31,7 @@ function cbo_escuela(cboid, opcionxdefecto) {
 }
 
 function cbo_universidad(cboid, opcionxdefecto) {
-  $.getJSON('json/universidades.json', function (data) {
+  $.getJSON('../../json/universidades.json', function (data) {
     for (var x = 0; x < data.length; x++) {
       $("#" + cboid).append('<option value="' + data[x].value + '">' + data[x].descripcion + '</option>');
     }

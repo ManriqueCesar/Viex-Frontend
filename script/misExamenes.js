@@ -128,7 +128,7 @@ $(document).on('click', '#btn-rendir', function (event) {
   var data = $('#tbl-misExamenes').DataTable().row(currentRow).data();
   var idExamen = data.examen.idExamen;
   Cookies.set('idExamen', idExamen);
-  window.location.href = 'waiting.html';
+  window.location.href = 'rendirExamen.html';
 
 });
 

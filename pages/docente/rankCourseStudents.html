@@ -11,18 +11,18 @@
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
   <!-- Theme style -->
-  <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../../bower_components/AdminLTE/dist/css/adminlte.min.css">
   <!-- Select2 -->
-  <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
+  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
 
   <!-- Ionicons -->
-  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
   <!-- DataTables -->
-  <link rel="stylesheet" href="bower_components/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../bower_components/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet"
-    href="bower_components/AdminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" type="text/css" href="dist/css/rankCourseStyles.css" />
-  <link rel="stylesheet" type="text/css" href="dist/css/card.css" />
+    href="../../bower_components/AdminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" type="text/css" href="../../dist/css/rankCourseStyles.css" />
+  <link rel="stylesheet" type="text/css" href="../../dist/css/card.css" />
   </head>
 
 <body class="hold-transition sidebar-mini">
@@ -35,13 +35,13 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="newTest.html" class="nav-link">Crear Examen</a>
+          <a href="crearExamen.html" class="nav-link">Crear Examen</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="list.html" class="nav-link">Ver Exámenes</a>
+          <a href="listaExamenes.html" class="nav-link">Ver Exámenes</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Ver Cursos</a>
+          <a href="listaCursos.html" class="nav-link">Ver Cursos</a>
         </li>
         <li>
           <a href="rankStudents.html" class="nav-link">Ver Ranking</a>
@@ -54,7 +54,7 @@
 
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item d-none d-sm-inline-block">
-          <a id="btn-close" href="index.html">Cerrar sesión</a>
+          <a id="btn-close" href="../login.html">Cerrar sesión</a>
         </li>
 
       </ul>
@@ -64,8 +64,8 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="index.html" class="brand-link">
-        <img src="dist/img/security.png" alt="WebSecurity Logo" class="brand-image img-circle elevation-3"
+      <a href="../home/index.html" class="brand-link">
+        <img src="../../dist/img/security.png" alt="WebSecurity Logo" class="brand-image img-circle elevation-3"
           style="opacity: .8">
         <span class="brand-text font-weight-light">Web Security</span>
       </a>
@@ -75,7 +75,7 @@
         <!-- Nombre de usuario y foto -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="dist/img/unmsm.png" class="img-circle elevation-2" alt="User Image">
+            <img src="../../dist/img/unmsm.png" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
             <a href="#" class="d-block" id="nombreUser"></a>
@@ -175,7 +175,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-12">
-                  <h3>Universidad Nacional Mayor de San Marcos</h3>
+                  <h3>Seguridad Informática</h3>
                 </div>
                 <!-- /.card-header -->
                 
@@ -186,7 +186,7 @@
                         <tr>
                           <th rowspan="2">Puesto</th>
                           <th rowspan="2">Alumno</th>
-                          <th rowspan="2">Curso</th>
+                          <th rowspan="2">Universidad</th>
                           <th rowspan="2">Nota</th>
                         </tr>
                         
@@ -195,20 +195,20 @@
                         <tr>
                           <td>1</td>
                           <td>Juan Araujo</td>
-                          <td>Seguridad Informática</td>
-                          <td>16</td>
+                          <td>UNMSM</td>
+                          <td>15</td>
                         </tr>
                         <tr>
                           <td>2</td>
                           <td>Renzo Condori</td>
-                          <td>Tendencias en Ingeniería de Software</td>
-                          <td>14</td>
+                          <td>UNMSM</td>
+                          <td>13</td>
                         </tr>
                         <tr>
                           <td>3</td>
                           <td>Juan Arce</td>
-                          <td>Ética Profesional</td>
-                          <td>13</td>
+                          <td>PUCP</td>
+                          <td>11</td>
                       </tbody>
                     </table>
 
@@ -245,20 +245,20 @@
   <!-- ./wrapper -->
 
   <!-- jQuery -->
-  <script src="bower_components/AdminLTE/plugins/jquery/jquery.min.js"></script>
+  <script src="../../bower_components/AdminLTE/plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
-  <script src="bower_components/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../bower_components/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- DataTables -->
-  <script src="bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
-  <script src="bower_components/AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-  <script src="bower_components/AdminLTE/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-  <script src="bower_components/AdminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="../../bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="../../bower_components/AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="../../bower_components/AdminLTE/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="../../bower_components/AdminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
   <!-- AdminLTE App -->
-  <script src="bower_components/AdminLTE/dist/js/adminlte.min.js"></script>
+  <script src="../../bower_components/AdminLTE/dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
-  <script src="bower_components/AdminLTE/dist/js/demo.js"></script>
+  <script src="../../bower_components/AdminLTE/dist/js/demo.js"></script>
   <!-- Select2 -->
-  <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
+  <script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
   <!-- Cookies js -->
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 
@@ -267,13 +267,13 @@
   <script type="text/javascript">
     function preloadFunc() {
       if (Cookies.get('rol') != 'ROLE_PROF') {
-        document.location.href = "index.html";
+        document.location.href = "../login.html";
       }
     }
     window.onpaint = preloadFunc();
   </script>
-  <script src="script/listCourse.js"></script>
-  <script src="script/cookies.js"></script>
+  <script src="../../script/listaCursos.js"></script>
+  <script src="../../script/cookies.js"></script>
 
 </body>
 

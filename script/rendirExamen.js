@@ -31,9 +31,6 @@ function cargarFecha() {
 
 }
 
-
-
-
 window.onload = function () {
   TimeMe.trackTimeOnElement('area-of-interest-1');
   TimeMe.trackTimeOnElement('area-of-interest-2');
