@@ -2,9 +2,11 @@
 <html lang="en">
 
 <head>
+
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Alumno | Mis exámenes</title>
+  <title>Alumno | Exámenes Pendientes</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
@@ -45,9 +47,6 @@
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="misExamenes.html" class="nav-link">Mis Exámenes</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="examenesPendientes.html" class="nav-link">Exámenes Pendientes</a>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
@@ -91,14 +90,20 @@
               <p>
                 Mis Exámenes
                 <i class="right fas fa-angle-left"></i>
-                <span class="badge badge-info right" id="cantExamenesPendientes"></span>
+                <span class="badge badge-info right">99</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="examenesPendientes.html" class="nav-link">
+                <a href="#" class="nav-link">
                   <span id="cantPendientes" style="color: white;"></span>
                   <p style="color: white;"> Exámenes pendientes</p>
+
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="misExamenes.html" class="nav-link">
+                  <p style="color: white;">5 Exámenes completados</p>
                 </a>
               </li>
             </ul>
@@ -135,12 +140,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Ver Exámenes</h1>
+              <h1>Ver Exámenes Pendientes</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Ver Exámenes</li>
+                <li class="breadcrumb-item active">Ver Exámenes Pendientes</li>
               </ol>
             </div>
           </div>
@@ -164,7 +169,6 @@
                         <th>PERIODO</th>
                         <th>CURSO</th>
                         <th>TITULO</th>
-
                         <th>FECHA</th>
                         <th>HORA INICIO | DURACION</th>
                         <th>RENDIR EXAMEN</th>
@@ -174,7 +178,7 @@
                         <th>CURSO</th>
                         <th>TITULO</th>
                         <th>FECHA</th>
-                        <th>HORA INICIO</th>
+                        <th>HORA INICIO | DURACION</th>
                         <th>RENDIR EXAMEN</th>
                       </tr>
                     </thead>
@@ -325,7 +329,7 @@
     window.onpaint = preloadFunc();
   </script>
   <script src="../../script/cookies.js"></script>
-  <script src="../../script/alumno/misExamenes.js"></script>
+  <script src="../../script/alumno/examenesPendientes.js"></script>
 
     <!-- Vendor JS Files -->
   <script src="../home/assets/vendor/jquery.easing/jquery.easing.min.js"></script>

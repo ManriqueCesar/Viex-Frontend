@@ -13,7 +13,7 @@ function loadLabeledImages(apellido) {
     labels.map(async label => {
       const descriptions = []
       for (let i = 1; i <= 2; i++) {
-        const img = await faceapi.fetchImage(`../web/dist/js/labeled_images/${label}/${i}.jpg`)
+        const img = await faceapi.fetchImage(`../dist/js/labeled_images/${label}/${i}.jpg`)
         const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor()
         descriptions.push(detections.descriptor)
       }
@@ -48,11 +48,11 @@ function validar_credenciales(sCorreo, sContrasena) {
     if (data.roles[0].nombre == 'ROLE_ALUM') {
       $('#modal-default').modal();
       Promise.all([
-        faceapi.nets.tinyFaceDetector.loadFromUri('../web/dist/js/models'),
-        faceapi.nets.faceLandmark68Net.loadFromUri('../web/dist/js/models'),
-        faceapi.nets.faceRecognitionNet.loadFromUri('../web/dist/js/models'),
-        faceapi.nets.faceExpressionNet.loadFromUri('../web/dist/js/models'),
-        faceapi.nets.ssdMobilenetv1.loadFromUri('../web/dist/js/models')
+        faceapi.nets.tinyFaceDetector.loadFromUri('../dist/js/models'),
+        faceapi.nets.faceLandmark68Net.loadFromUri('../dist/js/models'),
+        faceapi.nets.faceRecognitionNet.loadFromUri('../dist/js/models'),
+        faceapi.nets.faceExpressionNet.loadFromUri('../dist/js/models'),
+        faceapi.nets.ssdMobilenetv1.loadFromUri('../dist/js/models')
 
       ]).then(iniciarVideo)
       iniciarVideo();
@@ -145,7 +145,7 @@ $(document).ready(function () {
         console.log("bienvenido " + apellido);
         setTimeout(function () {
           
-          document.location.href = "../pages/alumno/rendirExamen.html";
+          document.location.href = "../pages/alumno/examenesPendientes.html";
         }, 5000);
       }
     }, 500)

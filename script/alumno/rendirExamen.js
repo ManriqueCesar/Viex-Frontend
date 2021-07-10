@@ -45,12 +45,14 @@ $(document).ready(function () {
   Cookies.set('fechaActual', fechaActual, {
     expires: 2
   });
-  var userAp = Cookies.get('apellido');
   var idUser = Cookies.get('id');
   var idExamen = Cookies.get('idExamen');
   setNombre();
-  document.getElementById('imgUser').src = "../web/dist/js/labeled_images/" + userAp + "/1.jpg";
+  cargarFoto(Cookies.get('apellido'));
   var ruta = 'https://viex-app.herokuapp.com';
+  cargarCantidadExamenesPendientes(idUser);
+  cargarCantidadCursos(idUser);
+
 
   // Initialize library and start tracking time
 

@@ -29,108 +29,106 @@
 <body class="hold-transition sidebar-mini">
 
   <div class="wrapper">
-    <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-      <!-- Left navbar links -->
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="rendirExamen.html" class="nav-link">Rendir Examen</a>
-        </li>
-
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Mis Cursos</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="rendirExamen.html" class="nav-link">Mis Exámenes</a>
-          </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <!-- Messages Dropdown Menu -->
-
-        <!-- Notifications Dropdown Menu -->
-        <li class="nav-item d-none d-sm-inline-block">
-          <a id="btn-close" href="../login.html">Cerrar sesión</a>
-        </li>
-
-      </ul>
-    </nav>
-    <!-- /.navbar -->
-
-    <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-      <!-- Brand Logo -->
-      <a href="#" class="brand-link">
-        <img src="../../dist/img/security.png" alt="Viex Logo"
-          class="brand-image img-circle elevation-3" style="opacity: .8">
-          <span class="brand-text font-weight-light ml-5" style="color:white">VIEX</span>
-      </a>
-
-      <!-- Sidebar -->
-      <div class="sidebar">
-        <!-- Nombre de usuario y foto -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="image">
-            <img id="imgUser" class="img-circle elevation-2" alt="User Image">
-          </div>
-          <div class="info">
-            <a href="#" class="d-block" id="nombreUser"></a>
-          </div>
-        </div>
-
-        <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-                 with font-awesome or any other icon font library -->
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                  Mis Exámenes
-                  <i class="right fas fa-angle-left"></i>
-                  <span class="badge badge-info right">2</span> 
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-         
-                    <p style="color: white;">2 Exámenes pendientes</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <p style="color: white;">5 Exámenes completados</p>
-                  </a>
-                </li>
-              </ul>
-
-              <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-copy"></i>
-                  <p>
-                    Mis Cursos
-                    <i class="fas fa-angle-left right"></i>
-                    <span class="badge badge-info right">3</span> 
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="#l" class="nav-link">
-                      <p>Matriculado en 3 cursos</p>
-                    </a>
-                  </li>
  
-                </ul>
-              </li>
+  <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+          <!-- Left navbar links -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+              <a href="rendirExamen.html" class="nav-link">Rendir Examen</a>
+            </li>
+    
+            <li class="nav-item d-none d-sm-inline-block">
+              <a href="#" class="nav-link">Mis Cursos</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+              <a href="misExamenes.html" class="nav-link">Mis Exámenes</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+              <a href="examenesPendientes.html" class="nav-link">Exámenes Pendientes</a>
             </li>
           </ul>
-        </nav>
+          <ul class="navbar-nav ml-auto">
+            <!-- Messages Dropdown Menu -->
+    
+            <!-- Notifications Dropdown Menu -->
+            <li class="nav-item d-none d-sm-inline-block">
+              <a id="btn-close" href="../login.html">Cerrar sesión</a>
+            </li>
+    
+          </ul>
+      </nav>
+   <!-- /.navbar -->
+
+   <!-- Main Sidebar Container -->
+   <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="#" class="brand-link">
+      <img src="../../dist/img/security.png" alt="Viex Logo" class="brand-image img-circle elevation-3"
+        style="opacity: .8">
+        <span class="brand-text font-weight-light ml-5" style="color:white">VIEX</span>
+    </a>
+
+      <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Nombre de usuario y foto -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img id="imgUser" class="img-circle elevation-2" alt="User Image" href="perfil.html">
+        </div>
+        <div class="info">
+          <a href="perfil.html" class="d-block" id="nombreUser"></a>
+        </div>
       </div>
-      <!-- /.sidebar -->
-    </aside>
+
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Mis Exámenes
+                <i class="right fas fa-angle-left"></i>
+                <span class="badge badge-info right" id="cantExamenesPendientes"></span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="examenesPendientes.html" class="nav-link">
+                  <span id="cantPendientes" style="color: white;"></span>
+                  <p style="color: white;"> Exámenes pendientes</p>
+                </a>
+              </li>
+            </ul>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Mis Cursos
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right" id="cantCursos"></span>
+              </p>
+            </a>
+            <!-- <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#l" class="nav-link">
+                  <p>Matriculado en 3 cursos</p>
+                </a>
+              </li>
+
+            </ul> -->
+          </li>
+        </li>
+        </ul>
+      </nav>
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+  
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -286,7 +284,8 @@
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 
   <script src="../../script/cookies.js"></script>
-  <script src="../../script/misCursos.js"></script>
+  <script src="../../script/alumno/misCursos.js"></script>
+  <script src="../../script/navbar-alumno.js"></script>
 
 
 </body>

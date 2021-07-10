@@ -5,12 +5,15 @@ $(document).ready(function () {
     title: '¡Recuerda refrescar la página!',
     showConfirmButton: false,
     timer: 2500
-  })
-  var user = Cookies.get('apellido');
+  });
+  
   var idUser = Cookies.get('id');
   setNombre();
-  document.getElementById('imgUser').src = "../web/dist/js/labeled_images/" + user + "/1.jpg";
-
+  cargarFoto(Cookies.get('apellido'));
+  cargarCantidadExamenesPendientes(idUser);
+  cargarCantidadCursos(idUser);
+  cargarCantidadExamenes(idUser);
+  
   ruta = 'https://viex-app.herokuapp.com';
   var x = 0;
 
