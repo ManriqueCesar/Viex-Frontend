@@ -4,6 +4,8 @@ $(document).ready(function () {
   var idUser = Cookies.get('id');
   var usuario = Cookies.get('usuario');
   var fechaEnvio = moment().format('YYYY-MM-DD HH:mm');
+  cargarCantidadExamenes(idUser);
+  cargarCantidadCursos(idUser);
   ruta = 'https://viex-app.herokuapp.com';
   $('#tbl-examenes').DataTable({
     "colReorder": true,
