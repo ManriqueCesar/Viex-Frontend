@@ -12,8 +12,10 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../bower_components/AdminLTE/plugins/fontawesome-free/css/all.min.css">
   <!-- DataTables -->
-  <link rel="stylesheet" href="../../bower_components/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../../bower_components/AdminLTE/plugins/datatables-buttons/css/buttons.bootstrap4.min.css  ">
+  <link rel="stylesheet"
+    href="../../bower_components/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet"
+    href="../../bower_components/AdminLTE/plugins/datatables-buttons/css/buttons.bootstrap4.min.css  ">
   <link rel="stylesheet" type="text/css"
     href="https://cdn.datatables.net/v/dt/dt-1.10.21/b-1.6.3/b-flash-1.6.3/b-html5-1.6.3/datatables.min.css" />
   <!-- Theme style -->
@@ -41,45 +43,46 @@
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
 
-   <!-- ======= Header ======= -->
-     
-   <header id="header" class="fixed-top">
-    <div>
-    
-      <nav class="main-header navbar navbar-expand nav-menu d-none d-lg-block">
-      
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-          </li>
-          <li>
-            <a href="crearExamen.html" class="nav-link">Crear Examen</a>
-          </li>
-          <li class="active">
-            <a href="listaExamenes.html" class="nav-link">Ver Exámenes</a>
-          </li>
-          <li>
-            <a href="listaCursos.html" class="nav-link">Ver Cursos</a>
-          </li>
-          <li class="nav-item navbar-nav ml-auto">
-            <a id="btn-close" class="nav-link" href="../login.html">Cerrar sesión</a>
-          </li>
-        </ul>
-        
-      </nav>
+    <!-- ======= Header ======= -->
 
-    </div>
-  </header>
-  
-  <!-- End Header -->
-    
+    <header id="header" class="fixed-top">
+      <div>
+
+        <nav class="main-header navbar navbar-expand nav-menu d-none d-lg-block">
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+            <li>
+              <a href="crearExamen.html" class="nav-link">Crear Examen</a>
+            </li>
+            <li class="active">
+              <a href="listaExamenes.html" class="nav-link">Ver Exámenes</a>
+            </li>
+            <li>
+              <a href="listaCursos.html" class="nav-link">Ver Cursos</a>
+            </li>
+            <li class="nav-item navbar-nav ml-auto">
+              <a id="btn-close" class="nav-link" href="../login.html">Cerrar sesión</a>
+            </li>
+          </ul>
+
+        </nav>
+
+      </div>
+    </header>
+
+    <!-- End Header -->
+
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="../login.html" class="brand-link">
-        <img src="../../dist/img/viex-logo.png" alt="http://localhost/ProyectoGesti%C3%B3n/WebSecurity/WebSecurity/DESARROLLO/PWCEV/Front/web/login.html Logo" class="brand-image img-circle elevation-3"
-          style="opacity: .8">
+        <img src="../../dist/img/viex-logo.png"
+          alt="http://localhost/ProyectoGesti%C3%B3n/WebSecurity/WebSecurity/DESARROLLO/PWCEV/Front/web/login.html Logo"
+          class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light" style="color:white">VIEX</span>
       </a>
 
@@ -117,10 +120,11 @@
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                     <span class="badge badge-info right" id="examenesCreados"></span>
-                     <p style="color: white;"> Exámenes creados</p>
+                    <p style="color: white;"> Exámenes creados</p>
                   </a>
                 </li>
               </ul>
+            </li>
 
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
@@ -135,12 +139,20 @@
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                     <span class="badge badge-info right" id="cursosCreados"></span>
-                     <p style="color: white;"> Cursos creados</p>
+                    <p style="color: white;"> Cursos creados</p>
                   </a>
                 </li>
               </ul>
             </li>
 
+            <li class="nav-item has-treeview">
+              <a href="payment.html" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                  Mis Pagos
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
             </li>
           </ul>
         </nav>
@@ -260,7 +272,8 @@
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 1.0.0-pre
       </div>
-      <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 4 - TIS</a>.</strong> All
+      <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 4 - TIS</a>.</strong>
+      All
       rights reserved.
     </footer>
 
@@ -310,7 +323,7 @@
     }
     window.onpaint = preloadFunc();
   </script>
-  
+
 </body>
 
 </html>
