@@ -1,8 +1,8 @@
 
 $(document).ready(function () {
   setNombre();
-  var idUser = Cookies.get('id');
-  var usuario = Cookies.get('usuario');
+  var idUser = localStorage.getItem('id');
+  var usuario = localStorage.getItem('usuario');
   var fechaEnvio = moment().format('YYYY-MM-DD HH:mm');
   cargarCantidadExamenes(idUser);
   cargarCantidadCursos(idUser);

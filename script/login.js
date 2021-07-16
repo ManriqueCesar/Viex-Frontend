@@ -41,9 +41,10 @@ function validar_credenciales(sCorreo, sContrasena) {
     data: JSON.stringify(request),
   }).done(function (data) {
     $("#btn-ingresar").removeAttr('disabled');
-    Cookies.set('apellido', data.apellido, {
-      expires: 2
-    });
+    // Cookies.set('apellido', data.apellido, {
+    //   expires: 2
+    // });
+    localStorage.setItem ('apellido',data.apellido)
 
     if (data.roles[0].nombre == 'ROLE_ALUM') {
       $('#modal-default').modal();
@@ -57,35 +58,47 @@ function validar_credenciales(sCorreo, sContrasena) {
       ]).then(iniciarVideo)
       iniciarVideo();
 
-      Cookies.set('apellido', data.apellido, {
-        expires: 200
-      });
-      Cookies.set('usuario', data.nombre + ' ' + data.apellido, {
-        expires: 200
-      });
-      Cookies.set('nombre', data.nombre, {
-        expires: 200
-      });
-      Cookies.set('id', data.idUsuario, {
-        expires: 200
-      });
-      Cookies.set('rol', data.roles[0].nombre, {
-        expires: 200
-      });
+      localStorage.setItem ('apellido',data.apellido);
+      localStorage.setItem ('usuario',data.nombre +' '+ data.apellido);
+      localStorage.setItem ('nombre',data.nombre);
+      localStorage.setItem ('id',data.idUsuario);
+      localStorage.setItem ('rol',data.roles[0].nombre);
+      // Cookies.set('apellido', data.apellido, {
+      //   expires: 200
+      // });
+      // Cookies.set('usuario', data.nombre + ' ' + data.apellido, {
+      //   expires: 200
+      // });
+      // Cookies.set('nombre', data.nombre, {
+      //   expires: 200
+      // });
+      // Cookies.set('id', data.idUsuario, {
+      //   expires: 200
+      // });
+      // Cookies.set('rol', data.roles[0].nombre, {
+      //   expires: 200
+      // });
 
     } else if (data.roles[0].nombre == 'ROLE_PROF') {
-      Cookies.set('rol', data.roles[0].nombre, {
-        expires: 200
-      });
-      Cookies.set('usuario', data.nombre + ' ' + data.apellido, {
-        expires: 200
-      });
-      Cookies.set('nombre', data.nombre, {
-        expires: 200
-      });
-      Cookies.set('id', data.idUsuario, {
-        expires: 200
-      });
+
+      localStorage.setItem ('rol',data.roles[0].nombre);
+      // Cookies.set('rol', data.roles[0].nombre, {
+      //   expires: 200
+      // });
+      localStorage.setItem ('usuario',data.nombre + ' ' + data.apellido);
+
+      // Cookies.set('usuario', data.nombre + ' ' + data.apellido, {
+      //   expires: 200
+      // });
+      localStorage.setItem ('nombre',data.nombre);
+      localStorage.setItem ('id',data.idUsuario);
+
+      // Cookies.set('nombre', data.nombre, {
+      //   expires: 200
+      // });
+      // Cookies.set('id', data.idUsuario, {
+      //   expires: 200
+      // });
 
       window.location.href = '../pages/docente/crearExamen.html';
     }
@@ -119,7 +132,7 @@ $(document).ready(function () {
   const video = document.getElementById('video')
 
   video.addEventListener('play', async () => {
-    var apellido = Cookies.get('apellido');
+    var apellido = localStorage.getItem('apellido');
     const labeledFaceDescriptors = await loadLabeledImages(apellido)
     const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.6)
     console.log(faceMatcher._labeledDescriptors)

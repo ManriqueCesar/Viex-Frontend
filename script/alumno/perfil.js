@@ -6,22 +6,20 @@ $(document).ready(function () {
     showConfirmButton: false,
     timer: 2500
   });
-  var usuario = Cookies.get('usuario');
-  var idUser = Cookies.get('id');
+  var usuario = localStorage.getItem('usuario');
+  var idUser = localStorage.getItem('id');
   setNombre();
-  cargarFoto(Cookies.get('apellido'));
+  cargarFoto(localStorage.getItem('apellido'));
   cargarCantidadExamenesPendientes(idUser);
   cargarCantidadCursos(idUser);
   cargarCantidadExamenes(idUser);
-  document.getElementById('imgUser2').src = "../../dist/js/labeled_images/" + Cookies.get('apellido') + "/1.jpg";
+  document.getElementById('imgUser2').src = "../../dist/js/labeled_images/" + localStorage.getItem('apellido') + "/1.jpg";
   $("#nombreUser2").text(usuario)
   
   ruta = 'https://viex-app.herokuapp.com';
   var x = 0;
 
-  Cookies.set('temp', 1, {
-    expires: 2000
-  });
+  localStorage.setItem('temp', 1);
 
   $('#tbl-misExamenes').DataTable({
     "colReorder": true,
@@ -132,7 +130,7 @@ $(document).on('click', '#btn-rendir', function (event) {
   var currentRow = $(this).closest("tr");
   var data = $('#tbl-misExamenes').DataTable().row(currentRow).data();
   var idExamen = data.examen.idExamen;
-  Cookies.set('idExamen', idExamen);
+  localStorage.setItem('idExamen', idExamen);
   window.location.href = 'rendirExamen.html';
 
 });
@@ -140,7 +138,7 @@ $(document).on('click', '#btn-rendir', function (event) {
 $(document).on('click', '#btn-listar', function (event) {
 
   $('#modal-notas').modal('toggle');
-  var idUser = Cookies.get('id');
+  var idUser = localStorage.getItem('id');
   var currentRow = $(this).closest("tr");
   var data = $('#tbl-misExamenes').DataTable().row(currentRow).data();
   var idExamen = data.examen.idExamen;

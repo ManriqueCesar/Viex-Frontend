@@ -1,5 +1,5 @@
 function Cargar_curso_id(cboid, opcionxdefecto) {
-  var idUsuario = Cookies.get('id');
+  var idUsuario = localStorage.getItem('id');
   var ruta = 'https://viex-app.herokuapp.com';
   $('#' + cboid).empty();
   $.ajax({
@@ -82,7 +82,7 @@ function editarTitulo() {
 }
 
 $(document).ready(function () {
-  var idUsuario = Cookies.get('id')
+  var idUsuario = localStorage.getItem('id')
   setNombre();
   editarTitulo();
   cbo_escuela('cbo-eap', 'SOFTWARE');
@@ -140,7 +140,7 @@ $(document).on('click', '#btn-crear', function (event) {
 
   var curso = {};
   var request = {};
-  var id = Cookies.get('id');
+  var id = localStorage.getItem('id');
 
   curso.centroEstudios = $('#cbo-centro').val().toUpperCase();
   curso.curso = $('#txt-curso').val();
