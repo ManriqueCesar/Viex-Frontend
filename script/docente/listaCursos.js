@@ -2,6 +2,9 @@
 $(document).ready(function () {
   setNombre();
   var idUser = Cookies.get('id');
+  cargarCantidadExamenes(idUser);
+  cargarCantidadCursos(idUser);
+
   ruta = 'https://viex-app.herokuapp.com';
   var x=0;
   $('#tbl-resultado').DataTable({

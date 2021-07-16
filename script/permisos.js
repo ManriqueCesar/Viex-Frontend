@@ -19,6 +19,7 @@ function cargarCantidadExamenes(idUsuario) {
   }
 
   function cargarCantidadCursos(idUsuario) {
+    console.log("----------cargarCantidadCursos---------")
     var ruta = 'https://viex-app.herokuapp.com';
     $.ajax({
       async: false,
@@ -30,8 +31,9 @@ function cargarCantidadExamenes(idUsuario) {
         'Content-Type': 'application/json'
       }
     }).done(function (data) {
+      console.log(data);
         if(!isNaN(data)){
-            $('#cantExamenes').text(data);
+            $('#cantCursos').text(data);
             $('#examenesCreados').text(data);
         } 
     });

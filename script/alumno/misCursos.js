@@ -4,6 +4,7 @@ $(document).ready(function () {
   cargarFoto(Cookies.get('apellido'));
   cargarCantidadExamenesPendientes(idUser);
   cargarCantidadCursos(idUser);
+  cargarCantidadExamenes(idUser);
   
   var idUser = Cookies.get('id');
   ruta = 'https://viex-app.herokuapp.com';
