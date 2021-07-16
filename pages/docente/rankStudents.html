@@ -202,14 +202,13 @@
   <script src="../../bower_components/AdminLTE/dist/js/demo.js"></script>
   <!-- Select2 -->
   <script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
-  <!-- Cookies js -->
-  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
 
   <script src="https://kit.fontawesome.com/c9032fc236.js" crossorigin="anonymous"></script>
 
   <script type="text/javascript">
     function preloadFunc() {
-      if (Cookies.get('rol') != 'ROLE_PROF') {
+      if (localStorage.getItem('rol') != 'ROLE_PROF') {
         document.location.href = "../login.html";
       }
     }

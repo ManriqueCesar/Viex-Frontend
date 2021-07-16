@@ -42,13 +42,13 @@ window.onload = function () {
 
 $(document).ready(function () {
   var fechaActual = moment().format('HH:mm:ss');
-  Cookies.set('fechaActual', fechaActual, {
+  localStorage.setItem('fechaActual', fechaActual, {
     expires: 2
   });
-  var idUser = Cookies.get('id');
-  var idExamen = Cookies.get('idExamen');
+  var idUser = localStorage.getItem('id');
+  var idExamen = localStorage.getItem('idExamen');
   setNombre();
-  cargarFoto(Cookies.get('apellido'));
+  cargarFoto(localStorage.getItem('apellido'));
   var ruta = 'https://viex-app.herokuapp.com';
   cargarCantidadExamenesPendientes(idUser);
   cargarCantidadCursos(idUser);
@@ -159,9 +159,9 @@ $(document).on('click', '#btn-enviar', function (event) {
   var ruta = 'https://viex-app.herokuapp.com';
   // Retrieve time spent on current page
   var tiempo = TimeMe.getTimeOnCurrentPageInSeconds();
-  var idExamen = Cookies.get('idExamen');
-  var idUsuario = Cookies.get('id');
-  var fechaInicioExamen = Cookies.get('fechaActual');
+  var idExamen = localStorage.getItem('idExamen');
+  var idUsuario = localStorage.getItem('id');
+  var fechaInicioExamen = localStorage.getItem('fechaActual');
   $.ajax({
     url: ruta + '/examenes/' + idExamen,
     type: 'GET',

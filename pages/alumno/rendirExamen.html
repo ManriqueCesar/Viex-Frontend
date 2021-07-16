@@ -528,8 +528,7 @@
   <script src="../../plugins/TimeMejs/timeme.min.js"></script>
   <!-- iCheck 1.0.1 -->
   <script src="../../plugins/iCheck/icheck.min.js"></script>
-  <!-- Cookies js -->
-  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
   <!-- SweetAlert -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="../../script/cookies.js"></script>
@@ -555,7 +554,7 @@
   </script>
     <script type="text/javascript">
       function preloadFunc() {
-        if (Cookies.get('rol') != 'ROLE_ALUM') {
+        if (localStorage.getItem('rol') != 'ROLE_ALUM') {
           document.location.href = "../login.html";
         }
       }

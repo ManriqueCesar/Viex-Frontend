@@ -1,7 +1,7 @@
 
 $(document).ready(function () {
   setNombre();
-  var idUser = Cookies.get('id');
+  var idUser = localStorage.getItem('id');
   cargarCantidadExamenes(idUser);
   cargarCantidadCursos(idUser);
 
@@ -74,8 +74,8 @@ $(document).ready(function () {
       },
     { data: null,
         render: function (data, type, row) {
-              return '<img src="dist/img/icons/eliminar.png"  id="btn-eliminar" title="ELIMINAR" width=30px;  height=30px; type="button"></button>'+' | ' +
-                     '<img src="dist/img/icons/editar.png"  id="btn-editar" title="EDITAR" width=30px;  height=30px; type="button"></button>'
+              return '<img src="../../dist/img/icons/eliminar.png"  id="btn-eliminar" title="ELIMINAR" width=30px;  height=30px; type="button"></button>'+' | ' +
+                     '<img src="../../dist/img/icons/editar.png"  id="btn-editar" title="EDITAR" width=30px;  height=30px; type="button"></button>'
               ;
           
         }

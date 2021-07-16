@@ -310,8 +310,6 @@
   </script>
   <!-- AdminLTE App -->
   <script src="../../bower_components/AdminLTE/dist/js/adminlte.min.js"></script>
-  <!-- Cookies js -->
-  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 
   <script src="../../plugins/TimeMejs/timeme.min.js"></script>
   <script src="../../script/navbar-alumno.js"></script>
@@ -319,7 +317,7 @@
   
   <script type="text/javascript">
     function preloadFunc() {
-      if (Cookies.get('rol') != 'ROLE_ALUM') {
+      if (localStorage.getItem('rol') != 'ROLE_ALUM') {
         document.location.href = "../login.html";
       }
     }

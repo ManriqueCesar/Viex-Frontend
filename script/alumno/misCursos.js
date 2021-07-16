@@ -1,12 +1,12 @@
 $(document).ready(function () {
   setNombre();
-  var idUser = Cookies.get('id');
-  cargarFoto(Cookies.get('apellido'));
+  var idUser = localStorage.get('id');
+  cargarFoto(localStorage.get('apellido'));
   cargarCantidadExamenesPendientes(idUser);
   cargarCantidadCursos(idUser);
   cargarCantidadExamenes(idUser);
   
-  var idUser = Cookies.get('id');
+  var idUser = localStorage.get('id');
   ruta = 'https://viex-app.herokuapp.com';
   var x=0;
   $('#tbl-misCursos').DataTable({
