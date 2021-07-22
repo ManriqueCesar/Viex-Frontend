@@ -1,12 +1,10 @@
 $(document).ready(function () {
   setNombre();
-  var idUser = localStorage.get('id');
-  cargarFoto(localStorage.get('apellido'));
+  var idUser = localStorage.getItem('id');
+  cargarFoto(localStorage.getItem('apellido'));
   cargarCantidadExamenesPendientes(idUser);
   cargarCantidadCursos(idUser);
   cargarCantidadExamenes(idUser);
-  
-  var idUser = localStorage.get('id');
   ruta = 'https://viex-app.herokuapp.com';
   var x=0;
   $('#tbl-misCursos').DataTable({
@@ -61,6 +59,11 @@ $(document).ready(function () {
     { data: null,
         render: function (data, type, row) {
               return '<button title="LISTA" class="btn btn-primary" id="btn-listar">LISTA</button>';
+        }
+      },
+    { data: null,
+        render: function (data, type, row) {
+              return '<img src="../../dist/img/icons/icon_view.png"  id="btn-viewListExamns" title="Ver Curso" width=30px;  height=30px; type="button">';
         }
       }]
 });
@@ -124,8 +127,18 @@ $('#btn-close').click(function () {
 
 });
 
-
-
+$(document).on('click', '#btn-viewListExamns', function (event) {
+  $('#modal-examenCurso').modal('toggle');
+  var currentRow = $(this).closest("tr");
+  var data = $('#tbl-misCursos').DataTable().row(currentRow).data();
+  var id = data.idCurso;
+  var nombre_curso = data.curso;
+  $('#modal-examenCurso #modal-title').text('Lista de exámenes: '+nombre_curso);
+  console.log(id);
+  console.log(nombre_curso);
+  ruta = 'https://viex-app.herokuapp.com';
+  var x = 0;  
+});
 
 
 

@@ -151,7 +151,7 @@ $(document).ready(function () {
       console.log(results.toString());
 
       $("#alumnos").text(results.toString());
-      console.log(Cookies.get('apellido'));
+      //console.log(Cookies.get('apellido'));
       var alumno = results.toString().includes(apellido);
       if (alumno == true) {
         $("#loading").text("Identidad confirmada, redireccionando...");
