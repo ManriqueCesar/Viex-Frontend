@@ -76,82 +76,151 @@ $(document).on('click', '#tab-lista-alumnos-tab', function (event) {
 
 });
 
-$(document).on('click', '#btn-agregar-alumno', function (event) {
-    var ruta = 'https://viex-app.herokuapp.com';
 
+$(document).on('click', '#btn-agregar-alumno', function (event) {
+    $('#btn-agregar-alumno').attr('disabled', true);
+    var ruta = 'https://viex-app.herokuapp.com';
+    var course_id = localStorage.getItem('course_id');
     //algoritmo para asignar los alumnos en un array
     var alumnos = $('#txt-alumnos').val();
     listaAlumnos = alumnos.split('\n');
     arregloAlumnos = [];
+    arreglo_idAlumnos = [];
+    arreglo_AlumnosError = [];
     arregloAlumnos = arregloAlumnos.concat(listaAlumnos);
-    console.log(arregloAlumnos);
     //fin algoritmo
-
-    var curso = {};
-    var request = {};
-    var id = localStorage.getItem('id');
-
-    curso.centroEstudios = $('#cbo-centro').val().toUpperCase();
-    curso.curso = $('#txt-curso').val();
-    curso.eap = $('#cbo-eap').val().toUpperCase();
-    curso.periodo = $('#cbo-periodo').val();
-    curso.idCurso = null;
-    request.curso = curso;
-    request.idUsuario = id;
-    request.emailAlumnos = arregloAlumnos;
-    request.idDetalleCurso = null;
-    $.ajax({
-        url: ruta + '/detallecurso/',
-        type: 'POST',
-        dataType: 'json',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        data: JSON.stringify(request)
-    }).done(function () {
-
-        Swal.fire({
-            icon: 'success',
-            title: '¡Alumno agregado!',
-            text: 'Podrás verlo en Parámetros'
+    // consultar cada email para obtener el id
+    arregloAlumnos.forEach(element => {
+        if(element != ""){
+            $.ajax({
+                url: ruta + '/usuarios/email/' + element,
+                async: false,
+                type: 'GET',
+                dataType: 'json',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            }).done(function (data) {
+                arreglo_idAlumnos.push({'email': element, 'idUsuario': data.idUsuario});
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                arreglo_AlumnosError.push({'email':element, 'error':jqXHR.responseJSON.mensaje});
+            });
+        }
+    });
+    // fin consulta    
+    let cantidad_creados = 0;    
+    arreglo_idAlumnos.forEach(element =>{
+        var request = {};
+        request.idCurso = course_id;
+        request.idAlumno = element.idUsuario;
+        $.ajax({
+            url: ruta + '/detallecurso/alumno',
+            async: false,
+            type: 'POST',
+            dataType: 'json',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            data: JSON.stringify(request)
+        }).done(function () {
+            cantidad_creados++;
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            arreglo_AlumnosError.push({'email':element.email, 'error':jqXHR.responseJSON.mensaje});
         })
-        $('#tbl-resultado').DataTable().ajax.reload(null, false);
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-        Swal.fire({
+    });   
+    var modals_swal = []
+    if(cantidad_creados > 0){
+        modals_swal.push({
+            icon: 'success',
+            title: '¡Alumno(s) agregado(s)!',
+            text: 'Podrás verlo(s) en la tabla',
+            showCloseButton: false,
+            showConfirmButton: true
+        });
+        $('#tbl-lista-alumnos').DataTable().ajax.reload(null, false);
+    }
+    if (arreglo_AlumnosError.length > 0){
+        var text_error = "";
+        let i = 1;
+        arreglo_AlumnosError.forEach(element =>{
+            text_error += "<br>("+i+") alumno: '"+element.email+"' - error: '"+element.error+"'";
+            i++;
+        });
+        modals_swal.push({
             icon: 'error',
             title: '¡Error!',
-            text: jqXHR.responseJSON.mensaje
-        })
-    })
+            html: 'No se pudo registrar los siguientes alumnos:\n'+text_error,
+            showCloseButton: false,
+            showConfirmButton: true
+        });
+    }
+    if (modals_swal.length == 1){
+        Swal.fire(modals_swal[0]);
+    }else if(modals_swal.length == 2){
+        Swal.fire(modals_swal[0]).then((result)=>{
+            if(result.value){
+                Swal.fire(modals_swal[1]);
+            }
+        });
+    }    
+    $('#txt-alumnos').val("");
+    $('#btn-agregar-alumno').attr('disabled', false);
 });
 
 
 $(document).on('click', '#btn-eliminar-alumno', function (event) {
-    var id_curso = localStorage.getItem('course_id');
+    var course_id = localStorage.getItem('course_id');
     ruta = 'https://viex-app.herokuapp.com';
     var currentRow = $(this).closest("tr");
     var data = $('#tbl-lista-alumnos').DataTable().row(currentRow).data();
+    var nombre_alumno = data.nombre+" "+data.apellido;
     var id_alumno = data.idUsuario;
-    $.ajax({
-        url: ruta + '/detallecurso/curso/alumnos/' + id_curso + '/' + id_alumno,
-        type: 'DELETE',
-        dataType: 'json'
-    }).done(function (data) {
-        $(currentRow).closest('tr').fadeOut(1500, function () {
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Curso eliminado',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            $('#tbl-lista-alumnos').DataTable().ajax.reload(null, false);
-        });
-
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-
-    })
+    var request = {};
+    request.idCurso = course_id;
+    request.idAlumno = id_alumno;
+    Swal.fire({
+        title: '¿Está seguro?',
+        text: "Se eliminará a "+nombre_alumno,
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '¡Sí, borrar!'
+    }).then((result)=>{
+        if (result.value){
+            $.ajax({
+                url: ruta + '/detallecurso/alumno',
+                type: 'DELETE',
+                dataType: 'json',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                data: JSON.stringify(request)
+            }).done(function (data) {
+                $(currentRow).closest('tr').fadeOut(300, function () {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Alumno eliminado',
+                        showConfirmButton: false,
+                        timer: 1150
+                    });
+                    $('#tbl-lista-alumnos').DataTable().ajax.reload(null, false);
+                });
+        
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Error!',
+                    html: 'No se pudo eliminar:',
+                    showCloseButton: false,
+                    showConfirmButton: true
+                });
+            });
+        }
+    });    
 });
 
 
