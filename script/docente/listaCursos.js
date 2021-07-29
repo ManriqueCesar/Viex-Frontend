@@ -1,7 +1,7 @@
 
 $(document).ready(function () {
   setNombre();
-  var idUser = localStorage.getItem('id');
+  var idUser = decodificarBase64(localStorage.getItem('id'));
   cargarCantidadExamenes(idUser);
   cargarCantidadCursos(idUser);
 
@@ -92,8 +92,8 @@ $(document).on('click', '#btn-viewSectionCourse', function (event) {
   var currentRow = $(this).closest("tr");
   var data = $('#tbl-resultado').DataTable().row(currentRow).data();
   var id = data.idCurso;
-  localStorage.setItem('course_name', data.curso);
-  localStorage.setItem('course_id', data.idCurso);
+  localStorage.setItem('course_name', codificarBase64(data.curso));
+  localStorage.setItem('course_id', codificarBase64(data.idCurso));
   $(location).attr('href', "../docente/sectionCourseStudents.html");
 });
 

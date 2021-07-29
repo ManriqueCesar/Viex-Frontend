@@ -1,7 +1,6 @@
-
-  
   function registro(user) {
-    var ruta = 'https://viex-app.herokuapp.com';
+   // var ruta = 'https://viex-app.herokuapp.com';
+    var ruta = 'http://localhost:9090';
     request = {};
     request.email = user.correo;
     request.password = user.contraseña;

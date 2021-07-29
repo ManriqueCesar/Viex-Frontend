@@ -1,8 +1,8 @@
 
 $(document).ready(function () {
   setNombre();
-  var idUser = localStorage.getItem('id');
-  var usuario = localStorage.getItem('usuario');
+  var idUser = decodificarBase64(localStorage.getItem('id'));
+  var usuario = decodificarBase64(localStorage.getItem('usuario'));
   var fechaEnvio = moment().format('YYYY-MM-DD HH:mm');
   cargarCantidadExamenes(idUser);
   cargarCantidadCursos(idUser);

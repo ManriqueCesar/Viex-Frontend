@@ -359,7 +359,7 @@
   <script src="../../bower_components/AdminLTE/dist/js/adminlte.min.js"></script>
   <script type="text/javascript">
     function preloadFunc() {
-      if (localStorage.getItem('rol') != 'ROLE_ALUM') {
+      if (decodificarBase64(localStorage.getItem('rol')) != 'ROLE_ALUM') {
         document.location.href = "../login.html";
       }
     }
