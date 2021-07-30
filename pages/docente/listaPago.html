@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VIEX | Lista de Cursos</title>
+  <title>VIEX | Lista de Pagos</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
@@ -156,7 +156,7 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>
-                  Mis Cursos
+                  Mis Pagos
                   <i class="fas fa-angle-left right"></i>
                   <span class="badge badge-info right" id="cantCursos"></span>
                 </p>
@@ -196,18 +196,20 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Ver Cursos</h1>
+              <h1>Ver Pagos</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Ver Cursos</li>
+                <li class="breadcrumb-item active">Ver Pagos</li>
               </ol>
             </div>
           </div>
         </div><!-- /.container-fluid -->
       </section>
 
+      <a href="payment.html" class="btn btn-primary btn-lg active" style="margin-left: 2rem;margin-bottom: 2rem;" role="button" aria-pressed="true">Pagar</a>
+      
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
@@ -215,7 +217,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Mis Cursos</h3>
+                  <h3 class="card-title">Mis Pagos</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -224,17 +226,17 @@
                     <table id="tbl-resultado" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th>PERIODO</th>
-                          <th>INSTITUCION</th>
-                          <th>ESCUELA</th>
+                          <th>FECHA</th>
+                          <th>MONTO</th>
+                          <th>CODIGO</th>
                           <th>CURSO</th>
                           <th>ALUMNOS</th>
                           <th>ACCION</th>
                         </tr>
                         <tr>
-                          <th>PERIODO</th>
-                          <th>INSTITUCION</th>
-                          <th>ESCUELA</th>
+                          <th>FECHA</th>
+                          <th>MONTO</th>
+                          <th>CODIGO</th>
                           <th>CURSO</th>
                           <th>ALUMNOS</th>
                           <th>ACCION</th>
@@ -344,7 +346,7 @@
     }
     window.onpaint = preloadFunc();
   </script>
-  <script src="../../script/docente/listaCursos.js"></script>
+  <script src="../../script/docente/listaPago.js"></script>
   <script src="../../script/cookies.js"></script>
   <script src="../../script/permisos.js"></script>
 

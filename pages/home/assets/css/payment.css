@@ -1,0 +1,11 @@
+.modal__close-button {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin-right: 2rem;
+}
+.modal__close-button-img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}

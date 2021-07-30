@@ -22,302 +22,135 @@
     href="../../bower_components/AdminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- Select2 -->
   <link rel="stylesheet" href="../../bower_components/AdminLTE/plugins/select2/css/select2.min.css">
-  <link rel="stylesheet" href="../../bower_components/AdminLTE/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <link rel="stylesheet"
+    href="../../bower_components/AdminLTE/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../bower_components/AdminLTE/dist/css/adminlte.min.css">
   <!-- Plugin css BootsTrap -->
-  <link rel="stylesheet" href="../../dist/css/style.css">
+  <!-- <link rel="stylesheet" href="../../dist/css/style.css"> -->
   <!-- iCheck for checkboxes and radio inputs -->
   <link rel="stylesheet" href="../../plugins/iCheck/all.css">
   <link rel="stylesheet" href="../../plugins/wickedpicker/dist/wickedpicker.min.css">
 
-
-
-
-
   <!-- Vendor CSS Files -->
-  <link href="./home/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="./home/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="./home/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="./home/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="./home/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="./home/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="./home/assets/vendor/aos/aos.css" rel="stylesheet">
-
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link href="../home/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../home/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="../home/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../home/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../home/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="../home/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="../home/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../home/assets/css/payment.css" rel="stylesheet">
 
 
   <link rel="stylesheet" href="https://pocpaymentserve.s3.amazonaws.com/payform.min.css">
-  <link href="./mentor/assets/css/style.css" rel="stylesheet">
-  <script>
-    async function generateToken() {
-      return await axios({
-        url: 'https://apitestenv.vnforapps.com/api.security/v1/security',
-        method: 'POST',
-        headers: {
-          'Content-Type': 'text/plain',
-          Authorization: `Basic ${btoa('integraciones.visanet@necomplus.com:d5e7nk$M')}`
-        }
-      })
-        .then(response => response.data)
-        .catch(err => console.log(err))
-    }
+  <link href="../home/assets/css/style.css" rel="stylesheet">
 
-    async function generateSession() {
-      let token = await generateToken();
-      return await axios({
-        url: 'https://apitestenv.vnforapps.com/api.ecommerce/v2/ecommerce/token/session/522591303',
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `${token}`
-        },
-        data: {
-          "amount": 10,
-          "antifraud": {
-            "clientIp": '190.236.255.83',
-            "merchantDefineData": {
-              MDD4: 'antonis162010@gmail.com',
-              MDD21: 0,
-              MDD32: 72410501,
-              MDD75: 'Invitado',
-              MDD77: 1,
-            }
-          },
-          "channel": "web",
-        }
-      })
-        .then(response => response.data)
-        .catch(err => console.log(err))
-    }
-  </script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://pocpaymentserve.s3.amazonaws.com/payform.min.js"></script>
 </head>
 
 
 <body>
-  <script src="https://pocpaymentserve.s3.amazonaws.com/payform.min.js"></script>
-  <script>
-    async function pay() {
-      console.log('adasd')
-      let data = {
-        name: (document.getElementById("nombre")).value,
-        lastName: (document.getElementById("apellido")).value,
-        email: (document.getElementById("email")).value,
-        alias: 'KS'
-      }
 
-      payform.createToken([cardNumber, cardExpiry, cardCvv], data)
-        .then(function (data) {
-          //Tu código aquí
-          console.log(data);
-        })
-        .catch(function (error) {
-          //Tu código aquí
-          console.log(error);
-        });
-    }
-    var cardNumber = null;
-    var cardExpiry = null;
-    var cardCvv = null;
+  <div class="modal fade" tabindex="-1" id="modal-alumnos" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="border-radius: 5%!important;">
+        <!-- <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div> -->
+        <div class="modal-body">
+          <div class="container-fluid" style="margin: 0 2.5rem;">
+            <div class="modal__close-button">
+              <img class="modal__close-button-img" src="../../dist/img/close-modal.svg" (click)="close()" alt="x" />
+            </div>
 
-    generateSession()
-      .then(response => {
-        const configuration = {
-          sessionkey: response.sessionKey,
-          channel: "web",
-          merchantid: "522591303",
-          amount: "10.00",
-          purchasenumber: "100000000001",
-          language: "es",
-          font: "https://fonts.googleapis.com/css?family=Montserrat:400&display=swap",
-          merchantlogo: 'https://logos-marcas.com/wp-content/uploads/2020/04/Huawei-Logo.png',
-        };
-        let elementStyles = {
-          base: {
-            color: '#495057',
-            margin: '0',
-            // width: '100% !important',
-            // fontWeight: 700,
-            fontFamily: "'Montserrat', sans-serif",
-            fontSize: '12.5px',
-            fontSmoothing: 'antialiased',
-            placeholder: {
-              color: '#495057'
-            },
-            autofill: {
-              color: '#e39f48',
-            }
-          },
-          invalid: {
-            color: '#E25950',
-            '::placeholder': {
-              color: '#FFCCA5',
-            }
-          }
-        };
-        payform.setConfiguration(configuration)
+            <div class="container">
+              <img src="../../dist/img/viex-logo.png" style="width: 83%; height: 250px;" alt="logo">
+            </div>
+            <div class="row">
+              <form style="width: 83%;">
 
+                <div class="md-form mb-2">
+                  <label for="txtNumeroTarjeta">Número de tarjeta</label>
+                  <div id="txtNumeroTarjeta" class="form-control"></div>
+                  <small id="msjNroTarjeta" class="form-text text-muted red-text m-0"></small>
+                </div>
 
-        cardNumber =
-          payform.createElement(
-            'card-number',
-            {
-              style: elementStyles,
-              placeholder: 'Número de Tarjeta'
-            },
-            'txtNumeroTarjeta'
-          );
+                <div class="md-form mb-2">
+                  <label for="txtFechaVencimiento">Fecha de Vencimiento</label>
+                  <div id="txtFechaVencimiento" class="form-control"></div>
+                  <small id="msjFechaVencimiento" class="form-text text-muted red-text m-0"></small>
+                </div>
 
-        cardNumber.then(element => element.on('bin', function (data) {
-          console.log('BIN: ', data);
+                <div class="md-form mb-2">
+                  <label for="txtCvv">CVV</label>
+                  <div id="txtCvv" class="form-control"></div>
+                  <small id="msjCvv" class="form-text text-muted red-text m-0"></small>
+                </div>
 
-          element.on('change', (data) => {
-            console.log(data)
-            // console.log('CHANGE: ', data);
-            document.getElementById("msjNroTarjeta").style.display = "none";
-            document.getElementById("msjFechaVencimiento").style.display = "none";
-            document.getElementById("msjCvv").style.display = "none";
-            if (data.length != 0) {
-              this.disablePay = true
-              data.forEach(d => {
-                if (d['code'] == "invalid_number") {
-                  document.getElementById("msjNroTarjeta").style.display = "block";
-                  document.getElementById("msjNroTarjeta").innerText = d['message'];
-                }
-                if (d['code'] == "invalid_expiry") {
-                  document.getElementById("msjFechaVencimiento").style.display = "block";
-                  document.getElementById("msjFechaVencimiento").innerText = d['message'];
-                }
-                if (d['code'] == "invalid_cvc") {
-                  document.getElementById("msjCvv").style.display = "block";
-                  document.getElementById("msjCvv").innerText = d['message'];
-                }
-                if (d['code'] != "invalid_number" && d['code'] != "invalid_expiry" && d['code'] != "invalid_cvc") {
-                }
-              });
-            } else
-              this.disablePay = false
-          })
-        }));
+                <div class="md-form mb-2">
+                  <label for="nombre">Nombre</label>
+                  <input width="100%" type="text" id="nombre" class="form-control" placeholder="Nombre" />
+                </div>
 
-        cardExpiry =
-          payform.createElement(
-            'card-expiry',
-            {
-              style: elementStyles,
-              placeholder: 'MM/AA'
-            },
-            'txtFechaVencimiento'
-          );
+                <div class="md-form mb-2">
+                  <label for="apellido">Apellido</label>
+                  <input type="text" id="apellido" class="form-control" placeholder="Apellido" />
+                </div>
 
-        cardExpiry.then(element => element.on('change', function (data) {
-          // console.log('CHANGE F.V: ', data);
-        }));
+                <div class="md-form mb-3">
+                  <label for="email">Email</label>
+                  <input type="text" id="email" class="form-control" placeholder="Email" />
+                  <small id="msjEmail" class="form-text text-muted red-text m-0"></small>
+                </div>
 
-        cardCvv =
-          payform.createElement(
-            'card-cvc',
-            {
-              style: elementStyles,
-              placeholder: 'CVV'
-            },
-            'txtCvv'
-          );
+                <div class="md-form mb-3">
+                  <button id="btnProcess" onclick="pay()" type="button" class="btn btn-dark"
+                    style="width: 100% !important; height: 50px; border-radius: 25px;"></button>
+                </div>
 
-        cardCvv.then(element => element.on('change', function (data) {
-          // console.log('CHANGE CVV2: ', data);
-        }));
-      })
-      .catch(err => console.log(err));
-  </script>
-
-  <!-- Viex -->
-  <!-- <div id="myModal" class="modal"> -->
-  <!-- <div class="modal-content"> -->
-  <!-- <span class="close">&times;</span> -->
-
-  <form>
-    <label for="txtNumeroTarjeta">Número de tarjeta</label>
-    <div id="txtNumeroTarjeta" class="form-control"></div>
-    <small id="msjNroTarjeta" class="form-text text-muted red-text m-0"></small>
-
-    <label for="txtFechaVencimiento">Fecha de Vencimiento</label>
-    <div id="txtFechaVencimiento" class="form-control"></div>
-    <small id="msjFechaVencimiento" class="form-text text-muted red-text m-0"></small>
-
-    <label for="txtCvv">CVV</label>
-    <div id="txtCvv" class="form-control"></div>
-    <small id="msjCvv" class="form-text text-muted red-text m-0"></small>
-
-    <label for="nombre">Nombre</label>
-    <input type="text" id="nombre" class="form-control" placeholder="Nombre" />
-
-    <label for="nombre">Apellido</label>
-    <input type="text" id="apellido" class="form-control" placeholder="Apellido" />
-
-    <label for="nombre">Email</label>
-    <input type="text" id="email" class="form-control" placeholder="Email" />
-
-    <br>
-    <button onclick="pay()" type="button" class="btn btn-primary">Pagar S/ 10.00</button>
-
-  </form>
-
-  <button id="myBtn">Open Modal</button>
-  <div id="myModal" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <p>Some text in the Modal..</p>
+              </form>
+            </div>
+            <div class="row">
+              <img src="../../dist/img/Niubiz stickers.png" style="width: 83%;" alt="iconos">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  
+
+    <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" style="min-height: 200px; margin-top: -150px;">
+      <div class="toast bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body">
+          Todos los campos deben estar completos.
+        </div>
+      </div>
+    </div>
   </div>
-  <!-- </div> -->
-  <!-- </div> -->
 
-  <!-- Mio -->
-  <!-- <form>
-    <div fxLayout="row wrap" fxLayoutAlign="center center" class="form-container">
-      <div fxFlex="100%" fxFlex.xs="100%">
-        <label for="txtNumeroTarjeta">Número de Tarjeta</label>
-        <div id="txtNumeroTarjeta" class="form-control form-control-lg"></div>
-        <small id="msjNroTarjeta" class="form-text text-muted red-text m-0"></small>
-      </div>
 
-      <div fxFlex="100%" fxFlex.xs="100%">
-        <label for="txtFechaVencimiento">MM/AAAA</label>
-        <div id="txtFechaVencimiento" class="form-control form-control-lg"></div>
-        <small id="msjFechaVencimiento" class="form-text text-muted red-text m-0"></small>
-      </div>
+  <!-- jQuery -->
+  <script src="../../bower_components/AdminLTE/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="../../bower_components/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- MomentJS  -->
+  <script src="../../bower_components/AdminLTE/plugins/moment/moment.min.js"></script>
 
-      <div fxFlex="100%" fxFlex.xs="100%">
-        <label for="txtCvv">CVV</label>
-        <div id="txtCvv" class="form-control form-control-lg"></div>
-        <small id="msjCvv" class="form-text text-muted red-text m-0"></small>
-      </div>
+  <script src="../../script/cookies.js"></script>
+  <!-- page script -->
+  <script src="../../script/docente/payment.js"></script>
+  <script src="../../script/permisos.js"></script>
 
-      <div fxFlex="100%" fxFlex.xs="100%" class="extra_index">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" class="form-control form-control-lg" placeholder="Nombre" />
-      </div>
-      <div fxFlex="100%" fxFlex.xs="100%" class="extra_index">
-        <label for="apellido">Apellido</label>
-        <input type="text" id="apellido" class="form-control form-control-lg" placeholder="Apellido" />
-      </div>
-      <div fxFlex="100%" fxFlex.xs="100%" class="extra_index">
-        <label for="email">Email</label>
-        <input type="text" id="email" class="form-control form-control-lg" placeholder="Email" />
-      </div>
-
-      <div fxFlex="100%" fxFlex.xs="100%" style="margin: 1rem 0 0 0">
-        <button class="red-container" (click)="pay()" id="btnProcesar">
-          <span>Pagar S/</span>
-        </button>
-      </div>
-    </div>
-  </form> -->
-
+  <script type="text/javascript">
+    function preloadFunc() {
+      if (localStorage.getItem('rol') != 'ROLE_PROF') {
+        document.location.href = "../login.html";
+      }
+    }
+    window.onpaint = preloadFunc();
+  </script>
 </body>
 
 </html>
