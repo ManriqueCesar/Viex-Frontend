@@ -66,27 +66,31 @@
               <form id="loginForm" method="post">
                   <div class="form-group">
                     <label for="emailAddress">Nombres</label>
-                    <input type="email" class="form-control" id="txt-nombres" required placeholder="Ingrese sus nombres" autofocus>
+                    <input type="text" class="form-control" id="txt-nombres" required placeholder="Ingrese sus nombres" autofocus>
                   </div>
                   <div class="form-group">
                     <label for="emailAddress">Apellidos</label>
-                    <input type="email" class="form-control" id="txt-apellidos" required placeholder="Ingresa sus apellidos">
+                    <input type="text" class="form-control" id="txt-apellidos" required placeholder="Ingresa sus apellidos">
                   </div>
                 <div class="form-group">
                   <label for="emailAddress">Correo</label>
-                  <input type="email" class="form-control" id="txt-email" required placeholder="Ingrese su correo">
+                  <input type="email" class="form-control" id="txt-email" required placeholder="Ingrese su correo" autocomplete="off">
+                </div>
+                <div class="form-group">
+                  <label for="emailAddress">DNI</label>
+                  <input type="number" class="form-control" id="txt-dni" required placeholder="Ingrese su DNI" autocomplete="off">
                 </div>
                 <div class="form-group">
                   <label for="loginPassword">Contraseña</label>
-                  <input type="password" class="form-control"  id="txt-password" required placeholder="Ingrese su contraseña">
+                  <input type="password" class="form-control"  id="txt-password" required placeholder="Ingrese su contraseña" autocomplete="off">
                 </div>
                 <div class="form-group">
                   <label for="loginPassword">Repetir Contraseña</label>
-                  <input type="password" class="form-control"  id="txt-repeatPassword" required placeholder="Ingrese su contraseña">
+                  <input type="password" class="form-control"  id="txt-repeatPassword" required placeholder="Ingrese su contraseña" autocomplete="off">
                 </div>
 
                 <div id="formulario-login">
-                  <button class="btn btn-primary btn-block my-4" type="submit" id="btn-ingresar">Registrarse</button>
+                  <button class="btn btn-primary btn-block my-4" type="submit" id="btn-registro">Registrarse</button>
                 </div>
               </form>
             </div>
