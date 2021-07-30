@@ -1,0 +1,37 @@
+
+.card-dark-green:not(.card-outline) > .card-header {
+    background-color: #346b34;
+  }
+  
+.card-dark-green:not(.card-outline) > .card-header,
+.card-dark-green:not(.card-outline) > .card-header a {
+color: #ffffff;
+}
+
+.card-dark-green:not(.card-outline) > .card-header a.active {
+color: #244d24;
+}
+
+.card-dark-green.card-outline {
+border-top: 3px solid #345f34;
+}
+
+.card-dark-green.card-outline-tabs > .card-header a:hover {
+border-top: 3px solid #dee2e6;
+}
+
+.card-dark-green.card-outline-tabs > .card-header a.active {
+border-top: 3px solid #306330;
+}
+
+.bg-dark .btn-tool,
+.bg-gradient-dark .btn-tool,
+.card-dark-green:not(.card-outline) .btn-tool {
+color: rgba(255, 255, 255, 0.8);
+}
+
+.bg-dark .btn-tool:hover,
+.bg-gradient-dark .btn-tool:hover,
+.card-dark-green:not(.card-outline) .btn-tool:hover {
+color: #ffffff;
+}

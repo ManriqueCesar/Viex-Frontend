@@ -56,7 +56,7 @@
             <a href="listaExamenes.html" class="nav-link">Ver Exámenes</a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Ver Cursos</a>
+            <a href="listaCursos.html" class="nav-link">Ver Cursos</a>
           </li>
           <li>
             <a href="rankStudents.html" class="nav-link">Ver Ranking</a>
@@ -768,7 +768,7 @@
 
   <script type="text/javascript">
     function preloadFunc() {
-      if (localStorage.getItem('rol') != 'ROLE_PROF') {
+      if (decodificarBase64(localStorage.getItem('rol') != 'ROLE_PROF')) {
         document.location.href = "../login.html";
       }
     }
@@ -782,6 +782,7 @@
   <script src="../../script/docente/crearExamen.js"></script>
   <script src="../../script/cookies.js"></script>
   <script src="../../script/permisos.js"></script>
+  <script src="../../script/security.js"></script>
 
   <style type="text/css">
     .block {

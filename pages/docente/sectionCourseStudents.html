@@ -30,46 +30,14 @@
   <link href="../home/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="../home/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="../home/assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../dist/css/style_sidebar2.css">
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini sidebar-collapse">
   <div class="wrapper">
-
-  <!-- ======= Header ======= -->
-     
-  <header id="header" class="fixed-top">
-    <div>
-      <nav class="main-header navbar navbar-expand nav-menu d-none d-lg-block">
-      
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-          </li>
-          <li>
-            <a href="crearExamen.html" class="nav-link">Crear Examen</a>
-          </li>
-          <li class="active">
-            <a href="listaExamenes.html" class="nav-link active">Ver Exámenes</a>
-          </li>
-          <li>
-            <a href="listaCursos.html" class="nav-link">Ver Cursos</a>
-          </li>
-          <li>
-            <a href="rankStudents.html" class="nav-link">Ver Ranking</a>
-          </li>
-          <li class="nav-item navbar-nav ml-auto">
-            <a id="btn-close" class="nav-link" href="../login.html">Cerrar sesión</a>
-          </li>
-        </ul>
-        
-      </nav>
-    </div>
-  </header>
-  
-  <!-- End Header -->
-
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -79,13 +47,10 @@
           <a href="crearExamen.html" class="nav-link">Crear Examen</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="listaCursos.html" class="nav-link">Ver Exámenes</a>
+          <a href="listaExamenes.html" class="nav-link">Ver Exámenes</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Ver Cursos</a>
-        </li>
-        <li>
-          <a href="rankStudents.html" class="nav-link">Ver Ranking</a>
+          <a href="listaCursos.html" class="nav-link">Ver Cursos</a>
         </li>
       </ul>
 
@@ -99,17 +64,16 @@
         </li>
 
       </ul>
-  </nav>
-  <!-- /.navbar -->
-
+    </nav>
+    <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="../login.html" class="brand-link">
-        <img src="../../dist/img/viex-logo.png" alt="http://localhost/ProyectoGesti%C3%B3n/WebSecurity/WebSecurity/DESARROLLO/PWCEV/Front/web/login.html Logo" class="brand-image img-circle elevation-3"
-          style="opacity: .8">
-        <span class="brand-text font-weight-light" style="color:white">VIEX</span>
+      <a href="../index.html" class="brand-link">
+        <img src="../../dist/img/viex-logo.png" alt="viex Logo" class="brand-image img-circle elevation-3"
+          style="background-color: #11c742;">
+        <span class="brand-text font-weight-light ml-5">VIEX</span>
       </a>
 
       <!-- Sidebar -->
@@ -123,34 +87,33 @@
             <a href="#" class="d-block" id="nombreUser"></a>
           </div>
         </div>
-
         <!-- Sidebar Menu -->
-        <nav class="mt-1">
+        <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                 with font-awesome or any other icon font library -->
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p style="color:white;">
+                <p>
                   Mis Exámenes
                   <i class="right fas fa-angle-left"></i>
-                  <span class="badge badge-info right" id="cantExamenes"></span>
+                  <span class="badge badge-info right">2</span>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <span class="badge badge-warning right">5</span>
-                    <p style="color: white;"> Exámenes Restantes</p>
+
+                    <p style="color: white;">2 Exámenes pendientes</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <span class="badge badge-info right" id="examenesCreados"></span>
-                    <p style="color: white;"> Exámenes creados</p>
+                    <p style="color: white;">7 Exámenes creados</p>
                   </a>
                 </li>
               </ul>
-            </li>
 
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
@@ -158,35 +121,22 @@
                 <p>
                   Mis Cursos
                   <i class="fas fa-angle-left right"></i>
-                  <span class="badge badge-info right" id="cantCursos"></span>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <span class="badge badge-info right" id="cantCursos"></span>
-                     <p style="color: white;"> Cursos creados</p>
+                  <a href="#l" class="nav-link">
+                    <p>10 cursos creados</p>
                   </a>
                 </li>
+
               </ul>
             </li>
-
-            <li class="nav-item has-treeview">
-              <a href="listaPago.html" class="nav-link">
-                <i class="nav-icon fas fa-copy"></i>
-                <p>
-                  Mis Pagos
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
             </li>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
-
-      </div>
-      <!-- /.sidebar -->
-      
+        <!-- /.sidebar -->
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
@@ -196,12 +146,13 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Ver Cursos</h1>
+              <h1 class="nombre-curso-activo">Título del curso</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Ver Cursos</li>
+                <li class="breadcrumb-item"><a href="listaCursos.html">Ver Cursos</a></li>
+                <li class="breadcrumb-item active nombre-curso-activo">Titulo del curso</li>
               </ol>
             </div>
           </div>
@@ -211,57 +162,90 @@
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">Mis Cursos</h3>
+          <!-- navbar 2-->
+          <div class="">
+              <div class="card card-dark-green card-tabs">
+                <div class="card-header p-0 pt-1">
+                  <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill"
+                        href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home"
+                        aria-selected="true">Resumen de Curso</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="tab-lista-alumnos-tab" data-toggle="pill" href="#tab-lista-alumnos"
+                        role="tab" aria-controls="tab-lista-alumnos" aria-selected="false">Lista de Alumnos</a>
+                    </li>
+                  </ul>
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body">
+                  <div class="tab-content" id="custom-tabs-one-tabContent">
+                    <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
+                      aria-labelledby="custom-tabs-one-home-tab">
+                      <div class="row col-sm-12">
+                        Resumen del curso (promedio del aula (todos los alumnos), promedio de todos los alumnos por examen)
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="tab-lista-alumnos" role="tabpanel"
+                      aria-labelledby="tab-lista-alumnos-tab">
+                      <div class="row col-sm-12">
+                        <div class="form-group row col-sm-12">
+                          <label for="inputName2" class="col-sm-2 col-form-label">Nuevos alumnos:</label>
+                          <div class="col-sm-4">
+                            <textarea class="form-control" placeholder="ejemplo@unmsm.edu.pe" id="txt-alumnos"
+                              rows="1"></textarea>
+                          </div>
+                          <div class="col-sm-2">
+                            <button class="btn btn-outline-success" id="btn-agregar-alumno">Agregar</button>
+                          </div>
+                        </div>
+                        <div class="col-sm-12 card">
+                          <div class="card-header">
+                            <h3 class="card-title">Lista de Alumnos</h3>
+                          </div>
+                          <div class="card-body">
+                            <div class="table table-responsive">
+                              <table id="tbl-lista-alumnos" class="table table-bordered table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Promedio</th>
+                                    <th>Examenes aprobados</th>
+                                    <th>Examenes reprobados</th>
+                                    <th>Examenes ausentes</th>
+                                    <th>Acción</th>
+                                  </tr>
+                                </thead>
+                              </table>
 
-                  <div class="table table-responsive">
-                    <table id="tbl-resultado" class="table table-bordered table-striped">
-                      <thead>
-                        <tr>
-                          <th>PERIODO</th>
-                          <th>INSTITUCION</th>
-                          <th>ESCUELA</th>
-                          <th>CURSO</th>
-                          <th>ALUMNOS</th>
-                          <th>ACCION</th>
-                        </tr>
-                        <tr>
-                          <th>PERIODO</th>
-                          <th>INSTITUCION</th>
-                          <th>ESCUELA</th>
-                          <th>CURSO</th>
-                          <th>ALUMNOS</th>
-                          <th>ACCION</th>
-                        </tr>
-                      </thead>
-                    </table>
-
+                            </div>
+                            <!-- /.card-body -->
+                          </div>
+                          <!-- /.card -->
+                        </div>
+                        <!-- /.row -->
+                      </div>
+                    </div>
                   </div>
-                  <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
               </div>
-            </div>
-            <!-- /.row -->
           </div>
+          <!-- navbar 2-->
         </div>
         <!-- /.container-fluid -->
       </section>
       <!-- /.content -->
     </div>
 
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" id="modal-alumnos" role="dialog"
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" id="modal-examenes_alumno" role="dialog"
       aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header" style="text-align: center;">
-            <h5 class="modal-title" id="exampleModalLongTitle">Lista de alumnos</h5>
+            <h5 class="modal-title" id="modal-title">Lista de exámenes</h5>
           </div>
 
           <section class="content">
@@ -274,11 +258,18 @@
                     <div class="card-body">
 
                       <div class="table table-responsive">
-                        <table id="tbl-listado" class="table table-bordered table-striped">
+                        <table id="tbl-lista-examen_alumno" class="table table-bordered table-striped">
                           <thead>
                             <tr>
-                              <th>NOMBRES</th>
-                              <th>CORREO</th>
+                              <th>#</th>
+                              <th>Título</th>
+                              <th>Fecha inicio</th>
+                              <th>Tiempo duración</th>
+                              <th>Fecha envío</th>
+                              <th>Estado</th>
+                              <th>Tiempo plagio</th>
+                              <th>Nota</th>
+                              <th>Acción</th>
                             </tr>
                           </thead>
                         </table>
@@ -304,7 +295,7 @@
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 1.0.0-pre
       </div>
-      <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 4 - TIS</a>.</strong>
+      <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 1 - PPP1</a>.</strong>
       All
       rights reserved.
     </footer>
@@ -318,6 +309,7 @@
   <!-- ./wrapper -->
 
   <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="../../bower_components/AdminLTE/plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="../../bower_components/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -336,7 +328,8 @@
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 
   <script src="https://kit.fontawesome.com/c9032fc236.js" crossorigin="anonymous"></script>
-
+  <script src="../../script/security.js"></script>
+  
   <script type="text/javascript">
     function preloadFunc() {
       if (decodificarBase64(localStorage.getItem('rol') != 'ROLE_PROF')) {
@@ -345,11 +338,10 @@
     }
     window.onpaint = preloadFunc();
   </script>
-  <script src="../../script/docente/listaCursos.js"></script>
   <script src="../../script/cookies.js"></script>
   <script src="../../script/permisos.js"></script>
-  <script src="../../script/security.js"></script>
-  
+  <script src="../../script/docente/sectionCourseStudents.js"></script>
+
 </body>
 
 </html>

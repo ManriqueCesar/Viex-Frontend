@@ -1,0 +1,238 @@
+$(document).ready(function () {
+    setNombre();
+    var idUser = decodificarBase64(localStorage.getItem('id'));
+    cargarCantidadExamenes(idUser);
+    cargarCantidadCursos(idUser);
+    var course_id = decodificarBase64(localStorage.getItem('course_id'));
+    var course_name = decodificarBase64(localStorage.getItem('course_name'));
+    console.log(course_id);
+    console.log(course_name);
+    $('.nombre-curso-activo').each(function (index) {
+        console.log(index + ": " + $(this).text());
+        $(this).text(course_name);
+    });
+});
+
+$(document).on('click', '#tab-lista-alumnos-tab', function (event) {
+    var id = decodificarBase64(localStorage.getItem('course_id'));
+    console.log(id)
+    ruta = 'https://viex-app.herokuapp.com';
+    var x = 0;
+    $('#tbl-lista-alumnos').DataTable({
+        "destroy": true,
+        "lengthChange": false,
+        "searching": false,
+        "autoWidth": false,
+        "responsive": true,
+        "language": {
+            "sSearch": "Buscar:",
+            "zeroRecords": "No se encontraron resultados",
+            "info": "Mostrando alumnos del _START_ al _END_ , de un total de _TOTAL_ alumnos",
+            "infoEmpty": "Mostrando alumnos del 0 al 0, de un total de 0 alumnos",
+            "infoFiltered": "(Filtrando de un total de _MAX_ alumnos)",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Ultimo",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior",
+            }
+        },
+        initComplete: function () {
+            this.api().columns().every(function () {
+                var column = this;
+
+            });
+
+            $(".cboselect").select2({ closeOnSelect: false });
+        },
+
+        ajax: {
+            url: ruta + '/detallecurso/curso/alumnos/' + id,
+            dataSrc: '',
+            async: false,
+            cache: false,
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('#tbl-lista-alumnos').DataTable().clear().draw();
+            }
+        },
+        columns: [
+            { data: null },
+            { data: 'nombre' },
+            { data: 'apellido' },
+            { data: null },
+            { data: null },
+            { data: null },
+            { data: null },
+            {
+                data: null,
+                render: function (data, type, row) {
+                    return '<img src="../../dist/img/icons/icon_delete.png"  id="btn-eliminar-alumno" title="ELIMINAR" width=30px;  height=30px; type="button"></button>' + ' | ' +
+                        '<img src="../../dist/img/icons/icon_view.png"  id="btn-listExamsAlumn" title="Ver exámenes" width=30px;  height=30px; type="button">'
+                        ;
+
+                }
+            }]
+    });
+
+});
+
+
+$(document).on('click', '#btn-agregar-alumno', function (event) {
+    $('#btn-agregar-alumno').attr('disabled', true);
+    var ruta = 'https://viex-app.herokuapp.com';
+    var course_id = decodificarBase64(localStorage.getItem('course_id'));
+    //algoritmo para asignar los alumnos en un array
+    var alumnos = $('#txt-alumnos').val();
+    listaAlumnos = alumnos.split('\n');
+    arregloAlumnos = [];
+    arreglo_idAlumnos = [];
+    arreglo_AlumnosError = [];
+    arregloAlumnos = arregloAlumnos.concat(listaAlumnos);
+    //fin algoritmo
+    // consultar cada email para obtener el id
+    arregloAlumnos.forEach(element => {
+        if(element != ""){
+            $.ajax({
+                url: ruta + '/usuarios/email/' + element,
+                async: false,
+                type: 'GET',
+                dataType: 'json',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            }).done(function (data) {
+                arreglo_idAlumnos.push({'email': element, 'idUsuario': data.idUsuario});
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                arreglo_AlumnosError.push({'email':element, 'error':jqXHR.responseJSON.mensaje});
+            });
+        }
+    });
+    // fin consulta    
+    let cantidad_creados = 0;    
+    arreglo_idAlumnos.forEach(element =>{
+        var request = {};
+        request.idCurso = course_id;
+        request.idAlumno = element.idUsuario;
+        $.ajax({
+            url: ruta + '/detallecurso/alumno',
+            async: false,
+            type: 'POST',
+            dataType: 'json',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            data: JSON.stringify(request)
+        }).done(function () {
+            cantidad_creados++;
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            arreglo_AlumnosError.push({'email':element.email, 'error':jqXHR.responseJSON.mensaje});
+        })
+    });   
+    var modals_swal = []
+    if(cantidad_creados > 0){
+        modals_swal.push({
+            icon: 'success',
+            title: '¡Alumno(s) agregado(s)!',
+            text: 'Podrás verlo(s) en la tabla',
+            showCloseButton: false,
+            showConfirmButton: true
+        });
+        $('#tbl-lista-alumnos').DataTable().ajax.reload(null, false);
+    }
+    if (arreglo_AlumnosError.length > 0){
+        var text_error = "";
+        let i = 1;
+        arreglo_AlumnosError.forEach(element =>{
+            text_error += "<br>("+i+") alumno: '"+element.email+"' - error: '"+element.error+"'";
+            i++;
+        });
+        modals_swal.push({
+            icon: 'error',
+            title: '¡Error!',
+            html: 'No se pudo registrar los siguientes alumnos:\n'+text_error,
+            showCloseButton: false,
+            showConfirmButton: true
+        });
+    }
+    if (modals_swal.length == 1){
+        Swal.fire(modals_swal[0]);
+    }else if(modals_swal.length == 2){
+        Swal.fire(modals_swal[0]).then((result)=>{
+            if(result.value){
+                Swal.fire(modals_swal[1]);
+            }
+        });
+    }    
+    $('#txt-alumnos').val("");
+    $('#btn-agregar-alumno').attr('disabled', false);
+});
+
+
+$(document).on('click', '#btn-eliminar-alumno', function (event) {
+    var course_id = decodificarBase64(localStorage.getItem('course_id'));
+    ruta = 'https://viex-app.herokuapp.com';
+    var currentRow = $(this).closest("tr");
+    var data = $('#tbl-lista-alumnos').DataTable().row(currentRow).data();
+    var nombre_alumno = data.nombre+" "+data.apellido;
+    var id_alumno = data.idUsuario;
+    var request = {};
+    request.idCurso = course_id;
+    request.idAlumno = id_alumno;
+    Swal.fire({
+        title: '¿Está seguro?',
+        text: "Se eliminará a "+nombre_alumno,
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '¡Sí, borrar!'
+    }).then((result)=>{
+        if (result.value){
+            $.ajax({
+                url: ruta + '/detallecurso/alumno',
+                type: 'DELETE',
+                dataType: 'json',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                data: JSON.stringify(request)
+            }).done(function (data) {
+                $(currentRow).closest('tr').fadeOut(300, function () {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Alumno eliminado',
+                        showConfirmButton: false,
+                        timer: 1150
+                    });
+                    $('#tbl-lista-alumnos').DataTable().ajax.reload(null, false);
+                });
+        
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Error!',
+                    html: 'No se pudo eliminar:',
+                    showCloseButton: false,
+                    showConfirmButton: true
+                });
+            });
+        }
+    });    
+});
+
+
+$(document).on('click', '#btn-listExamsAlumn', function (event) {
+    $('#modal-examenes_alumno').modal('toggle');
+    var currentRow = $(this).closest("tr");
+    var data = $('#tbl-lista-alumnos').DataTable().row(currentRow).data();
+    var id = data.idUsuario;
+    var nombre_alumno = data.apellido + ', ' + data.nombre;
+    $('#modal-examenes_alumno #modal-title').text('Lista de exámenes: '+nombre_alumno);
+    console.log(id);
+    console.log(nombre_alumno);
+    ruta = 'https://viex-app.herokuapp.com';
+    var x = 0;  
+});

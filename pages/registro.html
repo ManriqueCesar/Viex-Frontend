@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
 <link href="../dist/img/unmsm.png" rel="icon" />
-<title>VIEX | Iniciar Sesión</title>
-<meta name="description" content="This professional design html template is for build a Money Transfer and online payments website.">
+<title>VIEX | Registro</title>
+<meta name="description">
 <meta name="author" content="harnishdesign.net">
 
 <!-- Web Fonts
@@ -46,7 +46,9 @@
                 <div class="col-10 col-lg-9 mx-auto">
                   <h1 class="text-11 text-white mb-4">¡Bienvenido!</h1>
                   <p class="text-4 text-white line-height-4 mb-5">Plataforma de Creación de Exámenes Virtuales</p>
-                  <p class="text-4 text-white line-height-4">Empieza a crear tus exámenes de una manera segura y confiable</p>
+                  <p class="text-4 text-white line-height-4 mb-3">Regístrate sin costo y empieza a crear tus exámenes</p>
+                  <p class="text-4 text-white line-height-4 mb-3">Actualiza a Vip o Premium según tus necesidades</p>
+                  <p class="text-4 text-white line-height-4 mb-3">Ver planes</p>
                 </div>
               </div>
           </div>
@@ -54,37 +56,43 @@
       </div>
       <!-- Welcome Text End -->
       
-      <!-- Login Form
+      <!-- Register Form
       ============================================= -->
       <div class="col-md-6 d-flex align-items-center">
         <div class="container my-4">
           <div class="row">
             <div class="col-11 col-lg-9 col-xl-8 mx-auto">
-              <h3 class="font-weight-400 mb-4">Iniciar Sesión</h3>
+              <h3 class="font-weight-400 mb-4">Registro</h3>
               <form id="loginForm" method="post">
+                  <div class="form-group">
+                    <label for="emailAddress">Nombres</label>
+                    <input type="text" class="form-control" id="txt-nombres" required placeholder="Ingrese sus nombres" autofocus>
+                  </div>
+                  <div class="form-group">
+                    <label for="emailAddress">Apellidos</label>
+                    <input type="text" class="form-control" id="txt-apellidos" required placeholder="Ingresa sus apellidos">
+                  </div>
                 <div class="form-group">
                   <label for="emailAddress">Correo</label>
-                  <input type="email" class="form-control" id="txt-email" required placeholder="Ingresa tu correo" autofocus>
+                  <input type="email" class="form-control" id="txt-email" required placeholder="Ingrese su correo" autocomplete="off">
+                </div>
+                <div class="form-group">
+                  <label for="emailAddress">DNI</label>
+                  <input type="number" class="form-control" id="txt-dni" required placeholder="Ingrese su DNI" autocomplete="off">
                 </div>
                 <div class="form-group">
                   <label for="loginPassword">Contraseña</label>
-                  <input type="password" class="form-control"  id="txt-password" required placeholder="Ingresa tu contraseña">
+                  <input type="password" class="form-control"  id="txt-password" required placeholder="Ingrese su contraseña" autocomplete="off">
+                </div>
+                <div class="form-group">
+                  <label for="loginPassword">Repetir Contraseña</label>
+                  <input type="password" class="form-control"  id="txt-repeatPassword" required placeholder="Ingrese su contraseña" autocomplete="off">
                 </div>
 
-                <div class="row">
-                  <div class="col-sm">
-                    <div class="form-check custom-control custom-checkbox">
-                      <input id="remember-me" name="remember" class="custom-control-input" type="checkbox">
-                      <label class="custom-control-label" for="remember-me">Recuérdame</label>
-                    </div>
-                  </div>
-                  <div class="col-sm text-right"><a class="btn-link" href="#">¿Olvidaste la contraseña?</a></div>
-                </div>
                 <div id="formulario-login">
-                  <button class="btn btn-primary btn-block my-4" type="submit" id="btn-ingresar">Iniciar Sesión</button>
+                  <button class="btn btn-primary btn-block my-4" type="submit" id="btn-registro">Registrarse</button>
                 </div>
               </form>
-              <p class="text-3 text-center text-muted">¿No tienes una cuenta?<a class="btn-link" href="registro.html">Regístrate</a></p>
             </div>
           </div>
         </div>
@@ -92,42 +100,6 @@
       <!-- Login Form End -->
     </div>
   </div>
-
-
-  <div class="modal fade" id="modal-default">
-    <div class="modal-dialog">
-      <div class="modal-content bg-secondary">
-        <div class="text-center">
-          <h3 style="color:white;" class="modal-title">Reconocimiento facial | Login Alumno</h3>
-          <h5 style="color: white;" id="loading">Confirmando identidad ...</h5>
-          <label style="color: white;" id="alumnos"></label>
-          <hr style="color:white;">
-        </div>
-        <div class="box-body with-border">
-          <video id="video" height="400" width="450" autoplay muted></video>
-        </div>
-        <div class="modal-footer justify-content-between">
-          <button id="btn-close" type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="modal-registro">
-    <div class="modal-dialog">
-      <div class="modal-content bg-white">
-        <div class="text-center">
-          <h3 style="color:white;" class="modal-title">Registro | Docente</h3>
-          <hr style="color:white;">
-        </div>
-        <div class="modal-footer justify-content-between">
-          <button id="btn-close" type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
 
 
 </div>
@@ -145,11 +117,8 @@
 <!-- SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-<script defer src="../script/face-api.min.js"></script>
 <script src="../script/theme.js"></script>
-<script defer src="../script/cookies.js"></script>
-<script defer src="../script/login.js"></script>
-<script defer src="../script/security.js"></script>
+<script defer src="../script/registro.js"></script>
 
 
 </body>

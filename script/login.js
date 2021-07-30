@@ -45,7 +45,9 @@ function validar_credenciales(sCorreo, sContrasena) {
     // Cookies.set('apellido', data.apellido, {
     //   expires: 2
     // });
-    localStorage.setItem ('apellido',data.apellido)
+
+    
+    localStorage.setItem ('apellido',codificarBase64(data.apellido))
 
     if (data.roles[0].nombre == 'ROLE_ALUM') {
       $('#modal-default').modal();
@@ -59,11 +61,11 @@ function validar_credenciales(sCorreo, sContrasena) {
       ]).then(iniciarVideo)
       iniciarVideo();
 
-      localStorage.setItem ('apellido',data.apellido);
-      localStorage.setItem ('usuario',data.nombre +' '+ data.apellido);
-      localStorage.setItem ('nombre',data.nombre);
-      localStorage.setItem ('id',data.idUsuario);
-      localStorage.setItem ('rol',data.roles[0].nombre);
+      localStorage.setItem ('apellido',codificarBase64(data.apellido));
+      localStorage.setItem ('usuario',codificarBase64(data.nombre +' '+ data.apellido));
+      localStorage.setItem ('nombre',codificarBase64(data.nombre));
+      localStorage.setItem ('id',codificarBase64(data.idUsuario));
+      localStorage.setItem ('rol',codificarBase64(data.roles[0].nombre));
       // Cookies.set('apellido', data.apellido, {
       //   expires: 200
       // });
@@ -82,11 +84,11 @@ function validar_credenciales(sCorreo, sContrasena) {
 
     } else if (data.roles[0].nombre == 'ROLE_PROF') {
 
-      localStorage.setItem ('rol',data.roles[0].nombre);
+      localStorage.setItem ('rol',codificarBase64(data.roles[0].nombre));
       // Cookies.set('rol', data.roles[0].nombre, {
       //   expires: 200
       // });
-      localStorage.setItem ('usuario',data.nombre + ' ' + data.apellido);
+      localStorage.setItem ('usuario',codificarBase64(data.nombre + ' ' + data.apellido));
 
       // Cookies.set('usuario', data.nombre + ' ' + data.apellido, {
       //   expires: 200
@@ -134,7 +136,8 @@ $(document).ready(function () {
   const video = document.getElementById('video')
 
   video.addEventListener('play', async () => {
-    var apellido = localStorage.getItem('apellido');
+    var apellido = decodificarBase64(localStorage.getItem('apellido'));
+
     const labeledFaceDescriptors = await loadLabeledImages(apellido)
     const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.6)
     console.log(faceMatcher._labeledDescriptors)
@@ -153,7 +156,7 @@ $(document).ready(function () {
       console.log(results.toString());
 
       $("#alumnos").text(results.toString());
-      console.log(Cookies.get('apellido'));
+      //console.log(Cookies.get('apellido'));
       var alumno = results.toString().includes(apellido);
       if (alumno == true) {
         $("#loading").text("Identidad confirmada, redireccionando...");
