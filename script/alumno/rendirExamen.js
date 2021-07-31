@@ -42,13 +42,13 @@ window.onload = function () {
 
 $(document).ready(function () {
   var fechaActual = moment().format('HH:mm:ss');
-  localStorage.setItem('fechaActual', fechaActual, {
+  localStorage.setItem('fechaActual', codificarBase64(fechaActual), {
     expires: 2
   });
-  var idUser = localStorage.getItem('id');
-  var idExamen = localStorage.getItem('idExamen');
+  var idUser = decodificarBase64(localStorage.getItem('id'));
+  var idExamen = decodificarBase64(localStorage.getItem('idExamen'));
   setNombre();
-  cargarFoto(localStorage.getItem('apellido'));
+  cargarFoto(decodificarBase64(localStorage.getItem('apellido')));
   var ruta = 'https://viex-app.herokuapp.com';
   cargarCantidadExamenesPendientes(idUser);
   cargarCantidadCursos(idUser);
@@ -159,9 +159,9 @@ $(document).on('click', '#btn-enviar', function (event) {
   var ruta = 'https://viex-app.herokuapp.com';
   // Retrieve time spent on current page
   var tiempo = TimeMe.getTimeOnCurrentPageInSeconds();
-  var idExamen = localStorage.getItem('idExamen');
-  var idUsuario = localStorage.getItem('id');
-  var fechaInicioExamen = localStorage.getItem('fechaActual');
+  var idExamen = decodificarBase64(localStorage.getItem('idExamen'));
+  var idUsuario = decodificarBase64(localStorage.getItem('id'));
+  var fechaInicioExamen = decodificarBase64(localStorage.getItem('fechaActual'));
   $.ajax({
     url: ruta + '/examenes/' + idExamen,
     type: 'GET',

@@ -298,10 +298,11 @@
   <!-- page script -->
   <script src="../../script/docente/listaExamenes.js"></script>
   <script src="../../script/permisos.js"></script>
+  <script src="../../script/security.js"></script>
 
   <script type="text/javascript">
     function preloadFunc() {
-      if (localStorage.getItem('rol') != 'ROLE_PROF') {
+      if (decodificarBase64(localStorage.getItem('rol') != 'ROLE_PROF')) {
         document.location.href = "../login.html";
       }
     }

@@ -1,7 +1,7 @@
 $(document).ready(function () {
   setNombre();
-  var idUser = localStorage.getItem('id');
-  cargarFoto(localStorage.getItem('apellido'));
+  var idUser = decodificarBase64(localStorage.getItem('id'));
+  cargarFoto(decodificarBase64(localStorage.getItem('apellido')));
   cargarCantidadExamenesPendientes(idUser);
   cargarCantidadCursos(idUser);
   cargarCantidadExamenes(idUser);

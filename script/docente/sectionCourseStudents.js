@@ -1,10 +1,10 @@
 $(document).ready(function () {
     setNombre();
-    var idUser = localStorage.getItem('id');
+    var idUser = decodificarBase64(localStorage.getItem('id'));
     cargarCantidadExamenes(idUser);
     cargarCantidadCursos(idUser);
-    var course_id = localStorage.getItem('course_id');
-    var course_name = localStorage.getItem('course_name');
+    var course_id = decodificarBase64(localStorage.getItem('course_id'));
+    var course_name = decodificarBase64(localStorage.getItem('course_name'));
     console.log(course_id);
     console.log(course_name);
     $('.nombre-curso-activo').each(function (index) {
@@ -14,7 +14,7 @@ $(document).ready(function () {
 });
 
 $(document).on('click', '#tab-lista-alumnos-tab', function (event) {
-    var id = localStorage.getItem('course_id');
+    var id = decodificarBase64(localStorage.getItem('course_id'));
     console.log(id)
     ruta = 'https://viex-app.herokuapp.com';
     var x = 0;
@@ -82,7 +82,7 @@ $(document).on('click', '#tab-lista-alumnos-tab', function (event) {
 $(document).on('click', '#btn-agregar-alumno', function (event) {
     $('#btn-agregar-alumno').attr('disabled', true);
     var ruta = 'https://viex-app.herokuapp.com';
-    var course_id = localStorage.getItem('course_id');
+    var course_id = decodificarBase64(localStorage.getItem('course_id'));
     //algoritmo para asignar los alumnos en un array
     var alumnos = $('#txt-alumnos').val();
     listaAlumnos = alumnos.split('\n');
@@ -173,7 +173,7 @@ $(document).on('click', '#btn-agregar-alumno', function (event) {
 
 
 $(document).on('click', '#btn-eliminar-alumno', function (event) {
-    var course_id = localStorage.getItem('course_id');
+    var course_id = decodificarBase64(localStorage.getItem('course_id'));
     ruta = 'https://viex-app.herokuapp.com';
     var currentRow = $(this).closest("tr");
     var data = $('#tbl-lista-alumnos').DataTable().row(currentRow).data();

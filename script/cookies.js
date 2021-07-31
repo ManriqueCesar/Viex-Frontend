@@ -1,6 +1,6 @@
 
 function setNombre() {
-    var usuario = localStorage.getItem('usuario');
+    var usuario = decodificarBase64(localStorage.getItem('usuario'));
     $('#nombreUser').text(usuario);
   
   }
