@@ -242,7 +242,7 @@
 
   <script type="text/javascript">
     function preloadFunc() {
-      if (decodificarBase64(localStorage.getItem('rol') != 'ROLE_PROF')) {
+      if (decodificarBase64(localStorage.getItem('rol')) != 'ROLE_PROF') {
         document.location.href = "../login.html";
       }
     }

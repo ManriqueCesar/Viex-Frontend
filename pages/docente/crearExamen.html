@@ -747,14 +747,15 @@
   <script src="../../plugins/wickedpicker/src/wickedpicker.js"></script>
   <!-- iCheck 1.0.1 -->
   <script src="../../plugins/iCheck/icheck.min.js"></script>
+  <script src="../../script/security.js"></script>
 
   <script type="text/javascript">
     function preloadFunc() {
-      if (decodificarBase64(localStorage.getItem('rol') != 'ROLE_PROF')) {
-        document.location.href = "../login.html";
+      if (decodificarBase64(localStorage.getItem('rol')) != 'ROLE_PROF') {
+       // document.location.href = "../login.html";
       }
     }
-    window.onpaint = preloadFunc();
+   // window.onpaint = preloadFunc();
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -764,7 +765,7 @@
   <script src="../../script/docente/crearExamen.js"></script>
   <script src="../../script/cookies.js"></script>
   <script src="../../script/permisos.js"></script>
-  <script src="../../script/security.js"></script>
+
 
   <style type="text/css">
     .block {

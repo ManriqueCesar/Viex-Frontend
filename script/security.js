@@ -6,7 +6,17 @@ function codificarBase64(cadena){
 
 function decodificarBase64(cadena){
     console.log("decodificando");
-    var decrypt = btoa(cadena);
-    return atob(decrypt);
+    return atob(cadena);
 };
 
+
+function cargarUsuario(){
+    function preloadFunc() {
+        console.log()
+      if (decodificarBase64(localStorage.getItem('rol')) != 'ROLE_PROF') {
+        document.location.href = "../login.html";
+      }
+    }
+    window.onpaint = preloadFunc();
+  }
+  
