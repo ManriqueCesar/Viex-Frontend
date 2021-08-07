@@ -2,9 +2,9 @@
 
 $('#btn-registro').click(function () {
   //$("#btn-registro").attr('disabled', 'disabled');
-  nombres = document.querySelector('#txt-email').value;
+  nombres = document.querySelector('#txt-nombres').value;
   apellidos = document.querySelector('#txt-apellidos').value;
-  correo = document.querySelector('#txt-nombres').value;
+  correo = document.querySelector('#txt-email').value;
   dni = document.querySelector('#txt-dni').value;
   contrasena = document.querySelector('#txt-password').value;
   repetirContraseña = document.querySelector('#txt-repeatPassword').value
@@ -48,7 +48,7 @@ function registro(user) {
     toast: true,
     position: 'top-end',
     showConfirmButton: false,
-    timer: 3000
+    timer: 7000
   });
 
 
