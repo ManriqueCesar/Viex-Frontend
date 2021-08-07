@@ -173,7 +173,62 @@
                 <div class="tab-content" id="custom-tabs-one-tabContent">
                   <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
                     aria-labelledby="custom-tabs-one-home-tab">
-                    Filtro por periodo / curso que mostrará el resumen de notas
+                    <div class="">
+                      <div class="card">
+                        <div class="card-header ui-sortable-handle" style="cursor: move;">
+                          <h3 class="card-title">
+                            <i class="fas fa-chart-area mr-1"></i>
+                            SEGUIMIENTO DE PROMEDIO
+                          </h3>
+                        </div><!-- /.card-header -->
+                        <div class="card-body">
+                          <div class="tab-content p-0">
+                            <!-- Morris chart - Sales -->
+                            <div class="chart tab-pane active" id="revenue-chart"
+                              style="position: relative; height: 300px;">
+                              <div class="chartjs-size-monitor">
+                                <div class="chartjs-size-monitor-expand">
+                                  <div class=""></div>
+                                </div>
+                                <div class="chartjs-size-monitor-shrink">
+                                  <div class=""></div>
+                                </div>
+                              </div>
+                              <canvas id="revenue-chart-canvas" height="375"
+                                style="height: 300px; display: block; width: 638px;" width="797"
+                                class="chartjs-render-monitor"></canvas>
+                            </div>
+                          </div>
+                        </div><!-- /.card-body -->
+                      </div>
+                      <!-- solid sales graph -->
+                      <div class="card bg-gradient-info">
+                        <div class="card-header border-0">
+                          <h3 class="card-title">
+                            <i class="fas fa-th mr-1"></i>
+                            SEGUIMIENTO DE PERIODO 2020-0
+                          </h3>
+                          <div class="card-tools">
+                            <div class="form-group row">
+                              <div class="col-md-12 col-sm-4 ">
+                                <select class="form-control">
+                                  <option>2019-1</option>
+                                  <option>2019-2</option>
+                                  <option>2020-0</option>
+                                  <option>2020-1</option>
+                                </select>
+                              </div>
+                            </div>  
+                          </div>
+                        </div>
+                        <div class="card-body">
+                          <canvas class="chart" id="line-chart"
+                            style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                        </div>
+                        <!-- /.card-body -->
+                      </div>
+                      <!-- /.card -->
+                    </div>
                   </div>
                   <div class="tab-pane fade" id="tab-lista-alumnos" role="tabpanel"
                     aria-labelledby="tab-lista-alumnos-tab">
@@ -221,117 +276,115 @@
     </div>
     <!-- Content Wrapper. Contains page content -->
 
-    <!-- /.content-wrapper -->
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" id="modal-alumnos" role="dialog"
-      aria-labelledby="myLargeModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header" style="text-align: center;">
-            <h5 class="modal-title" id="exampleModalLongTitle">Lista de alumnos</h5>
-          </div>
+  <!-- /.content-wrapper -->
+  <div class="modal fade bd-example-modal-lg" tabindex="-1" id="modal-alumnos" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header" style="text-align: center;">
+          <h5 class="modal-title" id="exampleModalLongTitle">Lista de alumnos</h5>
+        </div>
 
-          <section class="content">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-12">
-                  <div class="card">
+        <section class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
 
-                    <!-- /.card-header -->
-                    <div class="card-body">
+                  <!-- /.card-header -->
+                  <div class="card-body">
 
-                      <div class="table table-responsive">
-                        <table id="tbl-listado" class="table table-bordered table-striped">
-                          <thead>
-                            <tr>
-                              <th>ALUMNOS MATRICULADOS</th>
-                              <th>EMAIL</th>
-                            </tr>
+                    <div class="table table-responsive">
+                      <table id="tbl-listado" class="table table-bordered table-striped">
+                        <thead>
+                          <tr>
+                            <th>ALUMNOS MATRICULADOS</th>
+                            <th>EMAIL</th>
+                          </tr>
 
-                          </thead>
-                        </table>
+                        </thead>
+                      </table>
 
-                      </div>
-                      <!-- /.card-body -->
                     </div>
-                    <!-- /.card -->
+                    <!-- /.card-body -->
                   </div>
+                  <!-- /.card -->
                 </div>
-                <!-- /.row -->
               </div>
+              <!-- /.row -->
             </div>
-            <!-- /.container-fluid -->
-          </section>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
           </div>
+          <!-- /.container-fluid -->
+        </section>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
-
-
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" id="modal-examenCurso" role="dialog"
-      aria-labelledby="myLargeModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header" style="text-align: center;">
-            <h5 class="modal-title" id="modal-title">Lista de exámenes</h5>
-          </div>
-          <section class="content">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-12">
-                  <div class="card">
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                      <div class="table table-responsive">
-                        <table id="tbl-listadoExamen" class="table table-bordered table-striped">
-                          <thead>
-                            <tr>
-                              <th>#</th>
-                              <th>Título</th>
-                              <th>Fecha inicio</th>
-                              <th>Tiempo duración</th>
-                              <th>Fecha envío</th>
-                              <th>Estado</th>
-                              <th>Tiempo plagio</th>
-                              <th>Nota</th>
-                              <th>Acción</th>
-                            </tr>
-                          </thead>
-                        </table>
-                      </div>
-                      <!-- /.card-body -->
+  </div>
+  <!--modal lista examenes-->
+  <div class="modal fade bd-example-modal-lg" tabindex="-1" id="modal-examenCurso" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header" style="text-align: center;">
+          <h5 class="modal-title" id="modal-title">Lista de exámenes</h5>
+        </div>
+        <section class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    <div class="table table-responsive">
+                      <table id="tbl-listadoExamen" class="table table-bordered table-striped">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th>Título</th>
+                            <th>Fecha inicio</th>
+                            <th>Tiempo duración</th>
+                            <th>Fecha envío</th>
+                            <th>Estado</th>
+                            <th>Tiempo plagio</th>
+                            <th>Nota</th>
+                          </tr>
+                        </thead>
+                      </table>
                     </div>
-                    <!-- /.card -->
+                    <!-- /.card-body -->
                   </div>
+                  <!-- /.card -->
                 </div>
-                <!-- /.row -->
               </div>
+              <!-- /.row -->
             </div>
-            <!-- /.container-fluid -->
-          </section>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
           </div>
+          <!-- /.container-fluid -->
+        </section>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
+  </div>
+  <!---->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 1.0.0-pre
+    </div>
+    <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 4 - TIS</a>.</strong>
+    All
+    rights reserved.
+  </footer>
 
-    <footer class="main-footer">
-      <div class="float-right d-none d-sm-block">
-        <b>Version</b> 1.0.0-pre
-      </div>
-      <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 4 - TIS</a>.</strong>
-      All
-      rights reserved.
-    </footer>
 
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
   </div>
 
   <!-- jQuery -->
@@ -349,6 +402,8 @@
   <!-- InputMask -->
   <script src="../../bower_components/AdminLTE/plugins/moment/moment.min.js"></script>
   <script src="../../bower_components/AdminLTE/plugins/inputmask/jquery.inputmask.min.js"></script>
+  <!-- ChartJS -->
+  <script src="../../plugins/chart.js/Chart.min.js"></script>
   <!-- date-range-picker -->
   <script src="../../bower_components/AdminLTE/plugins/daterangepicker/daterangepicker.js"></script>
 

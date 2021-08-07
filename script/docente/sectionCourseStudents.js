@@ -229,7 +229,7 @@ $(document).on('click', '#btn-eliminar-alumno', function (event) {
 $(document).on('click', '#btn-listExamsAlumn', function (event) {
     $('#modal-examenes_alumno').modal('toggle');
     var currentRow = $(this).closest("tr");
-    var id_curso = localStorage.getItem('course_id');
+    var id_curso = decodificarBase64(localStorage.getItem('course_id'));
     var data = $('#tbl-lista-alumnos').DataTable().row(currentRow).data();
     var id_usuario_alumno = data.idAlumno;
     var nombre_alumno = data.apellido + ', ' + data.nombre;
