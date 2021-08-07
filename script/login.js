@@ -93,10 +93,9 @@ function validar_credenciales(sCorreo, sContrasena) {
       // Cookies.set('usuario', data.nombre + ' ' + data.apellido, {
       //   expires: 200
       // });
-      localStorage.setItem ('nombre',data.nombre);
-      localStorage.setItem ('id',data.idUsuario);
-      localStorage.setItem ('plan', JSON.stringify(data.plan));
-
+      localStorage.setItem ('nombre',codificarBase64(data.nombre));
+      localStorage.setItem ('id',codificarBase64(data.idUsuario));
+      localStorage.setItem ('plan', codificarBase64(JSON.stringify(data.plan)));
       // Cookies.set('nombre', data.nombre, {
       //   expires: 200
       // });
