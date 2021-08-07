@@ -178,7 +178,7 @@ $(document).on('click', '#btn-eliminar-alumno', function (event) {
     var currentRow = $(this).closest("tr");
     var data = $('#tbl-lista-alumnos').DataTable().row(currentRow).data();
     var nombre_alumno = data.nombre+" "+data.apellido;
-    var id_alumno = data.idUsuario;
+    var id_alumno = data.idAlumno;
     var request = {};
     request.idCurso = course_id;
     request.idAlumno = id_alumno;
@@ -229,12 +229,63 @@ $(document).on('click', '#btn-eliminar-alumno', function (event) {
 $(document).on('click', '#btn-listExamsAlumn', function (event) {
     $('#modal-examenes_alumno').modal('toggle');
     var currentRow = $(this).closest("tr");
+    var id_curso = localStorage.getItem('course_id');
     var data = $('#tbl-lista-alumnos').DataTable().row(currentRow).data();
-    var id = data.idUsuario;
+    var id_usuario_alumno = data.idAlumno;
     var nombre_alumno = data.apellido + ', ' + data.nombre;
     $('#modal-examenes_alumno #modal-title').text('Lista de exámenes: '+nombre_alumno);
-    console.log(id);
+    console.log(id_usuario_alumno);
     console.log(nombre_alumno);
     ruta = 'https://viex-app.herokuapp.com';
     var x = 0;  
+    var table = $('#tbl-lista-examen_alumno').DataTable({
+        "destroy": true,
+        "lengthChange": false,
+        "searching": false,
+        "autoWidth": false,
+        "responsive": true,
+        "language": {
+            "sSearch": "Buscar:",
+            "zeroRecords": "No se encontraron resultados",
+            "info": "Mostrando alumnos del _START_ al _END_ , de un total de _TOTAL_ alumnos",
+            "infoEmpty": "Mostrando alumnos del 0 al 0, de un total de 0 alumnos",
+            "infoFiltered": "(Filtrando de un total de _MAX_ alumnos)",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Ultimo",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior",
+            }
+        },
+        "order": [[ 1, 'asc' ]],
+        initComplete: function () {
+            this.api().columns().every(function () {
+                var column = this;
+            });
+            $(".cboselect").select2({ closeOnSelect: false });
+        },
+        ajax: {
+            url: ruta + '/examenes/curso/'+ id_curso +'/alumno/' + id_usuario_alumno,
+            dataSrc: 'examenes',
+            async: false,
+            cache: false,
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('#tbl-lista-examen_alumno').DataTable().clear().draw();
+            }
+        },
+        columns: [
+            { data: null },
+            { data: 'titulo' },
+            { data: 'fecha_inicio' },
+            { data: 'tiempo_duracion' },
+            { data: 'fecha_envio' },
+            { data: 'estado' },
+            { data: 'tiempo_plagio' },            
+            { data: 'nota' }]
+    });
+    table.on( 'order.dt search.dt', function () {
+        table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    } ).draw();
 });
