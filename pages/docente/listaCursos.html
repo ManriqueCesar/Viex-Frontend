@@ -336,10 +336,11 @@
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 
   <script src="https://kit.fontawesome.com/c9032fc236.js" crossorigin="anonymous"></script>
+  <script src="../../script/security.js"></script>
 
   <script type="text/javascript">
     function preloadFunc() {
-      if (decodificarBase64(localStorage.getItem('rol') != 'ROLE_PROF')) {
+      if (decodificarBase64(localStorage.getItem('rol')) != 'ROLE_PROF') {
         document.location.href = "../login.html";
       }
     }
@@ -348,7 +349,7 @@
   <script src="../../script/docente/listaCursos.js"></script>
   <script src="../../script/cookies.js"></script>
   <script src="../../script/permisos.js"></script>
-  <script src="../../script/security.js"></script>
+
   
 </body>
 

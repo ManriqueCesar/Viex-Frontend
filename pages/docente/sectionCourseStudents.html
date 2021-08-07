@@ -208,7 +208,7 @@
                               <table id="tbl-lista-alumnos" class="table table-bordered table-striped">
                                 <thead>
                                   <tr>
-                                    <th>#</th>
+                                    <th></th>
                                     <th>Nombres</th>
                                     <th>Apellidos</th>
                                     <th>Promedio</th>
@@ -261,7 +261,7 @@
                         <table id="tbl-lista-examen_alumno" class="table table-bordered table-striped">
                           <thead>
                             <tr>
-                              <th>#</th>
+                              <th></th>
                               <th>Título</th>
                               <th>Fecha inicio</th>
                               <th>Tiempo duración</th>
@@ -332,7 +332,7 @@
   
   <script type="text/javascript">
     function preloadFunc() {
-      if (decodificarBase64(localStorage.getItem('rol') != 'ROLE_PROF')) {
+      if (decodificarBase64(localStorage.getItem('rol')) != 'ROLE_PROF') {
         document.location.href = "../login.html";
       }
     }

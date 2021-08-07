@@ -82,6 +82,7 @@ function editarTitulo() {
 }
 
 $(document).ready(function () {
+  //cargarUsuario();
   var idUsuario = decodificarBase64(localStorage.getItem('id'));
   setNombre();
   editarTitulo();

@@ -18,7 +18,8 @@ $(document).on('click', '#tab-lista-alumnos-tab', function (event) {
     console.log(id)
     ruta = 'https://viex-app.herokuapp.com';
     var x = 0;
-    $('#tbl-lista-alumnos').DataTable({
+    var data_result = [];
+    var table = $('#tbl-lista-alumnos').DataTable({
         "destroy": true,
         "lengthChange": false,
         "searching": false,
@@ -37,18 +38,16 @@ $(document).on('click', '#tab-lista-alumnos-tab', function (event) {
                 "sPrevious": "Anterior",
             }
         },
+        "order": [[ 1, 'asc' ]],
         initComplete: function () {
             this.api().columns().every(function () {
                 var column = this;
-
             });
-
             $(".cboselect").select2({ closeOnSelect: false });
         },
-
         ajax: {
-            url: ruta + '/detallecurso/curso/alumnos/' + id,
-            dataSrc: '',
+            url: ruta + '/cursos/alumnos/' + id,
+            dataSrc: 'alumnos',
             async: false,
             cache: false,
             error: function (jqXHR, textStatus, errorThrown) {
@@ -59,21 +58,24 @@ $(document).on('click', '#tab-lista-alumnos-tab', function (event) {
             { data: null },
             { data: 'nombre' },
             { data: 'apellido' },
-            { data: null },
-            { data: null },
-            { data: null },
-            { data: null },
+            { data: 'promedio' },
+            { data: 'cantExamAprob' },
+            { data: 'cantExamRepro' },
+            { data: 'cantExamAusen' },
             {
                 data: null,
                 render: function (data, type, row) {
                     return '<img src="../../dist/img/icons/icon_delete.png"  id="btn-eliminar-alumno" title="ELIMINAR" width=30px;  height=30px; type="button"></button>' + ' | ' +
                         '<img src="../../dist/img/icons/icon_view.png"  id="btn-listExamsAlumn" title="Ver exámenes" width=30px;  height=30px; type="button">'
                         ;
-
                 }
             }]
     });
-
+    table.on( 'order.dt search.dt', function () {
+        table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    } ).draw();
 });
 
 
