@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="../../dist/css/style_sidebar2.css">
 </head>
 
-<body class="hold-transition sidebar-mini sidebar-collapse">
+<body class="hold-transition sidebar-mini sidebar-collapse" style="padding-bottom: 0px;">
 
   <div class="wrapper">
 
@@ -66,7 +66,7 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4" style="float: left!important;">
       <!-- Brand Logo -->
       <a href="../index.html" class="brand-link">
         <img src="../../dist/img/viex-logo.png" alt="WebSecurity Logo" class="brand-image img-circle elevation-3"
@@ -182,24 +182,28 @@
                           </h3>
                         </div><!-- /.card-header -->
                         <div class="card-body">
-                          <div class="tab-content p-0">
-                            <!-- Morris chart - Sales -->
-                            <div class="chart tab-pane active" id="revenue-chart"
-                              style="position: relative; height: 300px;">
-                              <div class="chartjs-size-monitor">
-                                <div class="chartjs-size-monitor-expand">
-                                  <div class=""></div>
-                                </div>
-                                <div class="chartjs-size-monitor-shrink">
-                                  <div class=""></div>
-                                </div>
-                              </div>
-                              <canvas id="revenue-chart-canvas" height="375"
-                                style="height: 300px; display: block; width: 638px;" width="797"
-                                class="chartjs-render-monitor"></canvas>
-                            </div>
+                          <div class="d-flex">
+                            <p class="d-flex flex-column">
+                              <span class="text-bold text-lg">10</span>
+                              <span>Cursos en total</span>
+                            </p>
                           </div>
-                        </div><!-- /.card-body -->
+                          <!-- /.d-flex -->
+          
+                          <div class="position-relative mb-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                            <canvas id="visitors-chart" height="250" width="675" style="display: block; height: 200px; width: 540px;" class="chartjs-render-monitor"></canvas>
+                          </div>
+          
+                          <div class="d-flex flex-row justify-content-end">
+                            <span class="mr-2">
+                              <i class="fas fa-square" style="color: rgba(210, 214, 222, 1);"></i> Promedio general
+                            </span>
+          
+                            <span>
+                              <i class="fas fa-square" style="color: #18ADC4;"></i> Promedio menor más frecuente
+                            </span>
+                          </div>
+                        </div>
                       </div>
                       <!-- solid sales graph -->
                       <div class="card bg-gradient-info">
@@ -218,7 +222,7 @@
                                   <option>2020-1</option>
                                 </select>
                               </div>
-                            </div>  
+                            </div>
                           </div>
                         </div>
                         <div class="card-body">
@@ -276,115 +280,114 @@
     </div>
     <!-- Content Wrapper. Contains page content -->
 
-  <!-- /.content-wrapper -->
-  <div class="modal fade bd-example-modal-lg" tabindex="-1" id="modal-alumnos" role="dialog"
-    aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header" style="text-align: center;">
-          <h5 class="modal-title" id="exampleModalLongTitle">Lista de alumnos</h5>
-        </div>
-
-        <section class="content">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-12">
-                <div class="card">
-
-                  <!-- /.card-header -->
-                  <div class="card-body">
-
-                    <div class="table table-responsive">
-                      <table id="tbl-listado" class="table table-bordered table-striped">
-                        <thead>
-                          <tr>
-                            <th>ALUMNOS MATRICULADOS</th>
-                            <th>EMAIL</th>
-                          </tr>
-
-                        </thead>
-                      </table>
-
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-                </div>
-              </div>
-              <!-- /.row -->
-            </div>
+    <!-- /.content-wrapper -->
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" id="modal-alumnos" role="dialog"
+      aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header" style="text-align: center;">
+            <h5 class="modal-title" id="exampleModalLongTitle">Lista de alumnos</h5>
           </div>
-          <!-- /.container-fluid -->
-        </section>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+
+          <section class="content">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-12">
+                  <div class="card">
+
+                    <!-- /.card-header -->
+                    <div class="card-body">
+
+                      <div class="table table-responsive">
+                        <table id="tbl-listado" class="table table-bordered table-striped">
+                          <thead>
+                            <tr>
+                              <th>ALUMNOS MATRICULADOS</th>
+                              <th>EMAIL</th>
+                            </tr>
+
+                          </thead>
+                        </table>
+
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                  </div>
+                </div>
+                <!-- /.row -->
+              </div>
+            </div>
+            <!-- /.container-fluid -->
+          </section>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <!--modal lista examenes-->
-  <div class="modal fade bd-example-modal-lg" tabindex="-1" id="modal-examenCurso" role="dialog"
-    aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-      <div class="modal-content">
-        <div class="modal-header" style="text-align: center;">
-          <h5 class="modal-title" id="modal-title">Lista de exámenes</h5>
-        </div>
-        <section class="content">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <!-- /.card-header -->
-                  <div class="card-body">
-                    <div class="table table-responsive">
-                      <table id="tbl-listadoExamen" class="table table-bordered table-striped">
-                        <thead>
-                          <tr>
-                            <th></th>
-                            <th>Título</th>
-                            <th>Fecha inicio</th>
-                            <th>Tiempo duración</th>
-                            <th>Fecha envío</th>
-                            <th>Estado</th>
-                            <th>Tiempo plagio</th>
-                            <th>Nota</th>
-                          </tr>
-                        </thead>
-                      </table>
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-                </div>
-              </div>
-              <!-- /.row -->
-            </div>
+    <!--modal lista examenes-->
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" id="modal-examenCurso" role="dialog"
+      aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header" style="text-align: center;">
+            <h5 class="modal-title" id="modal-title">Lista de exámenes</h5>
           </div>
-          <!-- /.container-fluid -->
-        </section>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+          <section class="content">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-12">
+                  <div class="card">
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                      <div class="table table-responsive">
+                        <table id="tbl-listadoExamen" class="table table-bordered table-striped">
+                          <thead>
+                            <tr>
+                              <th></th>
+                              <th>Título</th>
+                              <th>Fecha inicio</th>
+                              <th>Tiempo duración</th>
+                              <th>Fecha envío</th>
+                              <th>Estado</th>
+                              <th>Tiempo plagio</th>
+                              <th>Nota</th>
+                            </tr>
+                          </thead>
+                        </table>
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                  </div>
+                </div>
+                <!-- /.row -->
+              </div>
+            </div>
+            <!-- /.container-fluid -->
+          </section>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <!---->
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 1.0.0-pre
-    </div>
-    <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 4 - TIS</a>.</strong>
-    All
-    rights reserved.
-  </footer>
+    <!---->
+    
+    <footer class="main-footer">
+      <div class="float-right d-none d-sm-block">
+        <b>Version</b> 1.0.0-pre
+      </div>
+      <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 4 - TIS</a>.</strong>
+      All rights reserved.
+    </footer>
 
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
   </div>
 
   <!-- jQuery -->

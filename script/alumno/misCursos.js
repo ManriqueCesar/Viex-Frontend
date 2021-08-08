@@ -5,7 +5,7 @@ $(document).ready(function () {
   cargarCantidadExamenesPendientes(idUser);
   cargarCantidadCursos(idUser);
   cargarCantidadExamenes(idUser);
-  cargar_grafico_seguimientoPeriodos();
+  cargar_grafico_promedioGeneralPeriodos();
   cargar_grafico_promedioPeriodo("2020-0");
   ruta = 'https://viex-app.herokuapp.com';
   var x = 0;
@@ -70,7 +70,7 @@ $(document).ready(function () {
           return '<img src="../../dist/img/icons/icon_view.png"  id="btn-viewListExamns" title="Ver Curso" width=30px;  height=30px; type="button">';
         }
       }]
-  });  
+  });
 });
 
 
@@ -195,64 +195,84 @@ $(document).on('click', '#btn-viewListExamns', function (event) {
   }).draw();
 });
 
-function cargar_grafico_seguimientoPeriodos() {
-  var salesChartCanvas = document.getElementById('revenue-chart-canvas').getContext('2d');
-  // $('#revenue-chart').get(0).getContext('2d');
+function cargar_grafico_promedioGeneralPeriodos() {
+  var ticksStyle = {
+    fontColor: '#495057',
+    fontStyle: 'bold'
+  }
+  var mode = 'index'
+  var intersect = true
 
-  var salesChartData = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    datasets: [
-      {
-        label: 'Digital Goods',
-        backgroundColor: 'rgba(60,141,188,0.9)',
+  var $visitorsChart = $('#visitors-chart');
+  // eslint-disable-next-line no-unused-vars
+  var visitorsChart = new Chart($visitorsChart, {
+    data: {
+      labels: ['2019-1', '2019-2', '2020-0', '2020-1', '2020-2', '2021-0', '2021-1'],
+      datasets: [{
+        type: 'line',
+        label: 'Promedio menor más frecuente',
+        data: [10, 12, 11, 14, 11, 12, 11],
+        backgroundColor: '#18ADC4',
         borderColor: 'rgba(60,141,188,0.8)',
-        pointRadius: false,
-        pointColor: '#3b8bba',
+        pointBorderColor: '#17a2b8',
         pointStrokeColor: 'rgba(60,141,188,1)',
         pointHighlightFill: '#fff',
         pointHighlightStroke: 'rgba(60,141,188,1)',
-        data: [28, 48, 40, 19, 86, 27, 90]
+        fill: true
+        // pointHoverBackgroundColor: '#007bff',
+        // pointHoverBorderColor    : '#007bff'
       },
       {
-        label: 'Electronics',
+        type: 'line',
+        label: 'Promedio general',
+        data: [12, 15, 13, 16, 9, 14, 12],
         backgroundColor: 'rgba(210, 214, 222, 1)',
-        borderColor: 'rgba(210, 214, 222, 1)',
-        pointRadius: false,
-        pointColor: 'rgba(210, 214, 222, 1)',
+        borderColor: '#B9BFCC',
+        pointBorderColor: '#B9BFCC',
         pointStrokeColor: '#c1c7d1',
         pointHighlightFill: '#fff',
         pointHighlightStroke: 'rgba(220,220,220,1)',
-        data: [65, 59, 80, 81, 56, 55, 40]
-      }
-    ]
-  };
-
-  var salesChartOptions = {
-    maintainAspectRatio: false,
-    responsive: true,
-    legend: {
-      display: false
-    },
-    scales: {
-      xAxes: [{
-        gridLines: {
-          display: false
-        }
-      }],
-      yAxes: [{
-        gridLines: {
-          display: false
-        }
+        fill: true
+        // pointHoverBackgroundColor: '#ced4da',
+        // pointHoverBorderColor    : '#ced4da'
       }]
+    },
+    options: {
+      maintainAspectRatio: false,
+      tooltips: {
+        mode: mode,
+        intersect: intersect
+      },
+      hover: {
+        mode: mode,
+        intersect: intersect
+      },
+      legend: {
+        display: false
+      },
+      scales: {
+        yAxes: [{
+          // display: false,
+          gridLines: {
+            display: true,
+            lineWidth: '4px',
+            color: 'rgba(0, 0, 0, .2)',
+            zeroLineColor: 'transparent'
+          },
+          ticks: $.extend({
+            beginAtZero: true,
+            suggestedMax: 20
+          }, ticksStyle)
+        }],
+        xAxes: [{
+          display: true,
+          gridLines: {
+            display: false
+          },
+          ticks: ticksStyle
+        }]
+      }
     }
-  };
-
-  // This will get the first returned node in the jQuery collection.
-  // eslint-disable-next-line no-unused-vars
-  var salesChart = new Chart(salesChartCanvas, {
-    type: 'line',
-    data: salesChartData,
-    options: salesChartOptions
   });
 }
 
@@ -263,12 +283,12 @@ function cargar_grafico_promedioPeriodo(periodo) {
   // $('#revenue-chart').get(0).getContext('2d');
 
   var salesGraphChartData = {
-    labels: ['2011 Q1', '2011 Q2', '2011 Q3', '2011 Q4', '2012 Q1', '2012 Q2', '2012 Q3', '2012 Q4', '2013 Q1', '2013 Q2'],
+    labels: ['Curso 1', 'curso 2', 'Curso 3', 'Curso 4'],
     datasets: [
       {
-        label: 'Digital Goods',
+        label: 'Promedio general',
         fill: false,
-        borderWidth: 2,
+        borderWidth: 4,
         lineTension: 0,
         spanGaps: true,
         borderColor: '#efefef',
@@ -276,7 +296,7 @@ function cargar_grafico_promedioPeriodo(periodo) {
         pointHoverRadius: 7,
         pointColor: '#efefef',
         pointBackgroundColor: '#efefef',
-        data: [2666, 2778, 4912, 3767, 6810, 5670, 4820, 15073, 10687, 8432]
+        data: [8, 16, 14, 15]
       }
     ]
   };
@@ -300,7 +320,8 @@ function cargar_grafico_promedioPeriodo(periodo) {
       }],
       yAxes: [{
         ticks: {
-          stepSize: 5000,
+          beginAtZero: true,
+          suggestedMax: 20,
           fontColor: '#efefef'
         },
         gridLines: {
