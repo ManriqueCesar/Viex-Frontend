@@ -11,6 +11,7 @@ $(document).ready(function () {
         console.log(index + ": " + $(this).text());
         $(this).text(course_name);
     });
+    cargar_grafico_promedioGeneralCurso();
 });
 
 $(document).on('click', '#tab-lista-alumnos-tab', function (event) {
@@ -289,3 +290,83 @@ $(document).on('click', '#btn-listExamsAlumn', function (event) {
         } );
     } ).draw();
 });
+
+function cargar_grafico_promedioGeneralCurso() {
+    var ticksStyle = {
+      fontColor: '#495057',
+      fontStyle: 'bold'
+    };
+    var mode = 'index';
+    var intersect = true;
+    var $visitorsChart = $('#visitors-chart');
+    // eslint-disable-next-line no-unused-vars
+    var visitorsChart = new Chart($visitorsChart, {
+      data: {
+        labels: ['Examen-1', 'Examen-2', 'Examen-3', 'Examen-4', 'Examen-5', 'Examen-6', 'Examen-7'],
+        datasets: [{
+          type: 'line',
+          label: 'Promedio menor más frecuente',
+          data: [10, 12, 11, 14, 11, 12, 11],
+          backgroundColor: '#18ADC4',
+          borderColor: 'rgba(60,141,188,0.8)',
+          pointBorderColor: '#17a2b8',
+          pointStrokeColor: 'rgba(60,141,188,1)',
+          pointHighlightFill: '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          fill: true
+          // pointHoverBackgroundColor: '#007bff',
+          // pointHoverBorderColor    : '#007bff'
+        },
+        {
+          type: 'line',
+          label: 'Promedio general',
+          data: [12, 15, 13, 16, 9, 14, 12],
+          backgroundColor: 'rgba(210, 214, 222, 1)',
+          borderColor: '#B9BFCC',
+          pointBorderColor: '#B9BFCC',
+          pointStrokeColor: '#c1c7d1',
+          pointHighlightFill: '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          fill: true
+          // pointHoverBackgroundColor: '#ced4da',
+          // pointHoverBorderColor    : '#ced4da'
+        }]
+      },
+      options: {
+        maintainAspectRatio: false,
+        tooltips: {
+          mode: mode,
+          intersect: intersect
+        },
+        hover: {
+          mode: mode,
+          intersect: intersect
+        },
+        legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            // display: false,
+            gridLines: {
+              display: true,
+              lineWidth: '4px',
+              color: 'rgba(0, 0, 0, .2)',
+              zeroLineColor: 'transparent'
+            },
+            ticks: $.extend({
+              beginAtZero: true,
+              suggestedMax: 20
+            }, ticksStyle)
+          }],
+          xAxes: [{
+            display: true,
+            gridLines: {
+              display: false
+            },
+            ticks: ticksStyle
+          }]
+        }
+      }
+    });
+  }

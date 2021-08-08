@@ -182,8 +182,100 @@
                   <div class="tab-content" id="custom-tabs-one-tabContent">
                     <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
                       aria-labelledby="custom-tabs-one-home-tab">
-                      <div class="row col-sm-12">
-                        Resumen del curso (promedio del aula (todos los alumnos), promedio de todos los alumnos por examen)
+                      <div class="">
+                        <div class="row">
+                          <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-info">
+                              <div class="inner">
+                                <h3>15.0</h3>
+                
+                                <p>Promedio general del curso</p>
+                              </div>
+                              <div class="icon">
+                                <i class="ion ion-clipboard"></i>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- ./col -->
+                          <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-success">
+                              <div class="inner">
+                                <h3>3.0</h3>
+                
+                                <p>Desviación estándar</p>
+                              </div>
+                              <div class="icon">
+                                <i class="ion ion-stats-bars"></i>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- ./col -->
+                          <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-warning">
+                              <div class="inner">
+                                <h3>5</h3>
+                
+                                <p>Alumnos aprobados</p>
+                              </div>
+                              <div class="icon">
+                                <i class="ion ion-person"></i>
+                                <i class="ion ion-checkmark"></i>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- ./col -->
+                          <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-danger">
+                              <div class="inner">
+                                <h3>5</h3>
+                
+                                <p>Alumnos desaprobados</p>
+                              </div>
+                              <div class="icon">
+                                <i class="ion ion-person"></i>
+                                <i class="ion ion-close"></i>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- ./col -->
+                        </div>
+                        <div class="card">
+                          <div class="card-header ui-sortable-handle" style="cursor: move;">
+                            <h3 class="card-title">
+                              <i class="fas fa-chart-area mr-1"></i>
+                              SEGUIMIENTO DE PROMEDIO
+                            </h3>
+                          </div><!-- /.card-header -->
+                          <div class="card-body">
+                            <div class="d-flex">
+                              <p class="d-flex flex-column">
+                                <span class="text-bold text-lg">10</span>
+                                <span>Alumnos en curso</span>
+                              </p>
+                            </div>
+                            <!-- /.d-flex -->
+            
+                            <div class="position-relative mb-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                              <canvas id="visitors-chart" height="250" width="675" style="display: block; height: 200px; width: 540px;" class="chartjs-render-monitor"></canvas>
+                            </div>
+            
+                            <div class="d-flex flex-row justify-content-end">
+                              <span class="mr-2">
+                                <i class="fas fa-square" style="color: rgba(210, 214, 222, 1);"></i> Promedio general
+                              </span>
+            
+                              <span>
+                                <i class="fas fa-square" style="color: #18ADC4;"></i> Promedio menor más frecuente
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- solid sales graph -->
+                        <!-- /.card -->
                       </div>
                     </div>
                     <div class="tab-pane fade" id="tab-lista-alumnos" role="tabpanel"
@@ -323,6 +415,8 @@
   <script src="../../bower_components/AdminLTE/dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="../../bower_components/AdminLTE/dist/js/demo.js"></script>
+  <!-- ChartJS -->
+  <script src="../../plugins/chart.js/Chart.min.js"></script>
   <!-- Select2 -->
   <script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
   <!-- Cookies js -->
