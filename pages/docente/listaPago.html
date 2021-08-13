@@ -13,7 +13,8 @@
   <link rel="stylesheet" href="../../bower_components/AdminLTE/dist/css/adminlte.min.css">
   <!-- Select2 -->
   <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
-
+  <!-- MomentJS  -->
+  <script src="../../bower_components/AdminLTE/plugins/moment/moment.min.js"></script>
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
   <!-- DataTables -->
@@ -79,10 +80,10 @@
           <a href="crearExamen.html" class="nav-link">Crear Examen</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="listaCursos.html" class="nav-link">Ver Exámenes</a>
+          <a href="listaExamenes.html" class="nav-link">Ver Exámenes</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Ver Cursos</a>
+          <a href="listaCursos.html" class="nav-link">Ver Cursos</a>
         </li>
         <li>
           <a href="rankStudents.html" class="nav-link">Ver Ranking</a>
@@ -229,18 +230,9 @@
                           <th>FECHA</th>
                           <th>MONTO</th>
                           <th>CODIGO</th>
-                          <th>CURSO</th>
-                          <th>ALUMNOS</th>
-                          <th>ACCION</th>
+                          <th>DETALLES</th>
                         </tr>
-                        <tr>
-                          <th>FECHA</th>
-                          <th>MONTO</th>
-                          <th>CODIGO</th>
-                          <th>CURSO</th>
-                          <th>ALUMNOS</th>
-                          <th>ACCION</th>
-                        </tr>
+
                       </thead>
                     </table>
 
@@ -338,18 +330,19 @@
 
   <script src="https://kit.fontawesome.com/c9032fc236.js" crossorigin="anonymous"></script>
 
+  <script src="../../script/cookies.js"></script>
+  <script src="../../script/permisos.js"></script>
+  <script src="../../script/security.js"></script>
+
+  <script src="../../script/docente/listaPago.js"></script>
   <script type="text/javascript">
     function preloadFunc() {
       if (decodificarBase64(localStorage.getItem('rol') != 'ROLE_PROF')) {
-        document.location.href = "../login.html";
+        //document.location.href = "../login.html";
       }
     }
     window.onpaint = preloadFunc();
   </script>
-  <script src="../../script/docente/listaPago.js"></script>
-  <script src="../../script/cookies.js"></script>
-  <script src="../../script/permisos.js"></script>
-  <script src="../../script/security.js"></script>
 
 </body>
 

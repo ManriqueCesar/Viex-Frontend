@@ -2,9 +2,9 @@
 const niubiz = {
   merchantid: "522591303",
   channel: "web",
-  plan: JSON.parse(localStorage.getItem("plan")),
-  email: localStorage.getItem("email") || "antonis162010@gmail.com",
-  dni: localStorage.getItem("dni") || "12345678",
+  plan: JSON.parse(decodificarBase64(localStorage.getItem("plan"))),
+  email: decodificarBase64(localStorage.getItem("email")) || "antonis162010@gmail.com",
+  dni: decodificarBase64(localStorage.getItem("dni")) || "12345678",
   visaPurchase: null,
   ecommerce: null
 };
@@ -128,7 +128,12 @@ var cardExpiry = null;
 var cardCvv = null;
 
 // LOCAL
+function closeModal(){
+  document.location.href = "listaPago.html";
+}
+
 async function pay() {
+  $('#btnProcess').attr('disabled', true);
   let data = {
     name: document.getElementById("nombre").value,
     lastName: document.getElementById("apellido").value,
@@ -151,18 +156,19 @@ async function pay() {
     const objSave = {
       idPago: 0,
       ecommerce: niubiz.ecommerce,
-      // visa: niubiz.visaPurchase,
-      visa: 11131,
+      visa: niubiz.visaPurchase,
+      //visa: 11131,
       montoTotal: niubiz.plan.precio,
-      fechaPago: "2021-07-17",
+      fechaPago: moment().format("YYYY-MM-DD"),
       usuario: {
-        idUsuario: localStorage.getItem("id"),
+        idUsuario: decodificarBase64(localStorage.getItem("id")),
       },
     };
 
     await registerPay(objSave);
-    window.location.href = "listaPago.html";
+    document.location.href = "listaPago.html";
   } catch (error) {
+  $('#btnProcess').attr('disabled', false);
     console.log("error: ", error);
     $(".toast").toast("show");
   }

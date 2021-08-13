@@ -63,7 +63,7 @@
         <div class="modal-body">
           <div class="container-fluid" style="margin: 0 2.5rem;">
             <div class="modal__close-button">
-              <img class="modal__close-button-img" src="../../dist/img/close-modal.svg" (click)="close()" alt="x" />
+              <img class="modal__close-button-img" src="../../dist/img/close-modal.svg" onclick="closeModal()" alt="x" />
             </div>
 
             <div class="container">
@@ -140,13 +140,14 @@
 
   <script src="../../script/cookies.js"></script>
   <!-- page script -->
-  <script src="../../script/docente/payment.js"></script>
   <script src="../../script/permisos.js"></script>
-
+  <script src="../../script/security.js"></script>
+  
+  <script src="../../script/docente/payment.js"></script>
   <script type="text/javascript">
     function preloadFunc() {
-      if (localStorage.getItem('rol') != 'ROLE_PROF') {
-        document.location.href = "../login.html";
+      if (decodificarBase64(localStorage.getItem('rol') != 'ROLE_PROF')) {
+        //document.location.href = "../login.html";
       }
     }
     window.onpaint = preloadFunc();
