@@ -40,6 +40,7 @@ function validar_credenciales(sCorreo, sContrasena) {
     },
     data: JSON.stringify(request),
   }).done(function (data) {
+    console.log(data);
     $("#btn-ingresar").removeAttr('disabled');
     // Cookies.set('apellido', data.apellido, {
     //   expires: 2
@@ -94,7 +95,7 @@ function validar_credenciales(sCorreo, sContrasena) {
       // });
       localStorage.setItem ('nombre',codificarBase64(data.nombre));
       localStorage.setItem ('id',codificarBase64(data.idUsuario));
-
+      localStorage.setItem ('plan', codificarBase64(JSON.stringify(data.plan)));
       // Cookies.set('nombre', data.nombre, {
       //   expires: 200
       // });

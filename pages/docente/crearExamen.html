@@ -124,6 +124,7 @@
                     </a>
                   </li>
                 </ul>
+              </li>
   
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
@@ -144,6 +145,15 @@
                 </ul>
               </li>
   
+              <li class="nav-item has-treeview">
+                <a href="listaPago.html" class="nav-link">
+                  <i class="nav-icon fas fa-copy"></i>
+                  <p>
+                    Mis Pagos
+                    <i class="fas fa-angle-left right"></i>
+                    <span class="badge badge-info right" id="cantCursos"></span>
+                  </p>
+                </a>
               </li>
             </ul>
           </nav>
@@ -175,8 +185,8 @@
   
 
       <!-- Main content -->
-      <section class="content" >
-        <div class="container-fluid" >
+      <section class="content">
+        <div class="container-fluid">
           <div class="row">
 
             <!-- /.col -->
@@ -247,7 +257,7 @@
                           <div class="col-sm-10 input-group-prepend">
                             <span class="input-group-text"><i class="far fa-clock"></i></span>
                             <input type="text" id="timepicker-two" name="timepicker-two" class="timepicker"
-                              style="width: 46%;" required/>
+                              style="width: 46%;" required />
                           </div>
                         </div>
 
@@ -255,23 +265,24 @@
                           <label for="inputFecha" class="col-sm-2 col-form-label">Duración</label>
                           <div class="col-sm-10 input-group-prepend">
                             <span class="input-group-text"><i class="far fa-clock"></i></span>
-                            <input type="number" class="form-control float-right" style="width: 46%;" id="duracion" required>
+                            <input type="number" class="form-control float-right" style="width: 46%;" id="duracion"
+                              required>
                           </div>
                         </div>
 
                         <div class="form-group row">
                           <label for="inputName" class="col-sm-2 col-form-label">Curso</label>
                           <div class="col-sm-10">
-                            <select class="form-control select2" style="width: 50%;" id="cbocurso" name="curso" >
+                            <select class="form-control select2" style="width: 50%;" id="cbocurso" name="curso">
                             </select>
                           </div>
                         </div>
 
-                        
+
                       </form>
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
-                          <button  class="btn btn-outline-danger" id="btn-crearExamen">Crear examen</button>
+                          <button class="btn btn-outline-danger" id="btn-crearExamen">Crear examen</button>
                         </div>
                       </div>
                     </div>
@@ -362,7 +373,8 @@
                       <div>
                         <div class="box-heager" id="examen-editable-holder">
                           <label id="descripcion1"
-                            style="color:blue; vertical-align: middle; width: max-content;">INGRESAR LA DESCRIPCIÓN DE LA PREGUNTA</label>
+                            style="color:blue; vertical-align: middle; width: max-content;">INGRESAR LA DESCRIPCIÓN DE
+                            LA PREGUNTA</label>
                           <input class="clickedit" type="text" />
                           <div class="clearfix"></div>
 
@@ -426,7 +438,8 @@
                       <div>
                         <div class="box-heager" id="examen-editable-holder">
                           <label id="descripcion2"
-                            style="color:blue; vertical-align: middle; width: max-content;">INGRESAR LA DESCRIPCIÓN DE LA PREGUNTA</label>
+                            style="color:blue; vertical-align: middle; width: max-content;">INGRESAR LA DESCRIPCIÓN DE
+                            LA PREGUNTA</label>
                           <input class="clickedit" type="text" />
                           <div class="clearfix"></div>
 
@@ -489,7 +502,8 @@
                       <div>
                         <div class="box-heager" id="examen-editable-holder">
                           <label id="descripcion3"
-                            style="color:blue; vertical-align: middle; width: max-content;">INGRESAR LA DESCRIPCIÓN DE LA PREGUNTA</label>
+                            style="color:blue; vertical-align: middle; width: max-content;">INGRESAR LA DESCRIPCIÓN DE
+                            LA PREGUNTA</label>
                           <input class="clickedit" type="text" />
                           <div class="clearfix"></div>
 
@@ -553,7 +567,8 @@
                       <div>
                         <div class="box-heager" id="examen-editable-holder">
                           <label id="descripcion4"
-                            style="color:blue; vertical-align: middle; width: max-content;">INGRESAR LA DESCRIPCIÓN DE LA PREGUNTA</label>
+                            style="color:blue; vertical-align: middle; width: max-content;">INGRESAR LA DESCRIPCIÓN DE
+                            LA PREGUNTA</label>
                           <input class="clickedit" type="text" />
                           <div class="clearfix"></div>
 
@@ -616,7 +631,8 @@
                       <div>
                         <div class="box-heager" id="examen-editable-holder">
                           <label id="descripcion5"
-                            style="color:blue; vertical-align: middle; width: max-content;">INGRESAR LA DESCRIPCIÓN DE LA PREGUNTA</label>
+                            style="color:blue; vertical-align: middle; width: max-content;">INGRESAR LA DESCRIPCIÓN DE
+                            LA PREGUNTA</label>
                           <input class="clickedit" type="text" />
                           <div class="clearfix"></div>
 
@@ -695,9 +711,10 @@
                 </li>
                 <li>Crea el Curso ingresando los datos solicitados.</li>
                 <li>Ve a <button class="btn btn-primary text-center btn-sm">Examen</button>
-                e Ingresa las preguntas y alternativas (Max:5).
+                  e Ingresa las preguntas y alternativas (Max:5).
                 </li>
-                <li>Una vez creadas las alternativas ve a <button class="btn btn-primary text-center btn-sm">Parámetros</button></li>
+                <li>Una vez creadas las alternativas ve a <button
+                    class="btn btn-primary text-center btn-sm">Parámetros</button></li>
                 <li>Selecciona el Curso previamente creado.</li>
                 <li>Ya creado el examen los alumnos registrados podrán rendir el examen en la hora indicada.</li>
                 <li>Una vez finalizado el examen podrás acceder a <b>"Ver Resultados"</b> para ver los resultados.</li>
@@ -717,7 +734,8 @@
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 1.0.0-pre
       </div>
-      <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 4 - TIS</a>.</strong> All
+      <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 4 - TIS</a>.</strong>
+      All
       rights reserved.
     </footer>
 
@@ -759,7 +777,7 @@
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    
+
   <!-- AdminLTE App -->
   <script src="../../bower_components/AdminLTE/dist/js/adminlte.min.js"></script>
   <script src="../../script/docente/crearExamen.js"></script>
@@ -769,11 +787,11 @@
 
   <style type="text/css">
     .block {
-       display: block;
+      display: block;
     }
- </style>
- 
- 
+  </style>
+
+
 </body>
 
 </html>
