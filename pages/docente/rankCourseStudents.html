@@ -61,77 +61,100 @@
     </nav>
     <!-- /.navbar -->
 
-    <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-      <!-- Brand Logo -->
-      <a href="../home/index.html" class="brand-link">
-        <img src="../../dist/img/security.png" alt="WebSecurity Logo" class="brand-image img-circle elevation-3"
-          style="opacity: .8">
-        <span class="brand-text font-weight-light">Web Security</span>
-      </a>
-
-      <!-- Sidebar -->
-      <div class="sidebar">
-        <!-- Nombre de usuario y foto -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="image">
-            <img src="../../dist/img/unmsm.png" class="img-circle elevation-2" alt="User Image">
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="../login.html" class="brand-link">
+          <img src="../../dist/img/viex-logo.png" alt="http://localhost/ProyectoGesti%C3%B3n/WebSecurity/WebSecurity/DESARROLLO/PWCEV/Front/web/login.html Logo" class="brand-image img-circle elevation-3"
+            style="opacity: .8">
+          <span class="brand-text font-weight-light" style="color:white">VIEX</span>
+        </a>
+  
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Nombre de usuario y foto -->
+          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+              <img src="../../dist/img/unmsm.png" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+              <a href="#" class="d-block" id="nombreUser"></a>
+            </div>  
           </div>
-          <div class="info">
-            <a href="#" class="d-block" id="nombreUser"></a>
-          </div>
+  
+          <!-- Sidebar Menu -->
+          <nav class="mt-1">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              <li class="nav-item has-treeview">
+                <a class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p style="color:white;">
+                    Usuario
+                    <i class="right"></i>
+                    <span id="planUsuario"></span>
+                  </p>
+                </a>
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p style="color:white;">
+                    Mis Exámenes
+                    <i class="right fas fa-angle-left"></i>
+                    <span class="badge badge-info right" id="cantExamenes"></span>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <span class="badge badge-warning right" id="examenesRestantes"></span>
+                      <p style="color: white;">Exámenes Restantes</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <span class="badge badge-info right" id="examenesCreados"></span>
+                       <p style="color: white;">Exámenes Creados</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+  
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-copy"></i>
+                  <p>
+                    Mis Cursos
+                    <i class="fas fa-angle-left right"></i>
+                    <span class="badge badge-info right" id="cantCursos"></span>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <span class="badge badge-info right" id="cantCursos"></span>
+                       <p style="color: white;"> Cursos creados</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+  
+              <li class="nav-item has-treeview">
+                <a href="listaPago.html" class="nav-link">
+                  <i class="nav-icon fas fa-copy"></i>
+                  <p>
+                    Mis Pagos
+                    <i class="fas fa-angle-left right"></i>
+                    <span class="badge badge-info right" id="cantCursos"></span>
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
+  
         </div>
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-                 with font-awesome or any other icon font library -->
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                  Mis Exámenes
-                  <i class="right fas fa-angle-left"></i>
-                  <span class="badge badge-info right">2</span>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-
-                    <p style="color: white;">2 Exámenes pendientes</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <p style="color: white;">7 Exámenes creados</p>
-                  </a>
-                </li>
-              </ul>
-
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-copy"></i>
-                <p>
-                  Mis Cursos
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="#l" class="nav-link">
-                    <p>10 cursos creados</p>
-                  </a>
-                </li>
-
-              </ul>
-            </li>
-            </li>
-          </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
         <!-- /.sidebar -->
-    </aside>
+        
+      </aside>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -271,7 +294,8 @@
     }
     window.onpaint = preloadFunc();
   </script>
-  <script src="../../script/listaCursos.js"></script>
+  <script src="../../script/docente/listaCursos.js"></script>
+  <script src="../../script/permisos.js"></script>
   <script src="../../script/cookies.js"></script>
 
 </body>

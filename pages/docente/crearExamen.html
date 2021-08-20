@@ -95,13 +95,21 @@
             </div>
             <div class="info">
               <a href="#" class="d-block" id="nombreUser"></a>
-            </div>
+            </div>  
           </div>
   
           <!-- Sidebar Menu -->
           <nav class="mt-1">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
               <li class="nav-item has-treeview">
+                <a class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p style="color:white;">
+                    Usuario
+                    <i class="right"></i>
+                    <span id="planUsuario"></span>
+                  </p>
+                </a>
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p style="color:white;">
@@ -113,14 +121,14 @@
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="#" class="nav-link">
-                      <span class="badge badge-warning right">5</span>
-                      <p style="color: white;"> Exámenes Restantes</p>
+                      <span class="badge badge-warning right" id="examenesRestantes"></span>
+                      <p style="color: white;">Exámenes Restantes</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="#" class="nav-link">
                       <span class="badge badge-info right" id="examenesCreados"></span>
-                       <p style="color: white;"> Exámenes creados</p>
+                       <p style="color: white;">Exámenes Creados</p>
                     </a>
                   </li>
                 </ul>
@@ -319,10 +327,9 @@
                           <div class="col-sm-10">
                             <select class="form-control" id="cbo-periodo" name="periodo" required>
                               <option value="periodo"></option>
-                              <option value="2020-0">2020-0</option>
-                              <option value="2020-I">2020-I</option>
-                              <option value="2020-II">2020-II</option>
                               <option value="2021-0">2021-0</option>
+                              <option value="2021-I">2021-I</option>
+                              <option value="2021-II">2021-II</option>
                             </select>
                           </div>
                         </div>
@@ -734,7 +741,7 @@
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 1.0.0-pre
       </div>
-      <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 4 - TIS</a>.</strong>
+      <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 4 - PPP II </a>.</strong> All
       All
       rights reserved.
     </footer>

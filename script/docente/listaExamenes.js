@@ -6,6 +6,7 @@ $(document).ready(function () {
   var fechaEnvio = moment().format('YYYY-MM-DD HH:mm');
   cargarCantidadExamenes(idUser);
   cargarCantidadCursos(idUser);
+  obtenerPlanUsuario(idUser);
   ruta = 'https://viex-app.herokuapp.com';
   $('#tbl-examenes').DataTable({
     "colReorder": true,

@@ -3,7 +3,7 @@ $(document).ready(function () {
   setNombre();
   var idUser = decodificarBase64(localStorage.getItem('id'));
   var usuario = decodificarBase64(localStorage.getItem('usuario'));
-
+  obtenerPlanUsuario(idUser);
   ruta = 'https://viex-app.herokuapp.com';
   $('#tbl-resultado').DataTable({
     "colReorder": true,

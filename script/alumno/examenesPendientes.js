@@ -9,6 +9,7 @@ $(document).ready(function () {
   
   var idUser = decodificarBase64(localStorage.getItem('id'));
   setNombre();
+  obtenerPlanUsuario(idUser);
   cargarFoto(decodificarBase64(localStorage.getItem('apellido')));
   cargarCantidadExamenesPendientes(idUser);
   cargarCantidadCursos(idUser);

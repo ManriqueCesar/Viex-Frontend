@@ -3,6 +3,7 @@ $(document).ready(function () {
     var idUser = decodificarBase64(localStorage.getItem('id'));
     cargarCantidadExamenes(idUser);
     cargarCantidadCursos(idUser);
+    obtenerPlanUsuario(idUser);
     var course_id = decodificarBase64(localStorage.getItem('course_id'));
     var course_name = decodificarBase64(localStorage.getItem('course_name'));
     console.log(course_id);

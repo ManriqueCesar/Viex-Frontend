@@ -48,7 +48,8 @@ function validar_credenciales(sCorreo, sContrasena) {
 
     
     localStorage.setItem ('apellido',codificarBase64(data.apellido))
-
+    localStorage.setItem ('suscripcion',data.plan.idPlan);
+    
     if (data.roles[0].nombre == 'ROLE_ALUM') {
       $('#modal-default').modal();
       Promise.all([
