@@ -494,7 +494,7 @@ $(document).on('click', '#btn-crearExamen', function (event) {
     $("#cbocurso").val(-1);
 
     $.ajax({
-      url: ruta + '/examenes/',
+      url: ruta + '/examenes/usuario/'+idUsuario,
       type: 'POST',
       dataType: 'json',
       headers: {
