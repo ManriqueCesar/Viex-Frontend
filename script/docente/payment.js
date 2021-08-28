@@ -226,7 +226,8 @@ async function pay() {
       montoTotal: plan.precio,
       fechaPago: moment().format("YYYY-MM-DD"),
       fechaFin: moment().add(plan.duracion, "months").format("YYYY-MM-DD"),
-      idplan: plan.idPlan,
+      idPlan: plan.idPlan,
+      meses: plan.duracion,
       usuario: {
         idUsuario: Number(decodificarBase64(localStorage.getItem("id"))),
       },

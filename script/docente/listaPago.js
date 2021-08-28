@@ -44,6 +44,12 @@ $(document).ready(function () {
         }
       },
       {
+        data: 'fechaFin',
+        render: function (data, type, row) {
+          return moment(data).format('DD/MM/YYYY');
+        }
+      },
+      {
         data: 'montoTotal'
       },
       {
