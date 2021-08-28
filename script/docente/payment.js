@@ -2,14 +2,15 @@ let plan =null;
 $(document).ready(function () {
   let idPlan = getUrlVars()["idplan"];  
   
-  getPlans().then((plans) => {
+  getPlans().then(async (plans) => {
     console.log('plans',plans);
      plan = plans.find((plan) => {
       return plan.idPlan == idPlan;
     });
     console.log('plan',plan);
     if (plan) { 
-      if(idPlan == 1){  
+      if(idPlan == 1){ 
+        await updatePlanId();
         localStorage.setItem ('suscripcion', plan.idPlan);
         localStorage.setItem ('plan', codificarBase64(JSON.stringify(plan)));
         document.location.href = "listaPago.html";
@@ -184,6 +185,18 @@ async function getPlans() {
     .catch((err) => console.log(err));
 }
 
+async function updatePlanId() {
+  return await axios({
+    url: "https://viex-app.herokuapp.com/usuarios/actualizar/plan/1/usuario/"+decodificarBase64(localStorage.getItem("id")),
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => console.log(response))
+    .catch((err) => console.log(err));
+}
+
 async function pay() {
   $('#btnProcess').attr('disabled', true);
   let data = {
@@ -215,7 +228,7 @@ async function pay() {
       fechaFin: moment().add(plan.duracion, "months").format("YYYY-MM-DD"),
       idplan: plan.idPlan,
       usuario: {
-        idUsuario: decodificarBase64(localStorage.getItem("id")),
+        idUsuario: Number(decodificarBase64(localStorage.getItem("id"))),
       },
     };
 
