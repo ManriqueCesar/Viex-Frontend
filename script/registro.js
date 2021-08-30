@@ -72,10 +72,16 @@ function registro(user) {
     data: JSON.stringify(request),
   }).done(function (data) {
 
+
     Toast.fire({
       icon: 'success',
       title: 'Usuario creado correctamente. Redirecionando ...'
     });
+    
+    setTimeout(function()
+    { 
+      window.location.href = '../pages/login.html';
+    }, 4000);
 
     //    $("#btn-registro").removeAttr('disabled');
 
