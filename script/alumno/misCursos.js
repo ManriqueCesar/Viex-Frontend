@@ -46,7 +46,7 @@ $(document).ready(function () {
     },
 
     ajax: {
-      url: ruta + '/detallecurso/usuario/' + idUser,
+      url: ruta + '/detallecurso/usuario/promedio/' + idUser,
       dataSrc: '',
       async: false,
       cache: true,
@@ -56,8 +56,9 @@ $(document).ready(function () {
     },
     columns: [
       { data: 'periodo' },
-      { data: 'curso' },
+      { data: 'nombre' },
       { data: 'profesor' },
+      { data: 'promedio' },
       {
         data: null,
         render: function (data, type, row) {
@@ -208,20 +209,7 @@ function cargar_grafico_promedioGeneralPeriodos() {
   var visitorsChart = new Chart($visitorsChart, {
     data: {
       labels: ['2019-1', '2019-2', '2020-0', '2020-1', '2020-2', '2021-0', '2021-1'],
-      datasets: [{
-        type: 'line',
-        label: 'Promedio menor más frecuente',
-        data: [10, 12, 11, 14, 11, 12, 11],
-        backgroundColor: '#18ADC4',
-        borderColor: 'rgba(60,141,188,0.8)',
-        pointBorderColor: '#17a2b8',
-        pointStrokeColor: 'rgba(60,141,188,1)',
-        pointHighlightFill: '#fff',
-        pointHighlightStroke: 'rgba(60,141,188,1)',
-        fill: true
-        // pointHoverBackgroundColor: '#007bff',
-        // pointHoverBorderColor    : '#007bff'
-      },
+      datasets: [
       {
         type: 'line',
         label: 'Promedio general',
