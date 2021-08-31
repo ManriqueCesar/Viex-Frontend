@@ -159,7 +159,7 @@ $(document).on('click', '#btn-listar', function (event) {
 
 $(document).on('click', '#btn-eliminar', function (event) {
 
-  if ($('#planUsuario').text() == 'Free' || $('#planUsuario').text() == 'Gratuito'){
+  if ($('#planUsuario').text() == 'Free' || $('#planUsuario').text() == 'Gratuito') {
     Swal.fire({
       title: 'Plan Gratuito',
       text: "No puedes eliminar cursos. Actualízate a plan Premium para acceder a todo el contenido.",
@@ -173,36 +173,51 @@ $(document).on('click', '#btn-eliminar', function (event) {
         window.location.href = '../docente/payment.html'
       }
     });
-  }else {
-    ruta = 'https://viex-app.herokuapp.com';
-    var currentRow = $(this).closest("tr");
-    var data = $('#tbl-resultado').DataTable().row(currentRow).data();
-    var id = data.idCurso;
-  
-  
-    $.ajax({
-      url: ruta + '/cursos/' + id,
-      type: 'DELETE',
-      dataType: 'json'
-    }).done(function (data) {
-      $(currentRow).closest('tr').fadeOut(1500, function () {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Curso eliminado',
-          showConfirmButton: false,
-          timer: 1500
+  } else {
+
+    Swal.fire({
+      title: 'Eliminar Curso',
+      text: "¿Realmente deseas eliminar el curso?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#35b266',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Eliminar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        ruta = 'https://viex-app.herokuapp.com';
+        var idUsuario = decodificarBase64(localStorage.getItem('id'));
+        
+        var currentRow = $(this).closest("tr");
+        var data = $('#tbl-resultado').DataTable().row(currentRow).data();
+        var id = data.idCurso;
+
+        $.ajax({
+          url: ruta + '/cursos/' + id,
+          type: 'DELETE',
+          dataType: 'json'
+        }).done(function (data) {
+          $(currentRow).closest('tr').fadeOut(1500, function () {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Curso eliminado correctamente',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            $('#tbl-resultado').DataTable().ajax.reload(null, false);
+          });
+          obtenerPlanUsuario(idUsuario);
+          cargarCantidadExamenes(idUsuario);
+          cargarCantidadCursos(idUsuario);
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+
         })
-  
-        $('#tbl-resultado').DataTable().ajax.reload(null, false);
-  
-  
-      });
-  
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-  
-    })
-  } 
+      }
+    });
+
+
+  }
 
 
 

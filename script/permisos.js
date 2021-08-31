@@ -20,6 +20,7 @@ function cargarCantidadExamenes(idUsuario) {
 function obtenerPlanUsuario(idUsuario) {
   var plan = localStorage.getItem('suscripcion');
   if (plan == 1) {
+    console.log("Plan gratuito");
     var ruta = 'https://viex-app.herokuapp.com';
     $.ajax({
       async: false,
@@ -44,6 +45,7 @@ function obtenerPlanUsuario(idUsuario) {
       }
     });
   } else {
+    console.log("Plan premium");
     $('#planUsuario').text('Premium');
     $('#examenesRestantes').text('Ilimitado');
   }
