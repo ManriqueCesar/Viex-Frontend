@@ -5,18 +5,20 @@ $(document).ready(function () {
     cargarCantidadCursos(idUser);
     var course_id = decodificarBase64(localStorage.getItem('course_id'));
     var course_name = decodificarBase64(localStorage.getItem('course_name'));
-    console.log(course_id);
-    console.log(course_name);
     $('.nombre-curso-activo').each(function (index) {
         console.log(index + ": " + $(this).text());
         $(this).text(course_name);
     });
-    cargar_grafico_promedioGeneralCurso();
+    cargar_resumen();
+});
+
+
+$(document).on('click', '#custom-tabs-one-home-tab', function (event) {
+    cargar_resumen();    
 });
 
 $(document).on('click', '#tab-lista-alumnos-tab', function (event) {
     var id = decodificarBase64(localStorage.getItem('course_id'));
-    console.log(id)
     ruta = 'https://viex-app.herokuapp.com';
     var x = 0;
     var data_result = [];
@@ -279,8 +281,8 @@ $(document).on('click', '#btn-listExamsAlumn', function (event) {
             { data: 'titulo' },
             { data: 'fecha_inicio' },
             { data: 'tiempo_duracion' },
-            { data: 'fecha_envio' },
             { data: 'estado' },
+            { data: 'fecha_envio' },
             { data: 'tiempo_plagio' },            
             { data: 'nota' }]
     });
@@ -291,7 +293,57 @@ $(document).on('click', '#btn-listExamsAlumn', function (event) {
     } ).draw();
 });
 
+function cargar_resumen(){
+    var course_id = decodificarBase64(localStorage.getItem('course_id'));
+    ruta = 'https://viex-app.herokuapp.com';
+    $.ajax({
+        url: ruta + '/cursos/detalle/' + course_id,
+        async: false,
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).done(function (data) {
+        console.log(data);
+        $('#total_alumnos').html(data.cantAlumnos);
+        $('#id_promedio_general h3').html(data.promCurso);
+        $('#id_desviacion_estandar h3').html(data.desvCurso);
+        $('#id_alumnos_aprobados h3').html(data.cantAprob);
+        $('#id_alumnos_desaprobados h3').html(data.cantDesap);
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        console.log(jqXHR.responseJSON.mensaje);
+    });
+    cargar_grafico_promedioGeneralCurso();
+}
+
 function cargar_grafico_promedioGeneralCurso() {
+    var array_title = [];
+    var array_value_promedio_general = [];
+    var array_value_promedido_fr = [];
+    // cargar datos
+    var course_id = decodificarBase64(localStorage.getItem('course_id'));
+    ruta = 'https://viex-app.herokuapp.com';
+    $.ajax({
+        url: ruta + '/examenes/promedio/curso/' + course_id,
+        async: false,
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).done(function (data) {
+        data.examenes.forEach(function (element){
+            array_title.push(element.titulo);
+            array_value_promedio_general.push(element.promedio);
+            array_value_promedido_fr.push(element.promFR);
+        });
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        console.log(jqXHR.responseJSON.mensaje);
+    });
+
     var ticksStyle = {
       fontColor: '#495057',
       fontStyle: 'bold'
@@ -302,11 +354,11 @@ function cargar_grafico_promedioGeneralCurso() {
     // eslint-disable-next-line no-unused-vars
     var visitorsChart = new Chart($visitorsChart, {
       data: {
-        labels: ['Examen-1', 'Examen-2', 'Examen-3', 'Examen-4', 'Examen-5', 'Examen-6', 'Examen-7'],
+        labels: array_title,
         datasets: [{
           type: 'line',
-          label: 'Promedio menor más frecuente',
-          data: [10, 12, 11, 14, 11, 12, 11],
+          label: 'Promedio más frecuente',
+          data: array_value_promedido_fr,
           backgroundColor: '#18ADC4',
           borderColor: 'rgba(60,141,188,0.8)',
           pointBorderColor: '#17a2b8',
@@ -320,7 +372,7 @@ function cargar_grafico_promedioGeneralCurso() {
         {
           type: 'line',
           label: 'Promedio general',
-          data: [12, 15, 13, 16, 9, 14, 12],
+          data: array_value_promedio_general,
           backgroundColor: 'rgba(210, 214, 222, 1)',
           borderColor: '#B9BFCC',
           pointBorderColor: '#B9BFCC',
@@ -368,5 +420,6 @@ function cargar_grafico_promedioGeneralCurso() {
           }]
         }
       }
-    });
+    });    
+    $('#visitors-chart').height(200);
   }

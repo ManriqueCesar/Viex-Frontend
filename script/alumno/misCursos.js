@@ -5,8 +5,7 @@ $(document).ready(function () {
   cargarCantidadExamenesPendientes(idUser);
   cargarCantidadCursos(idUser);
   cargarCantidadExamenes(idUser);
-  cargar_grafico_promedioGeneralPeriodos();
-  cargar_grafico_promedioPeriodo("2020-0");
+  cargar_resumen();
   ruta = 'https://viex-app.herokuapp.com';
   var x = 0;
   $('#tbl-misCursos').DataTable({
@@ -80,7 +79,6 @@ $(document).on('click', '#btn-listar', function (event) {
   var currentRow = $(this).closest("tr");
   var data = $('#tbl-misCursos').DataTable().row(currentRow).data();
   var idCurso = data.idCurso;
-  console.log(idCurso)
   ruta = 'https://viex-app.herokuapp.com';
   var x = 0;
   $('#tbl-listado').DataTable({
@@ -196,7 +194,54 @@ $(document).on('click', '#btn-viewListExamns', function (event) {
   }).draw();
 });
 
+function cargar_resumen() {
+
+  cargar_grafico_promedioGeneralPeriodos();
+}
+
 function cargar_grafico_promedioGeneralPeriodos() {
+  var array_title_periodo = [];
+  var array_value_promedio_general = [];
+  let html_option_periodo = "";
+  // cargar datos  
+  var idUser = decodificarBase64(localStorage.getItem('id'));
+  ruta = 'https://viex-app.herokuapp.com';
+  // cantidad de cursos usuario
+  $.ajax({
+    url: ruta + '/cursos/cantidad/' + idUser,
+    async: false,
+    type: 'GET',
+    dataType: 'json',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  }).done(function (data) {
+    $("#id_total_cursos").html(data);
+  }).fail(function (jqXHR, textStatus, errorThrown) {
+    console.log(jqXHR.responseJSON.mensaje);
+  });
+  // data resumen seguimiento promedio todos los periodos
+  $.ajax({
+    url: ruta + '/cursos/periodo/promedios/' + idUser,
+    async: false,
+    type: 'GET',
+    dataType: 'json',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  }).done(function (data) {
+    data.lista.forEach(function (element) {
+      array_title_periodo.push(element.periodo);
+      array_value_promedio_general.push(element.promedio);
+      html_option_periodo += "<option value=" + element.periodo + ">" + element.periodo + "</option>";
+    });
+  }).fail(function (jqXHR, textStatus, errorThrown) {
+    console.log(jqXHR.responseJSON.mensaje);
+  });
+  $("#id_select_periodos").html(html_option_periodo);
+
   var ticksStyle = {
     fontColor: '#495057',
     fontStyle: 'bold'
@@ -208,22 +253,22 @@ function cargar_grafico_promedioGeneralPeriodos() {
   // eslint-disable-next-line no-unused-vars
   var visitorsChart = new Chart($visitorsChart, {
     data: {
-      labels: ['2019-1', '2019-2', '2020-0', '2020-1', '2020-2', '2021-0', '2021-1'],
+      labels: array_title_periodo,
       datasets: [
-      {
-        type: 'line',
-        label: 'Promedio general',
-        data: [12, 15, 13, 16, 9, 14, 12],
-        backgroundColor: 'rgba(210, 214, 222, 1)',
-        borderColor: '#B9BFCC',
-        pointBorderColor: '#B9BFCC',
-        pointStrokeColor: '#c1c7d1',
-        pointHighlightFill: '#fff',
-        pointHighlightStroke: 'rgba(220,220,220,1)',
-        fill: true
-        // pointHoverBackgroundColor: '#ced4da',
-        // pointHoverBorderColor    : '#ced4da'
-      }]
+        {
+          type: 'line',
+          label: 'Promedio general',
+          data: array_value_promedio_general,
+          backgroundColor: 'rgba(210, 214, 222, 1)',
+          borderColor: '#B9BFCC',
+          pointBorderColor: '#B9BFCC',
+          pointStrokeColor: '#c1c7d1',
+          pointHighlightFill: '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          fill: true
+          // pointHoverBackgroundColor: '#ced4da',
+          // pointHoverBorderColor    : '#ced4da'
+        }]
     },
     options: {
       maintainAspectRatio: false,
@@ -262,72 +307,98 @@ function cargar_grafico_promedioGeneralPeriodos() {
       }
     }
   });
+  cargar_grafico_promedioPeriodo(array_title_periodo[array_title_periodo.length - 1]);
 }
 
 function cargar_grafico_promedioPeriodo(periodo) {
-
-  // Sales graph chart
-  var salesGraphChartCanvas = $('#line-chart').get(0).getContext('2d');
-  // $('#revenue-chart').get(0).getContext('2d');
-
-  var salesGraphChartData = {
-    labels: ['Curso 1', 'curso 2', 'Curso 3', 'Curso 4'],
-    datasets: [
-      {
-        label: 'Promedio general',
-        fill: false,
-        borderWidth: 4,
-        lineTension: 0,
-        spanGaps: true,
-        borderColor: '#efefef',
-        pointRadius: 3,
-        pointHoverRadius: 7,
-        pointColor: '#efefef',
-        pointBackgroundColor: '#efefef',
-        data: [8, 16, 14, 15]
+  if (periodo) {
+    $("#id_title_periodo h3").html("<i class='fas fa-th mr-1'></i> SEGUIMIENTO DE PERIODO " + periodo);
+    var array_title = [];
+    var array_data = [];
+    // cargar data 
+    var idUser = decodificarBase64(localStorage.getItem('id'));
+    ruta = 'https://viex-app.herokuapp.com';
+    // cantidad de cursos usuario
+    $.ajax({
+      url: ruta + '/cursos/periodo/' + idUser + '/' + periodo,
+      async: false,
+      type: 'GET',
+      dataType: 'json',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
       }
-    ]
-  };
+    }).done(function (data) {
+      data.lista.forEach(function (element) {
+        array_title.push(element.nombre);
+        array_data.push(element.promedio);
+      });
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+      console.log(jqXHR.responseJSON.mensaje);
+    });
+    // Sales graph chart
+    var salesGraphChartCanvas = $('#line-chart').get(0).getContext('2d');
+    // $('#revenue-chart').get(0).getContext('2d');
 
-  var salesGraphChartOptions = {
-    maintainAspectRatio: false,
-    responsive: true,
-    legend: {
-      display: false
-    },
-    scales: {
-      xAxes: [{
-        ticks: {
-          fontColor: '#efefef'
-        },
-        gridLines: {
-          display: false,
-          color: '#efefef',
-          drawBorder: false
+    var salesGraphChartData = {
+      labels: array_title,
+      datasets: [
+        {
+          label: 'Promedio general',
+          fill: false,
+          borderWidth: 4,
+          lineTension: 0,
+          spanGaps: true,
+          borderColor: '#efefef',
+          pointRadius: 3,
+          pointHoverRadius: 7,
+          pointColor: '#efefef',
+          pointBackgroundColor: '#efefef',
+          data: array_data
         }
-      }],
-      yAxes: [{
-        ticks: {
-          beginAtZero: true,
-          suggestedMax: 20,
-          fontColor: '#efefef'
-        },
-        gridLines: {
-          display: true,
-          color: '#efefef',
-          drawBorder: false
-        }
-      }]
-    }
-  };
+      ]
+    };
 
-  // This will get the first returned node in the jQuery collection.
-  // eslint-disable-next-line no-unused-vars
-  var salesGraphChart = new Chart(salesGraphChartCanvas, {
-    type: 'line',
-    data: salesGraphChartData,
-    options: salesGraphChartOptions
-  });
+    var salesGraphChartOptions = {
+      maintainAspectRatio: false,
+      responsive: true,
+      legend: {
+        display: false
+      },
+      scales: {
+        xAxes: [{
+          ticks: {
+            fontColor: '#efefef'
+          },
+          gridLines: {
+            display: false,
+            color: '#efefef',
+            drawBorder: false
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            suggestedMax: 20,
+            fontColor: '#efefef'
+          },
+          gridLines: {
+            display: true,
+            color: '#efefef',
+            drawBorder: false
+          }
+        }]
+      }
+    };
+
+    // This will get the first returned node in the jQuery collection.
+    // eslint-disable-next-line no-unused-vars
+    var salesGraphChart = new Chart(salesGraphChartCanvas, {
+      type: 'line',
+      data: salesGraphChartData,
+      options: salesGraphChartOptions
+    });
+  }
 }
 
 
