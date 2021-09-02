@@ -21,8 +21,8 @@
   <link rel="stylesheet" href="../../bower_components/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet"
     href="../../bower_components/AdminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" type="text/css" href="dist/css/rankCourseStyles.css" />
-  <link rel="stylesheet" type="text/css" href="dist/css/card.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/css/rankCourseStyles.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/css/card.css" />
   </head>
 
 <body class="hold-transition sidebar-mini">
@@ -87,6 +87,14 @@
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
             <li class="nav-item has-treeview">
+              <a class="nav-link">
+                <i class="nav-icon"></i>
+                <p style="color:white;">
+                  Usuario
+                  <i class="right"></i>
+                  <span id="planUsuario"></span>
+                </p>
+              </a>
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
@@ -248,7 +256,8 @@
     }
     window.onpaint = preloadFunc();
   </script>
-  <script src="../../script/listaCursos.js"></script>
+  <script src="../../script/docente/listaCursos.js"></script>
+  <script src="../../script/permisos.js"></script>
   <script src="../../script/cookies.js"></script>
 
 </body>

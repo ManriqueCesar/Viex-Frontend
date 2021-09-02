@@ -17,7 +17,8 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
   <!-- DataTables -->
-  <link rel="stylesheet" href="../../bower_components/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet"
+    href="../../bower_components/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet"
     href="../../bower_components/AdminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 
@@ -123,56 +124,74 @@
           </div>
         </div>
 
-        <!-- Sidebar Menu -->
-        <nav class="mt-1">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p style="color:white;">
-                  Mis Exámenes
-                  <i class="right fas fa-angle-left"></i>
-                  <span class="badge badge-info right" id="cantExamenes"></span>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <span class="badge badge-warning right">5</span>
-                    <p style="color: white;"> Exámenes Restantes</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <span class="badge badge-info right" id="examenesCreados"></span>
-                     <p style="color: white;"> Exámenes creados</p>
-                  </a>
-                </li>
-              </ul>
-
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-copy"></i>
-                <p>
-                  Mis Cursos
-                  <i class="fas fa-angle-left right"></i>
-                  <span class="badge badge-info right" id="cantCursos"></span>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
+          <!-- Sidebar Menu -->
+          <nav class="mt-1">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              <li class="nav-item has-treeview">
+                <a class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p style="color:white;">
+                    Usuario
+                    <i class="right"></i>
+                    <span id="planUsuario"></span>
+                  </p>
+                </a>
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p style="color:white;">
+                    Mis Exámenes
+                    <i class="right fas fa-angle-left"></i>
+                    <span class="badge badge-info right" id="cantExamenes"></span>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <span class="badge badge-warning right" id="examenesRestantes"></span>
+                      <p style="color: white;">Exámenes Restantes</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <span class="badge badge-info right" id="examenesCreados"></span>
+                       <p style="color: white;">Exámenes Creados</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+  
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-copy"></i>
+                  <p>
+                    Mis Cursos
+                    <i class="fas fa-angle-left right"></i>
                     <span class="badge badge-info right" id="cantCursos"></span>
-                     <p style="color: white;"> Cursos creados</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            </li>
-          </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <span class="badge badge-info right" id="cantCursos"></span>
+                       <p style="color: white;"> Cursos creados</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+  
+              <li class="nav-item has-treeview">
+                <a href="listaPago.html" class="nav-link">
+                  <i class="nav-icon fas fa-copy"></i>
+                  <p>
+                    Mis Pagos
+                    <i class="fas fa-angle-left right"></i>
+                    <span class="badge badge-info right" id="cantCursos"></span>
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
 
       </div>
       <!-- /.sidebar -->
@@ -294,7 +313,8 @@
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 1.0.0-pre
       </div>
-      <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 4 - TIS</a>.</strong> All
+      <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 4 - PPP II </a>.</strong> All
+      All
       rights reserved.
     </footer>
 
@@ -326,6 +346,7 @@
 
   <script src="https://kit.fontawesome.com/c9032fc236.js" crossorigin="anonymous"></script>
   <script src="../../script/security.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
   <script type="text/javascript">
     function preloadFunc() {

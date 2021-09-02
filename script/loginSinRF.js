@@ -1,27 +1,3 @@
-function iniciarVideo() {
-  navigator.getUserMedia({
-      video: {}
-    },
-    stream => video.srcObject = stream,
-    err => console.error(err)
-  )
-}
-
-function loadLabeledImages(apellido) {
-  const labels = [apellido];
-  return Promise.all(
-    labels.map(async label => {
-      const descriptions = []
-      for (let i = 1; i <= 2; i++) {
-        const img = await faceapi.fetchImage(`../dist/js/labeled_images/${label}/${i}.jpg`)
-        const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor()
-        descriptions.push(detections.descriptor)
-      }
-      return new faceapi.LabeledFaceDescriptors(label, descriptions)
-    })
-  );
-}
-
 function validar_credenciales(sCorreo, sContrasena) {
   var ruta = 'https://viex-app.herokuapp.com';
   //var ruta = 'http://localhost:9090';
@@ -42,21 +18,11 @@ function validar_credenciales(sCorreo, sContrasena) {
   }).done(function (data) {
     console.log(data);
     $("#btn-ingresar").removeAttr('disabled');
-    
+
     localStorage.setItem ('apellido',codificarBase64(data.apellido))
     localStorage.setItem ('suscripcion',data.plan.idPlan);
     
     if (data.roles[0].nombre == 'ROLE_ALUM') {
-      $('#modal-default').modal();
-      Promise.all([
-        faceapi.nets.tinyFaceDetector.loadFromUri('../dist/js/models'),
-        faceapi.nets.faceLandmark68Net.loadFromUri('../dist/js/models'),
-        faceapi.nets.faceRecognitionNet.loadFromUri('../dist/js/models'),
-        faceapi.nets.faceExpressionNet.loadFromUri('../dist/js/models'),
-        faceapi.nets.ssdMobilenetv1.loadFromUri('../dist/js/models')
-
-      ]).then(iniciarVideo)
-      iniciarVideo();
 
       localStorage.setItem ('apellido',codificarBase64(data.apellido));
       localStorage.setItem ('usuario',codificarBase64(data.nombre +' '+ data.apellido));
@@ -94,48 +60,19 @@ function validar_credenciales(sCorreo, sContrasena) {
         title: 'Error. Por favor intente nuevamente'
       })
     }
-    //alert(jqXHR.responseJSON.resultado.mensajeRespuesta);
   })
 }
 
 $(document).ready(function () {
   $('#txt-email').val('cchavez@unmsm.edu.pe');
   $('#txt-password').val('1234');
-  const video = document.getElementById('video')
-
-  video.addEventListener('play', async () => {
-    var apellido = decodificarBase64(localStorage.getItem('apellido'));
-
-    const labeledFaceDescriptors = await loadLabeledImages(apellido)
-    const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.6)
-    console.log(faceMatcher._labeledDescriptors)
-    const canvas = faceapi.createCanvasFromMedia(video)
-    document.body.append(canvas)
-    const displaySize = {
-      width: video.width,
-      height: video.height
-    }
-    faceapi.matchDimensions(canvas, displaySize)
-
-    setInterval(async () => {
-      const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceDescriptors()
-      const resizedDetections = faceapi.resizeResults(detections, displaySize)
-      const results = resizedDetections.map(d => faceMatcher.findBestMatch(d.descriptor))
-      console.log(results.toString());
-
-      $("#alumnos").text(results.toString());
-      //console.log(Cookies.get('apellido'));
-      var alumno = results.toString().includes(apellido);
-      if (alumno == true) {
-        $("#loading").text("Identidad confirmada, redireccionando...");
-        console.log("bienvenido " + apellido);
-        setTimeout(function () {
+  setTimeout(function () {
           
           document.location.href = "../pages/alumno/examenesPendientes.html";
-        }, 5000);
-      }
-    }, 500)
-  })
+  }, 5000);
+      
+
+
 });
 
 $('#btn-ingresar').click(function () {

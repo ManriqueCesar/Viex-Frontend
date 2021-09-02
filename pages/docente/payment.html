@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payment | CrearExamen</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Bootstrap-->
+  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../bower_components/AdminLTE/plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../bower_components/AdminLTE/dist/css/adminlte.min.css">
+  <!-- date picker -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet"
+    href="../../bower_components/AdminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../../bower_components/AdminLTE/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet"
+    href="../../bower_components/AdminLTE/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../bower_components/AdminLTE/dist/css/adminlte.min.css">
+  <!-- Plugin css BootsTrap -->
+  <!-- <link rel="stylesheet" href="../../dist/css/style.css"> -->
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="../../plugins/iCheck/all.css">
+  <link rel="stylesheet" href="../../plugins/wickedpicker/dist/wickedpicker.min.css">
+
+  <!-- Vendor CSS Files -->
+  <link href="../home/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../home/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="../home/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../home/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../home/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="../home/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="../home/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../home/assets/css/payment.css" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="https://pocpaymentserve.s3.amazonaws.com/payform.min.css">
+  <link href="../home/assets/css/style.css" rel="stylesheet">
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://pocpaymentserve.s3.amazonaws.com/payform.min.js"></script>
+</head>
+
+
+<body>
+
+  <div class="modal fade" tabindex="-1" id="modal-alumnos" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="border-radius: 5%!important;">
+        <!-- <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div> -->
+        <div class="modal-body">
+          <div class="container-fluid" style="margin: 0 2.5rem;">
+            <div class="modal__close-button">
+              <img class="modal__close-button-img" src="../../dist/img/close-modal.svg" onclick="closeModal()" alt="x" />
+            </div>
+
+            <div class="container">
+              <img src="../../dist/img/viex-logo.png" style="width: 83%; height: 250px;" alt="logo">
+            </div>
+            <div class="row">
+              <form style="width: 83%;">
+
+                <div class="md-form mb-2">
+                  <label for="txtNumeroTarjeta">Número de tarjeta</label>
+                  <div id="txtNumeroTarjeta" class="form-control"></div>
+                  <small id="msjNroTarjeta" class="form-text text-muted red-text m-0"></small>
+                </div>
+
+                <div class="md-form mb-2">
+                  <label for="txtFechaVencimiento">Fecha de Vencimiento</label>
+                  <div id="txtFechaVencimiento" class="form-control"></div>
+                  <small id="msjFechaVencimiento" class="form-text text-muted red-text m-0"></small>
+                </div>
+
+                <div class="md-form mb-2">
+                  <label for="txtCvv">CVV</label>
+                  <div id="txtCvv" class="form-control"></div>
+                  <small id="msjCvv" class="form-text text-muted red-text m-0"></small>
+                </div>
+
+                <div class="md-form mb-2">
+                  <label for="nombre">Nombre</label>
+                  <input width="100%" type="text" id="nombre" class="form-control" placeholder="Nombre" />
+                </div>
+
+                <div class="md-form mb-2">
+                  <label for="apellido">Apellido</label>
+                  <input type="text" id="apellido" class="form-control" placeholder="Apellido" />
+                </div>
+
+                <div class="md-form mb-3">
+                  <label for="email">Email</label>
+                  <input type="text" id="email" class="form-control" placeholder="Email" />
+                  <small id="msjEmail" class="form-text text-muted red-text m-0"></small>
+                </div>
+
+                <div class="md-form mb-3">
+                  <button id="btnProcess" onclick="pay()" type="button" class="btn btn-dark"
+                    style="width: 100% !important; height: 50px; border-radius: 25px;"></button>
+                </div>
+
+              </form>
+            </div>
+            <div class="row">
+              <img src="../../dist/img/Niubiz stickers.png" style="width: 83%;" alt="iconos">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" style="min-height: 200px; margin-top: -150px;">
+      <div class="toast bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body">
+          Todos los campos deben estar completos.
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- jQuery -->
+  <script src="../../bower_components/AdminLTE/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="../../bower_components/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- MomentJS  -->
+  <script src="../../bower_components/AdminLTE/plugins/moment/moment.min.js"></script>
+
+  <script src="../../script/cookies.js"></script>
+  <!-- page script -->
+  <script src="../../script/permisos.js"></script>
+  <script src="../../script/security.js"></script>
+  
+  <script src="../../script/docente/payment.js"></script>
+  <script type="text/javascript">
+    function preloadFunc() {
+      if (decodificarBase64(localStorage.getItem('rol') != 'ROLE_PROF')) {
+        //document.location.href = "../login.html";
+      }
+    }
+    window.onpaint = preloadFunc();
+  </script>
+</body>
+
+</html>

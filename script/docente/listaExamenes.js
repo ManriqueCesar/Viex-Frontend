@@ -6,6 +6,7 @@ $(document).ready(function () {
   var fechaEnvio = moment().format('YYYY-MM-DD HH:mm');
   cargarCantidadExamenes(idUser);
   cargarCantidadCursos(idUser);
+  obtenerPlanUsuario(idUser);
   ruta = 'https://viex-app.herokuapp.com';
   $('#tbl-examenes').DataTable({
     "colReorder": true,
@@ -85,7 +86,7 @@ $(document).ready(function () {
     buttons: [{
         'extend': 'excelHtml5',
         'autoFilter': true,
-        "text": '<img src="../../dist/img/icons/excel.png" alt="Descargar Excel" height = "30px" width="40px">',
+        "text": '<img src="../../../dist/img/icons/excel.png" alt="Descargar Excel" height = "30px" width="40px">',
         customize: function (xlsx) {
           var sheet = xlsx.xl.worksheets['sheet1.xml'];
           $('c[r=A1] t', sheet).text('VIEX |' + ' Lista de Exámenes | ' + usuario);
@@ -97,7 +98,7 @@ $(document).ready(function () {
       {
         'extend': 'pdfHtml5',
         'autoFilter': true,
-        "text": '<img src="../../dist/img/icons/pdf.png" alt="Descargar PDF" height = "30px" width="30px">',
+        "text": '<img src="../../../dist/img/icons/pdf.png" alt="Descargar PDF" height = "30px" width="30px">',
         exportOptions: {
           columns: [0, 1, 2, 3, 4, 5]
         }
@@ -194,7 +195,7 @@ $(document).on('click', '#btn-listar', function (event) {
     dom: 'Bfrtip',
     buttons: [{
         'extend': 'excelHtml5',
-        "text": '<img src="dist/img/icons/excel.png" alt="Descargar Excel" height = "30px" width="40px">',
+        "text": '<img src="../../../dist/img/icons/excel.png" alt="Descargar Excel" height = "30px" width="40px">',
         customize: function (xlsx) {
           var sheet = xlsx.xl.worksheets['sheet1.xml'];
           $('c[r=A1] t', sheet).text('Lista de Alumnos | Examen: ' + nombreExamen);
@@ -205,7 +206,7 @@ $(document).on('click', '#btn-listar', function (event) {
       },
       {
         'extend': 'pdfHtml5',
-        "text": '<img src="dist/img/icons/pdf.png" alt="Descargar PDF" height = "30px" width="30px">',
+        "text": '<img src="../../../dist/img/icons/pdf.png" alt="Descargar PDF" height = "30px" width="30px">',
         exportOptions: {
           columns: [0, 1, 2, 3]
         }
