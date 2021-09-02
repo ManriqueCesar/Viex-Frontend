@@ -31,6 +31,8 @@
   <link href="../home/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="../home/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="../home/assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <link href="../home/assets/css/payment.css" rel="stylesheet">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -217,8 +219,35 @@
         </div><!-- /.container-fluid -->
       </section>
 
-      <a href="payment.html" class="btn btn-primary btn-lg active" style="margin-left: 2rem;margin-bottom: 2rem;" role="button" aria-pressed="true">Pagar</a>
+      <!-- <nutton onclick="goToPay()" class="btn btn-primary btn-lg active" style="margin-left: 2rem;margin-bottom: 2rem;" role="button" aria-pressed="true">Pagar</button> -->
       
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-4 col-md-6">
+                <div class="box">
+                  <h3>Gratuito</h3>
+                  <h4><sup>S/</sup>0<span> / mes</span></h4>
+                  <div class="btn-wrap">
+                    <a href="payment.html?idplan=1" class="btn-buy">Lo quiero</a>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
+                <div class="box featured">
+                  <h3>Personal</h3>
+                  <h4><sup>S/</sup>80<span> / mes</span></h4>
+                  <div class="btn-wrap">
+                    <a href="payment.html?idplan=2" class="btn-buy">Lo quiero</a>
+                  </div>
+                </div>
+              </div>
+    
+            </div>
+    
+          </div>
+          <br>
+          <br>
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
@@ -235,7 +264,8 @@
                     <table id="tbl-resultado" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th>FECHA</th>
+                          <th>FECHA PAGO</th>
+                          <th>FECHA FIN</th>
                           <th>MONTO</th>
                           <th>CODIGO</th>
                           <th>DETALLES</th>

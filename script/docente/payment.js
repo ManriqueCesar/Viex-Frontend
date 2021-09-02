@@ -1,6 +1,33 @@
+let plan =null;
+$(document).ready(function () {
+  let idPlan = getUrlVars()["idplan"];  
+  
+  getPlans().then(async (plans) => {
+    console.log('plans',plans);
+     plan = plans.find((plan) => {
+      return plan.idPlan == idPlan;
+    });
+    console.log('plan',plan);
+    if (plan) { 
+      if(idPlan == 1){ 
+        await updatePlanId();
+        localStorage.setItem ('suscripcion', plan.idPlan);
+        localStorage.setItem ('plan', codificarBase64(JSON.stringify(plan)));
+        document.location.href = "listaPago.html";
+      } else {
+        document.getElementById('btnProcess').innerText= `Pagar S/ ${plan.precio}.00`
+      }
+    } else {
+      document.location.href = "listaPago.html";
+    }
+  }).catch((err) => console.log(err));
+});
+
 // Constants
 const niubiz = {
-  merchantid: "522591303",
+  // merchantid: "341198210",
+  // merchantid: "522591303",
+  merchantid: "123456789",
   channel: "web",
   plan: JSON.parse(decodificarBase64(localStorage.getItem("plan"))),
   email: decodificarBase64(localStorage.getItem("email")) || "antonis162010@gmail.com",
@@ -66,7 +93,7 @@ async function generateSession() {
       Authorization: `${token}`,
     },
     data: {
-      amount: niubiz.plan.precio,
+      amount: plan.precio,
       antifraud: {
         // clientIp: "190.236.255.83",
         merchantDefineData: {
@@ -110,7 +137,7 @@ async function generateTransaction(transactionToken) {
       countable: true,
       channel: niubiz.channel,
       order: {
-        amount: niubiz.plan.precio,
+        amount: plan.precio,
         tokenId: transactionToken,
         purchaseNumber: niubiz.visaPurchase,
         currency: "PEN",
@@ -120,7 +147,13 @@ async function generateTransaction(transactionToken) {
     },
   })
     .then((response) => response.data)
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(
+
+        Math.floor(100000 + Math.random() * 900000)
+    
+    );
+    console.log('Transaction', err)});
 }
 
 var cardNumber = null;
@@ -130,6 +163,38 @@ var cardCvv = null;
 // LOCAL
 function closeModal(){
   document.location.href = "listaPago.html";
+}
+
+function getUrlVars() { 
+  var vars = {}; 
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) { 
+     vars[key] = value; 
+  });
+  return vars; 
+}
+
+async function getPlans() {
+  return await axios({
+    url: "https://viex-app.herokuapp.com/plan/todos",
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
+}
+
+async function updatePlanId() {
+  return await axios({
+    url: "https://viex-app.herokuapp.com/usuarios/actualizar/plan/1/usuario/"+decodificarBase64(localStorage.getItem("id")),
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => console.log(response))
+    .catch((err) => console.log(err));
 }
 
 async function pay() {
@@ -152,20 +217,25 @@ async function pay() {
     );
     console.log(response);
 
-    await sendPay(response.transactionToken);
+    // await sendPay(response.transactionToken);
     const objSave = {
       idPago: 0,
       ecommerce: niubiz.ecommerce,
       visa: niubiz.visaPurchase,
       //visa: 11131,
-      montoTotal: niubiz.plan.precio,
+      montoTotal: plan.precio,
       fechaPago: moment().format("YYYY-MM-DD"),
+      fechaFin: moment().add(plan.duracion, "months").format("YYYY-MM-DD"),
+      idPlan: plan.idPlan,
+      meses: plan.duracion,
       usuario: {
-        idUsuario: decodificarBase64(localStorage.getItem("id")),
+        idUsuario: Number(decodificarBase64(localStorage.getItem("id"))),
       },
     };
 
     await registerPay(objSave);
+    localStorage.setItem ('suscripcion', plan.idPlan);
+    localStorage.setItem ('plan', codificarBase64(JSON.stringify(plan)));
     document.location.href = "listaPago.html";
   } catch (error) {
   $('#btnProcess').attr('disabled', false);
@@ -177,15 +247,14 @@ async function pay() {
 async function sendPay(transactionToken) {
   try {
     const response = await generateTransaction(transactionToken);
-    console.log(response);
   } catch (error) {
-    console.log("error: ", error);
+    console.log("sendPay: ", error);
   }
 }
 
 generateSession()
   .then(async (response) => {
-    document.getElementById('btnProcess').innerText= `Pagar S/ ${niubiz.plan.precio}.00`
+    // document.getElementById('btnProcess').innerText= `Pagar S/ ${niubiz.plan.precio}.00`
     $("#modal-alumnos").modal("toggle");
     let newCodes = await updateToken();
     niubiz.visaPurchase = newCodes.numeroCompra.visa;
@@ -194,7 +263,7 @@ generateSession()
       sessionkey: response.sessionKey,
       channel: niubiz.channel,
       merchantid: niubiz.merchantid,
-      amount: niubiz.plan.precio,
+      amount: plan.precio,
       purchasenumber: niubiz.visaPurchase,
       language: "es",
       font: "https://fonts.googleapis.com/css?family=Montserrat:400&display=swap",
