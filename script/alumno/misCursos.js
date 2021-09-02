@@ -6,14 +6,27 @@ $(document).ready(function () {
   cargarCantidadCursos(idUser);
   cargarCantidadExamenes(idUser);
   cargar_resumen();
+  var idUser = decodificarBase64(localStorage.getItem('id'));
   ruta = 'https://viex-app.herokuapp.com';
   var x = 0;
-  $('#tbl-misCursos').DataTable({
+  $('#tbl-misCursos').DataTable({    
+    "searching": false,
     "responsive": true,
     "ordering": true,
-    "info": false,
-    "searching": false,
     "autoWidth": false,
+    "language": {
+      "sSearch": "Buscar:",
+      "zeroRecords": "No se encontraron resultados",
+      "info": "Mostrando cursos del _START_ al _END_ , de un total de _TOTAL_ cursos",
+      "infoEmpty": "Mostrando cursos del 0 al 0, de un total de 0 cursos",
+      "infoFiltered": "(Filtrando de un total de _MAX_ cursos)",
+      "oPaginate": {
+        "sFirst": "Primero",
+        "sLast": "Ultimo",
+        "sNext": "Siguiente",
+        "sPrevious": "Anterior",
+      }
+    },
     initComplete: function () {
       this.api().columns().every(function () {
         var column = this;
@@ -40,15 +53,13 @@ $(document).ready(function () {
         closeOnSelect: false,
         theme: "classic"
       });
-      $('#columna1').val('2020-I').trigger('change');
-      $('#columna2').val('UNMSM').trigger('change');
     },
 
     ajax: {
       url: ruta + '/detallecurso/usuario/promedio/' + idUser,
       dataSrc: '',
       async: false,
-      cache: true,
+      cache: false,
       error: function (jqXHR, textStatus, errorThrown) {
         $('#tbl-misCursos').DataTable().clear().draw();
       }
@@ -73,6 +84,14 @@ $(document).ready(function () {
   });
 });
 
+
+$(document).on('click', '#custom-tabs-one-home-tab', function (event) {
+  cargar_resumen();
+});
+
+$(document).on('click', '#tab-lista-alumnos-tab', function (event) {
+  $('#tbl-misCursos').DataTable().ajax.reload();
+});
 
 $(document).on('click', '#btn-listar', function (event) {
   $('#modal-alumnos').modal('toggle');
@@ -119,8 +138,6 @@ $(document).on('click', '#btn-listar', function (event) {
 
     ]
   });
-
-
 });
 
 
@@ -129,6 +146,12 @@ $('#btn-close').click(function () {
 
 });
 
+$(document).on('change', '#id_select_periodos', function (event) {
+  var value_select_period = $(this).val();
+  console.log(value_select_period);
+  $("#id_title_periodo h3").html("<i class='fas fa-th mr-1'></i> SEGUIMIENTO DE PERIODO " + value_select_period);
+  cargar_grafico_promedioPeriodo(value_select_period);
+});
 
 $(document).on('click', '#btn-viewListExamns', function (event) {
   $('#modal-examenCurso').modal('toggle');
@@ -136,10 +159,8 @@ $(document).on('click', '#btn-viewListExamns', function (event) {
   var currentRow = $(this).closest("tr");
   var data = $('#tbl-misCursos').DataTable().row(currentRow).data();
   var id_curso = data.idCurso;
-  var nombre_curso = data.curso;
+  var nombre_curso = data.nombre;
   $('#modal-examenCurso #modal-title').text('Lista de exámenes: ' + nombre_curso);
-  console.log(id_curso);
-  console.log(nombre_curso);
   ruta = 'https://viex-app.herokuapp.com';
   var x = 0;
   var table = $('#tbl-listadoExamen').DataTable({
@@ -195,8 +216,8 @@ $(document).on('click', '#btn-viewListExamns', function (event) {
 });
 
 function cargar_resumen() {
-
   cargar_grafico_promedioGeneralPeriodos();
+  $('#visitors-chart').height(200);
 }
 
 function cargar_grafico_promedioGeneralPeriodos() {
@@ -232,10 +253,16 @@ function cargar_grafico_promedioGeneralPeriodos() {
       'Content-Type': 'application/json'
     }
   }).done(function (data) {
+    i = 1;
     data.lista.forEach(function (element) {
       array_title_periodo.push(element.periodo);
-      array_value_promedio_general.push(element.promedio);
-      html_option_periodo += "<option value=" + element.periodo + ">" + element.periodo + "</option>";
+      array_value_promedio_general.push(element.promedio.toFixed(2));
+      if(data.lista.length === i){
+        html_option_periodo += "<option selected='true' value=" + element.periodo + ">" + element.periodo + "</option>";
+      }else{
+        html_option_periodo += "<option value=" + element.periodo + ">" + element.periodo + "</option>";
+      }
+      i++;
     });
   }).fail(function (jqXHR, textStatus, errorThrown) {
     console.log(jqXHR.responseJSON.mensaje);
@@ -331,7 +358,7 @@ function cargar_grafico_promedioPeriodo(periodo) {
     }).done(function (data) {
       data.lista.forEach(function (element) {
         array_title.push(element.nombre);
-        array_data.push(element.promedio);
+        array_data.push(element.promedio.toFixed(2));
       });
     }).fail(function (jqXHR, textStatus, errorThrown) {
       console.log(jqXHR.responseJSON.mensaje);

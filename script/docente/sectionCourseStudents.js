@@ -10,20 +10,12 @@ $(document).ready(function () {
         $(this).text(course_name);
     });
     cargar_resumen();
-});
-
-
-$(document).on('click', '#custom-tabs-one-home-tab', function (event) {
-    cargar_resumen();    
-});
-
-$(document).on('click', '#tab-lista-alumnos-tab', function (event) {
-    var id = decodificarBase64(localStorage.getItem('course_id'));
+    var curso_id = decodificarBase64(localStorage.getItem('course_id'));
     ruta = 'https://viex-app.herokuapp.com';
     var x = 0;
     var data_result = [];
     var table = $('#tbl-lista-alumnos').DataTable({
-        "destroy": true,
+        "destroy": false,
         "lengthChange": false,
         "searching": false,
         "autoWidth": false,
@@ -49,7 +41,7 @@ $(document).on('click', '#tab-lista-alumnos-tab', function (event) {
             $(".cboselect").select2({ closeOnSelect: false });
         },
         ajax: {
-            url: ruta + '/cursos/alumnos/' + id,
+            url: ruta + '/cursos/alumnos/' + curso_id,
             dataSrc: 'alumnos',
             async: false,
             cache: false,
@@ -79,6 +71,15 @@ $(document).on('click', '#tab-lista-alumnos-tab', function (event) {
             cell.innerHTML = i+1;
         } );
     } ).draw();
+});
+
+
+$(document).on('click', '#custom-tabs-one-home-tab', function (event) {
+    cargar_resumen();    
+});
+
+$(document).on('click', '#tab-lista-alumnos-tab', function (event) {
+    $('#tbl-lista-alumnos').DataTable().ajax.reload();
 });
 
 
@@ -308,8 +309,8 @@ function cargar_resumen(){
     }).done(function (data) {
         console.log(data);
         $('#total_alumnos').html(data.cantAlumnos);
-        $('#id_promedio_general h3').html(data.promCurso);
-        $('#id_desviacion_estandar h3').html(data.desvCurso);
+        $('#id_promedio_general h3').html(data.promCurso.toFixed(2));
+        $('#id_desviacion_estandar h3').html(data.desvCurso.toFixed(2));
         $('#id_alumnos_aprobados h3').html(data.cantAprob);
         $('#id_alumnos_desaprobados h3').html(data.cantDesap);
     }).fail(function (jqXHR, textStatus, errorThrown) {
@@ -337,8 +338,8 @@ function cargar_grafico_promedioGeneralCurso() {
     }).done(function (data) {
         data.examenes.forEach(function (element){
             array_title.push(element.titulo);
-            array_value_promedio_general.push(element.promedio);
-            array_value_promedido_fr.push(element.promFR);
+            array_value_promedio_general.push(element.promedio.toFixed(2));
+            array_value_promedido_fr.push(element.promFR.toFixed(2));
         });
     }).fail(function (jqXHR, textStatus, errorThrown) {
         console.log(jqXHR.responseJSON.mensaje);
