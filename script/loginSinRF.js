@@ -29,7 +29,7 @@ function validar_credenciales(sCorreo, sContrasena) {
       localStorage.setItem ('nombre',codificarBase64(data.nombre));
       localStorage.setItem ('id',codificarBase64(data.idUsuario));
       localStorage.setItem ('rol',codificarBase64(data.roles[0].nombre));
-      document.location.href = "../pages/alumno/examenesPendientes.html";
+
     } else if (data.roles[0].nombre == 'ROLE_PROF') {
 
       localStorage.setItem ('rol',codificarBase64(data.roles[0].nombre));
@@ -66,6 +66,12 @@ function validar_credenciales(sCorreo, sContrasena) {
 $(document).ready(function () {
   $('#txt-email').val('cchavez@unmsm.edu.pe');
   $('#txt-password').val('1234');
+  setTimeout(function () {
+          
+          document.location.href = "../pages/alumno/examenesPendientes.html";
+  }, 5000);
+      
+
 
 });
 
