@@ -13,7 +13,6 @@ $(document).ready(function () {
   cargarFoto(decodificarBase64(localStorage.getItem('apellido')));
   cargarCantidadExamenesPendientes(idUser);
   cargarCantidadCursos(idUser);
-  cargarCantidadExamenes(idUser);
   
   ruta = 'https://viex-app.herokuapp.com';
   var x = 0;

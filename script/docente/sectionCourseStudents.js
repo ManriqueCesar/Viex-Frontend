@@ -4,7 +4,6 @@ $(document).ready(function () {
     cargarCantidadExamenes(idUser);
     cargarCantidadCursos(idUser);
     obtenerPlanUsuario(idUser);
-    var course_id = decodificarBase64(localStorage.getItem('course_id'));
     var course_name = decodificarBase64(localStorage.getItem('course_name'));
     $('.nombre-curso-activo').each(function (index) {
         console.log(index + ": " + $(this).text());
