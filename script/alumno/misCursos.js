@@ -204,7 +204,16 @@ $(document).on('click', '#btn-viewListExamns', function (event) {
       { data: 'fecha_inicio' },
       { data: 'tiempo_duracion' },
       { data: 'fecha_envio' },
-      { data: 'estado' },
+      { 
+        data: null,
+        render: function (data, type, row) {
+            if (data.estado == true) {
+                return 'Habilitado';
+            }else{
+                return 'Deshabilitado';
+            }
+        }
+      },
       { data: 'tiempo_plagio' },
       { data: 'nota' }]
   });

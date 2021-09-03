@@ -282,7 +282,16 @@ $(document).on('click', '#btn-listExamsAlumn', function (event) {
             { data: 'titulo' },
             { data: 'fecha_inicio' },
             { data: 'tiempo_duracion' },
-            { data: 'estado' },
+            { 
+                data: null,
+                render: function (data, type, row) {
+                    if (data.estado == true) {
+                        return 'Habilitado';
+                    }else{
+                        return 'Deshabilitado';
+                    }
+                }
+            },
             { data: 'fecha_envio' },
             { data: 'tiempo_plagio' },            
             { data: 'nota' }]
