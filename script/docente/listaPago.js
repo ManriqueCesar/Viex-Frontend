@@ -68,7 +68,7 @@ $(document).ready(function () {
     buttons: [{
         'extend': 'excelHtml5',
         'autoFilter': true,
-        "text": '<img src="../../../dist/img/icons/excel.png" alt="Descargar Excel" height = "30px" width="40px">',
+        "text": '<img src="../../dist/img/Icons/excel.png" alt="Descargar Excel" height = "30px" width="40px">',
         customize: function (xlsx) {
           var sheet = xlsx.xl.worksheets['sheet1.xml'];
           $('c[r=A1] t', sheet).text('VIEX |' + ' Lista de Exámenes | ' + usuario);
@@ -80,7 +80,7 @@ $(document).ready(function () {
       {
         'extend': 'pdfHtml5',
         'autoFilter': true,
-        "text": '<img src="../../../dist/img/icons/pdf.png" alt="Descargar PDF" height = "30px" width="30px">',
+        "text": '<img src="../../dist/img/Icons/pdf.png" alt="Descargar PDF" height = "30px" width="30px">',
         exportOptions: {
           columns: [0, 1, 2, 3, 4, 5]
         }

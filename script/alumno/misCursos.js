@@ -78,7 +78,7 @@ $(document).ready(function () {
       {
         data: null,
         render: function (data, type, row) {
-          return '<img src="../../dist/img/icons/icon_view.png"  id="btn-viewListExamns" title="Ver Curso" width=30px;  height=30px; type="button">';
+          return '<img src="../../dist/img/Icons/icon_view.png"  id="btn-viewListExamns" title="Ver Curso" width=30px;  height=30px; type="button">';
         }
       }]
   });

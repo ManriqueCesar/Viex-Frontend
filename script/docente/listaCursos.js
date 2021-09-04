@@ -78,9 +78,9 @@ $(document).ready(function () {
       {
         data: null,
         render: function (data, type, row) {
-          return '<img src="../../dist/img/icons/icon_delete.png"  id="btn-eliminar" title="ELIMINAR" width=30px;  height=30px; type="button"></button>' + ' | ' +
-            '<img src="../../dist/img/icons/editar.png"  id="btn-editar" title="EDITAR" width=30px;  height=30px; type="button"></button>' + ' | ' +
-            '<img src="../../dist/img/icons/icon_view.png"  id="btn-viewSectionCourse" title="Ver Curso" width=30px;  height=30px; type="button">'
+          return '<img src="../../dist/img/Icons/icon_delete.png"  id="btn-eliminar" title="ELIMINAR" width=30px;  height=30px; type="button"></button>' + ' | ' +
+            '<img src="../../dist/img/Icons/editar.png"  id="btn-editar" title="EDITAR" width=30px;  height=30px; type="button"></button>' + ' | ' +
+            '<img src="../../dist/img/Icons/icon_view.png"  id="btn-viewSectionCourse" title="Ver Curso" width=30px;  height=30px; type="button">'
             ;
 
         }
