@@ -298,11 +298,19 @@ $(document).on('click', '#btn-enviar', function (event) {
         },
         data: JSON.stringify(request)
       }).done(function () {
+
         Swal.fire({
-          icon: 'success',
           title: '¡Enviado correctamente!',
-          text: "El examen ha concluido."
-        })
+          text: "El examen ha concluido",
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonColor: '#35b266',
+          confirmButtonText: 'OK'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = '../alumno/misExamenes.html'
+          }
+        });
       }).fail(function (jqXHR, textStatus, errorThrown) {
         console.log("error")
       })
